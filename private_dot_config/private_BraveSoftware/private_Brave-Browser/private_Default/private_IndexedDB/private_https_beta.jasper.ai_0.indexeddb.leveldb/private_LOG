@@ -1,0 +1,7 @@
+2023/04/18-07:01:57.493 e82c Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_beta.jasper.ai_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/18-07:01:57.493 e82c Recovering log #3
+2023/04/18-07:01:57.493 e82c Reusing old log /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_beta.jasper.ai_0.indexeddb.leveldb/000003.log 
+2023/04/18-07:01:57.764 179c9 Level-0 table #5: started
+2023/04/18-07:01:57.767 179c9 Level-0 table #5: 6704 bytes OK
+2023/04/18-07:01:57.774 179c9 Delete type=0 #3
+2023/04/18-07:01:57.774 e82b Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)

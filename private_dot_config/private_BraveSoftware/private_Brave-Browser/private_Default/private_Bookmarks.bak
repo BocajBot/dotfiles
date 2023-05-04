@@ -1,0 +1,500 @@
+{
+   "checksum": "230eff10f7d0879b47d334cdef026f44",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13310836293000000",
+               "date_last_used": "0",
+               "guid": "1b03ff14-21f4-476c-ae82-a5fad36f40f3",
+               "id": "6",
+               "name": "G502 X Wireless Gaming Mouse | Logitech G",
+               "type": "url",
+               "url": "https://www.logitechg.com/en-us/products/gaming-mice/g502-x-wireless-lightforce.910-006187.html"
+            }, {
+               "date_added": "13320854469000000",
+               "date_last_used": "0",
+               "guid": "9b28e21f-690f-498e-ad57-1baa8d1b8c5a",
+               "id": "7",
+               "name": "Vimm's Lair: The Vault",
+               "type": "url",
+               "url": "https://vimm.net/?p=vault"
+            } ],
+            "date_added": "13324133403372322",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "2e2408d9-1c9c-4f28-8ff3-3ab672fbfc20",
+            "id": "5",
+            "name": "ThingsToGet",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13311275950000000",
+               "date_last_used": "0",
+               "guid": "ee18e6dc-25f2-4fd0-a12c-17c1d4f601b3",
+               "id": "9",
+               "name": "Unlock DLSS For Faster Framerates and Better Graphics Quality, Regardless of Your GPU Vendor (Including Steam Deck) :: Linux Gaming Central",
+               "type": "url",
+               "url": "https://linuxgamingcentral.com/posts/dlss-unlocker-for-various-games/"
+            }, {
+               "date_added": "13311962503000000",
+               "date_last_used": "0",
+               "guid": "5dfa925d-cb2d-45ad-ad3b-9bf87ca5548d",
+               "id": "10",
+               "name": "Grafana: The open observability platform | Grafana Labs",
+               "type": "url",
+               "url": "https://grafana.com/"
+            }, {
+               "date_added": "13311962695000000",
+               "date_last_used": "0",
+               "guid": "9df83c34-fbfb-4362-9bac-e6db8c29f1d9",
+               "id": "11",
+               "name": "remix-run/remix: Build Better Websites. Create modern, resilient user experiences with web fundamentals.",
+               "type": "url",
+               "url": "https://github.com/remix-run/remix"
+            }, {
+               "date_added": "13311962754000000",
+               "date_last_used": "0",
+               "guid": "a1b1712d-dfd1-4209-890f-81588c80b208",
+               "id": "12",
+               "name": "facebookincubator/AITemplate: AITemplate is a Python framework which renders neural network into high performance CUDA/HIP C++ code. Specialized for FP16 TensorCore (NVIDIA GPU) and MatrixCore (AMD GPU) inference.",
+               "type": "url",
+               "url": "https://github.com/facebookincubator/AITemplate"
+            }, {
+               "date_added": "13313595184000000",
+               "date_last_used": "0",
+               "guid": "170feaf6-4803-4fc5-a81a-2bf0900210b6",
+               "id": "13",
+               "name": "homotechsual/NinjaOne",
+               "type": "url",
+               "url": "https://github.com/homotechsual/NinjaOne"
+            } ],
+            "date_added": "13324133403373059",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "a37b1d56-bc5e-4d24-8c97-b6859b660b4f",
+            "id": "8",
+            "name": "GithubThings",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13310484445000000",
+               "date_last_used": "0",
+               "guid": "4a24a09d-bd0f-4a53-9722-aa0f863fc57c",
+               "id": "15",
+               "name": "NINJA",
+               "type": "url",
+               "url": "https://agile.rmmservice.com/"
+            }, {
+               "date_added": "13315949699000000",
+               "date_last_used": "13325961785564976",
+               "guid": "ef168558-444e-4f55-b7d3-05de89b85e9c",
+               "id": "16",
+               "name": "Agile Ticket Report",
+               "type": "url",
+               "url": "http://agile-cwa01:8080/xampp/index.php"
+            }, {
+               "date_added": "13321996859000000",
+               "date_last_used": "0",
+               "guid": "e8b0ed22-693b-4377-b201-803dcb9c015f",
+               "id": "17",
+               "name": "Bitdefender GravityZone",
+               "type": "url",
+               "url": "https://cloud.gravityzone.bitdefender.com/#"
+            }, {
+               "date_added": "13310484443000000",
+               "date_last_used": "0",
+               "guid": "9385db6f-e23c-46ca-8025-34136217bd66",
+               "id": "18",
+               "name": "IT Glue",
+               "type": "url",
+               "url": "https://agileis.itglue.com/"
+            }, {
+               "date_added": "13322667685000000",
+               "date_last_used": "0",
+               "guid": "b76bed5d-6567-40cc-9f78-fcc88545372f",
+               "id": "19",
+               "name": "Verkada Command",
+               "type": "url",
+               "url": "https://command.verkada.com/login"
+            }, {
+               "date_added": "13310836665000000",
+               "date_last_used": "0",
+               "guid": "5cbb2e6c-3e20-4bb9-9799-b2b35603d42c",
+               "id": "20",
+               "name": "UniFi Network",
+               "type": "url",
+               "url": "https://unifi.agileis.com:8443/manage/account/login?redirect=%2Fmanage"
+            }, {
+               "children": [ {
+                  "date_added": "13310484548000000",
+                  "date_last_used": "0",
+                  "guid": "c038a22f-0ca6-4a13-832b-f2a336cd1eda",
+                  "id": "22",
+                  "name": "Microsoft Office Home",
+                  "type": "url",
+                  "url": "https://www.office.com/?auth=2"
+               }, {
+                  "date_added": "13310484564000000",
+                  "date_last_used": "0",
+                  "guid": "af36564a-1899-4aa7-8e21-e973f10c39c6",
+                  "id": "23",
+                  "name": "Computer Hardware Purchases.xlsx",
+                  "type": "url",
+                  "url": "https://agile2015.sharepoint.com/:x:/r/_layouts/15/Doc.aspx?sourcedoc=%7B7AE20327-782D-4E6C-8F7E-AF6FA030C83E%7D&file=Computer%20Hardware%20Purchases.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1&login_hint=jyoung%40agileis.com&ct=1666010963422&wdOrigin=OFFICECOM-WEB.START.EDGEWORTH&cid=95c3cc70-b516-4dab-b642-ab3607ef27f9"
+               }, {
+                  "date_added": "13310484569000000",
+                  "date_last_used": "0",
+                  "guid": "591e7127-b436-4718-85bc-9ffa997bf2e3",
+                  "id": "24",
+                  "name": "Mileage Sheet 2022 Jacob.xlsx",
+                  "type": "url",
+                  "url": "https://agile2015-my.sharepoint.com/:x:/r/personal/jyoung_agileis_com/_layouts/15/Doc.aspx?sourcedoc=%7B2E1DF1B9-0A67-426F-B216-59CD7C64726E%7D&file=Mileage%20Sheet%202022%20Jacob.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1&login_hint=jyoung%40agileis.com&ct=1666010967319&wdOrigin=OFFICECOM-WEB.START.EDGEWORTH&cid=d573759c-0cf4-4c86-aa67-6ebbf140ab5e"
+               }, {
+                  "date_added": "13310484582000000",
+                  "date_last_used": "0",
+                  "guid": "e8f2869e-b8e5-4023-906f-aa6be7c4b614",
+                  "id": "25",
+                  "name": "Mail - Jacob Young - Outlook",
+                  "type": "url",
+                  "url": "https://outlook.office.com/mail/"
+               }, {
+                  "date_added": "13310846458000000",
+                  "date_last_used": "0",
+                  "guid": "3b4defb5-80e1-49bb-87e5-8ce3532c647d",
+                  "id": "26",
+                  "name": "Home - Microsoft 365 admin center",
+                  "type": "url",
+                  "url": "https://admin.microsoft.com/?auth_upn=jyoung%40agileis.com&source=applauncher#/homepage"
+               }, {
+                  "date_added": "13313088762000000",
+                  "date_last_used": "0",
+                  "guid": "ceec5a65-0de8-4bcb-a26c-fb66a404b42c",
+                  "id": "27",
+                  "name": "Special Office",
+                  "type": "url",
+                  "url": "https://login.microsoftonline.us/common/oauth2/authorize?client_id=00000006-0000-0ff1-ce00-000000000000&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DvuTuA3h5aCaQwhR9e1aFRAAjzf1hbqb44KiaHkIQqcymULqvJGkRCudc0UKralnv4c5UehZ_R4Co9r28t6uNnU50oSgQnxsuQiPxCvvgE7z8LbgC6d4AvPNh4Zh2m-R3tfjsOuX0Q8JRHBlThhVstRlkUifuRWtGtxO8g1u4V6lWahsHFMNyWOlmMzNa4mpS&response_mode=form_post&nonce=638042119840296808.NTI3ZTkwM2EtYzE2Ny00YTgxLThkNzctMGIwMmNiOWU3OTA3YzVkZDVhMTgtZjZmOC00N2Y4LWI2ZjYtZGZiNjJiYWY4N2E5&redirect_uri=https%3A%2F%2Fportal.office365.us%2Flanding&ui_locales=en-US&mkt=en-US&client-request-id=fd801543-ea65-4b4e-a476-30c72f67d8ff&msafed=0&x-client-SKU=ID_NET45&x-client-ver=6.12.1.0"
+               } ],
+               "date_added": "13324133403373889",
+               "date_last_used": "0",
+               "date_modified": "0",
+               "guid": "5dfb9fb3-99c2-47aa-85f7-35bb962e69f2",
+               "id": "21",
+               "name": "Microsause",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13310746333000000",
+                  "date_last_used": "0",
+                  "guid": "7cf66050-1e1a-497f-b8ca-50743d43a039",
+                  "id": "29",
+                  "name": "Rogersville",
+                  "type": "url",
+                  "url": "https://townofrogersvilleal.digiumcloud.net/admin"
+               }, {
+                  "date_added": "13311172237000000",
+                  "date_last_used": "0",
+                  "guid": "75e29072-19f9-4b26-9fc5-baaca46069e6",
+                  "id": "30",
+                  "name": "HSV Museum",
+                  "type": "url",
+                  "url": "https://hsvmuseum.digiumcloud.net/admin"
+               }, {
+                  "date_added": "13312991850000000",
+                  "date_last_used": "0",
+                  "guid": "6c4857f4-0824-4612-9aab-cfa1fab771d6",
+                  "id": "31",
+                  "name": "Ashakiran",
+                  "type": "url",
+                  "url": "https://ashakiran.digiumcloud.net/admin"
+               } ],
+               "date_added": "13324133403374250",
+               "date_last_used": "0",
+               "date_modified": "0",
+               "guid": "bd4301e8-1580-4f86-b10b-2b4072a9b7dd",
+               "id": "28",
+               "name": "SwitchVox",
+               "type": "folder"
+            }, {
+               "date_added": "13311348771000000",
+               "date_last_used": "0",
+               "guid": "d8dc3fc0-19c6-4e8c-9b05-00bdc031c7d0",
+               "id": "32",
+               "name": "Login - Duo",
+               "type": "url",
+               "url": "https://admin.duosecurity.com/login?next=%2F"
+            }, {
+               "date_added": "13313091619000000",
+               "date_last_used": "0",
+               "guid": "d1c9aa80-a962-428b-a869-fb0181fcb27a",
+               "id": "33",
+               "name": "Employee Portal",
+               "type": "url",
+               "url": "https://lyo-ep.prismhr.com/#/auth/login"
+            }, {
+               "date_added": "13313179369000000",
+               "date_last_used": "0",
+               "guid": "a7e1bf2e-ed4b-4f8b-afdc-af7a3455bcde",
+               "id": "34",
+               "name": "Agile Information Services",
+               "type": "url",
+               "url": "https://agileis.us4.my.auvik.com/#msp/root/devices"
+            }, {
+               "date_added": "13313180605000000",
+               "date_last_used": "0",
+               "guid": "7efefdf6-10f6-4719-9691-b30f2dc70653",
+               "id": "35",
+               "name": "Management Portal",
+               "type": "url",
+               "url": "https://us-cloud.acronis.com/mc/"
+            }, {
+               "date_added": "13316106447000000",
+               "date_last_used": "0",
+               "guid": "cd247331-6a66-499d-8deb-17032d4f649c",
+               "id": "36",
+               "name": "AMS OFFICE",
+               "type": "url",
+               "url": "https://login.microsoftonline.us/common/oauth2/authorize?client_id=00000006-0000-0ff1-ce00-000000000000&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DemXzfiFhBoeaIX1hvpq4QHFGl-GKDWBJkgn6pYdH3679_ykIoIv6sIr4yx4uxkP8pEwhhd7JLohcy6Vj2ivjxayN9Nnd_rbpNlD_k_8YXs0ygFpmbyAgmb95779FQhERX-kkIs5bYf_yMiDwls1KT_ThTiQO0gEuAIXWOCnUz08jETZaFnyYOjc6KN4OOtzf&response_mode=form_post&nonce=638072296430810358.MzExOGVhYzctODlhMC00NzQ3LTk4YjctYzgzYjUwMzFhYzAyODJlYWMxMDctYzhlNy00NzcxLWI2NjMtZTQ1YjkwNGEzNzBj&redirect_uri=https%3A%2F%2Fportal.office365.us%2Flanding&ui_locales=en-US&mkt=en-US&client-request-id=dcb154cd-eda1-4ccb-bee3-d673264d0a49&msafed=0&x-client-SKU=ID_NET472&x-client-ver=6.12.1.0"
+            }, {
+               "date_added": "13325108815288317",
+               "date_last_used": "0",
+               "guid": "fa01071f-8c7c-4cf4-9813-0495f8e93bc3",
+               "id": "58",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Acronis Connection tool",
+               "type": "url",
+               "url": "https://kb.acronis.com/content/47678"
+            }, {
+               "date_added": "13325108853464838",
+               "date_last_used": "13325109856586164",
+               "guid": "28818c31-24a0-41ce-b6be-9db9296d3bd5",
+               "id": "59",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "AMP",
+               "type": "url",
+               "url": "https://partners.acronis.com/#training"
+            }, {
+               "date_added": "13325108869169285",
+               "date_last_used": "0",
+               "guid": "0c726493-6dae-40fe-9823-3070af124144",
+               "id": "60",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Acronis Cloud Login",
+               "type": "url",
+               "url": "https://us-cloud.acronis.com/login?to=management_console&return_url=%2Fmc%2F"
+            } ],
+            "date_added": "13324133403373552",
+            "date_last_used": "0",
+            "date_modified": "13325884513809014",
+            "guid": "248d8b05-a9d5-495d-93b5-7bd599a9f0e6",
+            "id": "14",
+            "name": "Work",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13313595206000000",
+               "date_last_used": "13325951911916819",
+               "guid": "973dec2c-31d3-45a6-a54e-3a1f9903e154",
+               "id": "38",
+               "name": "NinjaRMM Public API",
+               "type": "url",
+               "url": "https://app.ninjarmm.com/apidocs/?links.active=core"
+            }, {
+               "date_added": "13315328161000000",
+               "date_last_used": "0",
+               "guid": "2be15702-b4bb-430a-8e2c-b508f9774a4d",
+               "id": "39",
+               "name": "Ninja One Public API Reference",
+               "type": "url",
+               "url": "https://app.ninjarmm.com/apidocs-beta/authorization/overview"
+            }, {
+               "date_added": "13321461238000000",
+               "date_last_used": "0",
+               "guid": "1a129db3-a4d1-4e3f-ac58-13ad41870bf9",
+               "id": "40",
+               "name": "(Log Entries) Ninja One Public API Reference",
+               "type": "url",
+               "url": "https://app.ninjarmm.com/apidocs-beta/core-resources/operations/getTicketLogEntriesByTicketId"
+            }, {
+               "date_added": "13317223669000000",
+               "date_last_used": "0",
+               "guid": "c9a4413d-0d62-4901-b4fb-c1f2e758a06f",
+               "id": "41",
+               "name": "phpMyAdmin",
+               "type": "url",
+               "url": "http://localhost/phpmyadmin/"
+            }, {
+               "date_added": "13324148242231332",
+               "date_last_used": "13325866622178650",
+               "guid": "c285f5cf-3770-4953-a84f-64404215c65c",
+               "id": "56",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Agile Information Utility",
+               "type": "url",
+               "url": "http://localhost/AgileIU/home.html"
+            }, {
+               "date_added": "13316794869000000",
+               "date_last_used": "0",
+               "guid": "260e0a71-3393-4886-bf8b-efda38bd6153",
+               "id": "42",
+               "name": "Chart.js | Chart.js",
+               "type": "url",
+               "url": "https://www.chartjs.org/docs/latest/"
+            }, {
+               "date_added": "13317310690000000",
+               "date_last_used": "0",
+               "guid": "a4965dae-9204-4b21-aa9f-6d61710bdd1b",
+               "id": "43",
+               "name": "Get started with Bootstrap · Bootstrap v5.2",
+               "type": "url",
+               "url": "https://getbootstrap.com/docs/5.2/getting-started/introduction/"
+            }, {
+               "date_added": "13320956378000000",
+               "date_last_used": "0",
+               "guid": "2b531f2f-0bdb-4909-afc5-e1f30d17ef6d",
+               "id": "44",
+               "name": "A Complete Guide to Flexbox | CSS-Tricks - CSS-Tricks",
+               "type": "url",
+               "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background"
+            }, {
+               "date_added": "13321111751000000",
+               "date_last_used": "0",
+               "guid": "367e6783-f1db-4a1e-9557-b7de9348219e",
+               "id": "45",
+               "name": "PHP Tutorial",
+               "type": "url",
+               "url": "https://www.w3schools.com/php/"
+            }, {
+               "date_added": "13316187968000000",
+               "date_last_used": "0",
+               "guid": "0de301b0-ea00-435f-ad83-465133bd74ed",
+               "id": "46",
+               "name": "PHP MySQLi Functions",
+               "type": "url",
+               "url": "https://www.w3schools.com/php/php_ref_mysqli.asp"
+            }, {
+               "date_added": "13321115095000000",
+               "date_last_used": "0",
+               "guid": "3254cb61-9533-4d83-a57e-9a3e5ff75335",
+               "id": "47",
+               "name": "HTML Tutorial",
+               "type": "url",
+               "url": "https://www.w3schools.com/html/"
+            }, {
+               "date_added": "13322235133000000",
+               "date_last_used": "0",
+               "guid": "12452e95-ad6d-4603-be2b-70eb08297c5f",
+               "id": "48",
+               "name": "rust - How can I perform parallel asynchronous HTTP GET requests with reqwest? - Stack Overflow",
+               "type": "url",
+               "url": "https://stackoverflow.com/questions/51044467/how-can-i-perform-parallel-asynchronous-http-get-requests-with-reqwest"
+            }, {
+               "date_added": "13322235156000000",
+               "date_last_used": "0",
+               "guid": "a025c1e6-d02d-452a-acae-51a358eca13d",
+               "id": "49",
+               "name": "3. Warning: Cannot reinitialise DataTable",
+               "type": "url",
+               "url": "https://datatables.net/manual/tech-notes/3"
+            } ],
+            "date_added": "13324133403374604",
+            "date_last_used": "0",
+            "date_modified": "13325108815288317",
+            "guid": "e3162d1a-399f-4cce-b524-a9adcf2721ac",
+            "id": "37",
+            "name": "Code",
+            "type": "folder"
+         }, {
+            "date_added": "13325884513809014",
+            "date_last_used": "13325955213674240",
+            "guid": "a3ff53d1-8b19-4940-ba1f-622c38a1cdc2",
+            "id": "62",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "VM Server",
+            "type": "url",
+            "url": "https://192.168.192.253:8006/#v1:0:18:4:::::::"
+         }, {
+            "date_added": "13313000626000000",
+            "date_last_used": "0",
+            "guid": "21774fe0-31a5-4b47-90f4-fbe1d441149b",
+            "id": "50",
+            "name": "Retrieve Latest Mirror List Using Reflector In Arch Linux - OSTechNix",
+            "type": "url",
+            "url": "https://ostechnix.com/retrieve-latest-mirror-list-using-reflector-arch-linux/"
+         }, {
+            "date_added": "13317223675000000",
+            "date_last_used": "0",
+            "guid": "410abce5-a16a-4413-8600-d811e87e7d89",
+            "id": "51",
+            "name": "Ticket Reports",
+            "type": "url",
+            "url": "http://localhost/otherTest.php"
+         }, {
+            "date_added": "13322593184000000",
+            "date_last_used": "0",
+            "guid": "0eb86458-dda9-4acd-ae1e-52e712f08f06",
+            "id": "52",
+            "name": "Quickref - Neovim docs",
+            "type": "url",
+            "url": "https://neovim.io/doc/user/quickref.html"
+         }, {
+            "date_added": "13322689953000000",
+            "date_last_used": "0",
+            "guid": "56d2d084-ef5f-4349-b603-8c67b28371b4",
+            "id": "54",
+            "name": "https://adumb-codes.github.io",
+            "type": "url",
+            "url": "https://adumb-codes.github.io/"
+         }, {
+            "date_added": "13325960838986254",
+            "date_last_used": "13325961018045139",
+            "guid": "50b88d30-458e-445f-998d-381fe057062c",
+            "id": "64",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Ninja One Public API Reference",
+            "type": "url",
+            "url": "https://app.ninjarmm.com/apidocs-beta/core-resources/operations/getInstallerForLocation"
+         } ],
+         "date_added": "13324133390254736",
+         "date_last_used": "0",
+         "date_modified": "13325960838986254",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13324133390254738",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13324133390254739",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

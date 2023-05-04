@@ -1,0 +1,34 @@
+2023-05-03T03:42:05.054Z - info: [ui] [BranchPruner] Last prune took place 4 hours ago - skipping
+2023-05-03T07:42:05.054Z - info: [ui] [BranchPruner] Last prune took place 8 hours ago - skipping
+2023-05-03T11:42:05.054Z - info: [ui] [BranchPruner] Last prune took place 12 hours ago - skipping
+2023-05-03T12:12:21.376Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.6s of which 1567.7s paused, total 1569.3s
+2023-05-03T12:18:21.808Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.4s of which 318.8s paused, total 320.2s
+2023-05-03T14:19:54.677Z - info: [ui] Executing fetch: git -c credential.helper= fetch --progress --prune --recurse-submodules=on-demand origin (took 1.338s)
+2023-05-03T15:42:05.054Z - info: [ui] [BranchPruner] Last prune took place 16 hours ago - skipping
+2023-05-03T19:30:54.235Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.8s of which 1475.2s paused, total 1476.9s
+2023-05-03T19:31:23.246Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 0.3s of which 0.0s paused, total 0.3s
+2023-05-03T19:31:46.943Z - info: [ui] [Timing] Action 'create commit' for 'BocajBot/Rusty_NinjaOne' took 0.249s
+2023-05-03T19:31:48.023Z - info: [ui] [AppStore.withAuthenticatingUser] account found for repository: Rusty_NinjaOne - BocajBot (has token)
+2023-05-03T19:31:49.264Z - info: [ui] Executing push: git -c credential.helper= push origin master:master --progress (took 1.215s)
+2023-05-03T19:31:50.653Z - info: [ui] Executing updateRemoteHEAD: git -c credential.helper= remote set-head -a origin (took 1.071s)
+2023-05-03T19:42:05.054Z - info: [ui] [BranchPruner] Last prune took place 20 hours ago - skipping
+2023-05-03T20:00:18.808Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.3s of which 0.0s paused, total 1.3s
+2023-05-03T20:00:33.603Z - info: [ui] [AppStore] adding repository at /home/bocaj/Documents/GitHub/Rusty-Ninja to store
+2023-05-03T20:00:42.991Z - info: [ui] [Timing] Action 'create commit' for 'Rusty-Ninja' took 0.124s
+2023-05-03T20:00:49.714Z - info: [ui] Executing push: git -c credential.helper= push origin master --set-upstream --progress (took 1.110s)
+2023-05-03T20:00:51.696Z - info: [ui] [BranchPruner] No branches to prune.
+2023-05-03T20:00:55.813Z - info: [ui] [BranchPruner] No branches to prune.
+2023-05-03T20:00:56.956Z - info: [ui] Executing getChangesFiles: git log 957caa3295c72e86f5c4d769fe54887f2276f0a0 -C -M -m -1 --no-show-signature --first-parent --raw --format=format: --numstat -z -- (took 1.263s)
+2023-05-03T20:00:57.992Z - info: [ui] [AppStore.withAuthenticatingUser] account found for repository: Linux_Backups - BocajBot (has token)
+2023-05-03T20:02:56.669Z - info: [ui] [AppStore] loading 9 repositories from store
+2023-05-03T20:02:56.675Z - info: [ui] [AppStore] found account: BocajBot (BocajGnuoy)
+2023-05-03T20:02:56.706Z - info: [ui] [BranchPruner] Last prune took place 2 minutes ago - skipping
+2023-05-03T20:02:56.944Z - info: [ui] launching: 3.2.1-linux1 (Linux 6.2.13-arch1-1)
+2023-05-03T20:02:56.945Z - info: [ui] execPath: '/opt/github-desktop/github-desktop'
+2023-05-03T20:02:57.180Z - info: [ui] Subscribed 'BocajBot' to Alive channel
+2023-05-03T20:03:48.570Z - info: [ui] Executing updateIndex: git update-index --add --remove --replace -z --stdin (took 42.913s)
+2023-05-03T20:03:57.503Z - info: [ui] Executing createCommit: git commit -F - (took 8.925s)
+2023-05-03T20:03:57.626Z - info: [ui] [Timing] Action 'create commit' for 'BocajBot/Linux_Backups' took 52.355s
+2023-05-03T20:03:57.659Z - error: [ui] Could not load new contents for syntax highlighting
+Error: EISDIR: illegal operation on a directory, read
+2023-05-03T20:05:21.053Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 8 repositories took 1.9s of which 0.0s paused, total 1.9s

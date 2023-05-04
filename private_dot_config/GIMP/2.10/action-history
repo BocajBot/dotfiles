@@ -1,0 +1,28 @@
+# GIMP action-history
+
+(history-item "edit-paste" 5)
+(history-item "layers-new" 1)
+(history-item "image-new" 1)
+(history-item "image-resize" 0)
+(history-item "select-all" 1)
+(history-item "layers-delete" 0)
+(history-item "edit-cut" 0)
+(history-item "file-quit" 1)
+(history-item "edit-clear" 0)
+(history-item "dialogs-document-history" 0)
+(history-item "file-open" 0)
+(history-item "layers-edit-attributes" 0)
+(history-item "image-merge-layers" 0)
+(history-item "layers-alpha-add" 0)
+(history-item "tools-scale" 0)
+(history-item "filters-unsharp-mask" 0)
+(history-item "filters-antialias" 0)
+(history-item "filters-noise-reduction" 0)
+(history-item "layers-scale" 0)
+(history-item "layers-resize" 0)
+(history-item "layers-resize-to-image" 0)
+(history-item "image-resize-to-layers" 0)
+(history-item "image-resize-to-selection" 0)
+(history-item "file-export" 1)
+
+# end of action-history

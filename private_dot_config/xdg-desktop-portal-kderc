@@ -1,0 +1,9 @@
+[FileDialogSize]
+2 screens: Height=773
+2 screens: Width=1742
+
+[KFileDialog Settings]
+Recent Files[$e]=ncinstaller-x64.exe,file:///run/media/bocaj/Ventoy/instantos_beta7.iso,file:$HOME/Documents/ninja_tickets.sql,file:$HOME/Downloads/104ChromeStandaloneSetup64.exe,file:$HOME/Downloads/ncinstaller-x64.exe
+Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/,file:$HOME/Documents/,file:///run/media/bocaj/Ventoy/
+detailViewIconSize=16
+listViewIconSize=64

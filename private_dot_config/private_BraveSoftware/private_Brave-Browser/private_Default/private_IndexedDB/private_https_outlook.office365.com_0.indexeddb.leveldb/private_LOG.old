@@ -1,0 +1,14 @@
+2023/04/27-09:24:16.815 3b4a Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_outlook.office365.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/27-09:24:16.815 3b4a Recovering log #26
+2023/04/27-09:24:16.815 3b4a Reusing old log /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_outlook.office365.com_0.indexeddb.leveldb/000026.log 
+2023/04/27-09:24:16.815 3b4a Delete type=2 #24
+2023/04/27-09:24:30.208 323fa Level-0 table #31: started
+2023/04/27-09:24:30.209 323fa Level-0 table #31: 13854 bytes OK
+2023/04/27-09:24:30.216 323fa Delete type=0 #26
+2023/04/27-09:24:30.216 3b49 Manual compaction at level-0 from '\x00\x09\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x09\x00\x00\x05' @ 415 : 1
+2023/04/27-09:24:30.216 3b49 Compacting 1@0 + 1@1 files
+2023/04/27-09:24:30.218 3b49 Generated table #32@0: 41 keys, 7425 bytes
+2023/04/27-09:24:30.218 3b49 Compacted 1@0 + 1@1 files => 7425 bytes
+2023/04/27-09:24:30.221 3b49 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/04/27-09:24:30.221 3b49 Delete type=2 #31
+2023/04/27-09:24:30.221 3b49 Manual compaction at level-0 from '\x00\x09\x00\x00\x05' @ 415 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at (end)

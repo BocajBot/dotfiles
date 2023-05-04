@@ -1,0 +1,6 @@
+2023/04/14-13:19:07.554 3690 Creating DB /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_capturetheflag.withgoogle.com_0.indexeddb.leveldb since it was missing.
+2023/04/14-13:19:07.559 3690 Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_capturetheflag.withgoogle.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/14-13:19:35.259 3691 Level-0 table #5: started
+2023/04/14-13:19:35.264 3691 Level-0 table #5: 1168 bytes OK
+2023/04/14-13:19:35.268 3691 Delete type=0 #3
+2023/04/14-13:19:35.268 3691 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

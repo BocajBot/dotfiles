@@ -1,0 +1,18 @@
+00:00:00.352987 VirtualBox GUI VM Selector Window 6.1.44 r156814 linux.amd64 (Apr 13 2023 11:18:03) release log
+00:00:00.352988 Log opened 2023-04-24T13:08:34.076842000Z
+00:00:00.352989 Build Type: release
+00:00:00.352991 OS Product: Linux
+00:00:00.352992 OS Release: 6.2.12-arch1-1
+00:00:00.352992 OS Version: #1 SMP PREEMPT_DYNAMIC Thu, 20 Apr 2023 16:11:55 +0000
+00:00:00.353010 DMI Product Name: OptiPlex 3080
+00:00:00.353016 DMI Product Version: 
+00:00:00.353021 Firmware type: UEFI
+00:00:00.353218 Secure Boot: Disabled
+00:00:00.353245 Host RAM: 15742MB (15.3GB) total, 15054MB (14.7GB) available
+00:00:00.353249 Executable: /opt/VirtualBox/VirtualBox
+00:00:00.353250 Process ID: 1354
+00:00:00.353250 Package type: LINUX_64BITS_GENERIC
+00:00:00.353302 Qt version: 5.6.1
+00:00:00.363845 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.650329 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:00.668161 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 15x40 x 1700x1385

@@ -1,0 +1,13 @@
+[CreateDialog]
+LastMimeType=application/x-bzip-compressed-tar
+
+[MainWindow]
+2 screens: Height=1357
+2 screens: Width=839
+2 screens: XPosition=2584
+2 screens: YPosition=66
+DP-1 HDMI-1=DP-1
+State=AAAA/wAAAAD9AAAAAAAAA0cAAAUtAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+StatusBar=Disabled
+ToolBarsMovable=Disabled
+splitterSizes=557,278

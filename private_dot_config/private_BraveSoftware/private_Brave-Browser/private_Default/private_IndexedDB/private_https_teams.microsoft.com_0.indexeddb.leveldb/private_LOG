@@ -1,0 +1,17 @@
+2023/04/20-08:34:12.332 5e61 Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_teams.microsoft.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/04/20-08:34:12.333 5e61 Recovering log #77
+2023/04/20-08:34:12.333 5e61 Reusing old log /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_teams.microsoft.com_0.indexeddb.leveldb/000077.log 
+2023/04/20-08:34:32.468 6431 Level-0 table #87: started
+2023/04/20-08:34:32.483 6431 Level-0 table #87: 663850 bytes OK
+2023/04/20-08:34:32.487 6431 Delete type=0 #77
+2023/04/20-08:34:32.488 5e60 Manual compaction at level-0 from '\x00.\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00/\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/04/20-09:05:13.988 5e60 Compacting 1@1 + 3@2 files
+2023/04/20-09:05:14.014 5e60 Generated table #88@1: 1354 keys, 2142323 bytes
+2023/04/20-09:05:14.062 5e60 Generated table #89@1: 1019 keys, 2143422 bytes
+2023/04/20-09:05:14.102 5e60 Generated table #90@1: 8325 keys, 1154208 bytes
+2023/04/20-09:05:14.102 5e60 Compacted 1@1 + 3@2 files => 5439953 bytes
+2023/04/20-09:05:14.106 5e60 compacted to: files[ 0 0 3 0 0 0 0 ]
+2023/04/20-09:05:14.106 5e60 Delete type=2 #82
+2023/04/20-09:05:14.106 5e60 Delete type=2 #83
+2023/04/20-09:05:14.106 5e60 Delete type=2 #84
+2023/04/20-09:05:14.106 5e60 Delete type=2 #87

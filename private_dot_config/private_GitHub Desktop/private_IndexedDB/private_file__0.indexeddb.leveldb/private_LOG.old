@@ -1,0 +1,7 @@
+2023/05/02-14:41:58.483 4763 Reusing MANIFEST /home/bocaj/.config/GitHub Desktop/IndexedDB/file__0.indexeddb.leveldb/MANIFEST-000001
+2023/05/02-14:41:58.483 4763 Recovering log #3
+2023/05/02-14:41:58.521 4763 Reusing old log /home/bocaj/.config/GitHub Desktop/IndexedDB/file__0.indexeddb.leveldb/000003.log 
+2023/05/03-15:02:24.072 14c4b Level-0 table #5: started
+2023/05/03-15:02:24.091 14c4b Level-0 table #5: 1521451 bytes OK
+2023/05/03-15:02:24.097 14c4b Delete type=0 #3
+2023/05/03-15:02:24.100 14c4b Manual compaction at level-0 from (begin) .. (end); will stop at (end)

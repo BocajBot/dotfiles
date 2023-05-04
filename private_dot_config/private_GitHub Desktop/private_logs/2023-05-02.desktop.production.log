@@ -1,0 +1,26 @@
+2023-05-02T00:23:39.886Z - info: [ui] Executing fetch: git -c credential.helper= fetch --progress --prune --recurse-submodules=on-demand origin (took 1.376s)
+2023-05-02T03:56:48.438Z - info: [ui] [BranchPruner] Last prune took place 8 hours ago - skipping
+2023-05-02T07:56:48.438Z - info: [ui] [BranchPruner] Last prune took place 12 hours ago - skipping
+2023-05-02T11:56:48.436Z - info: [ui] [BranchPruner] Last prune took place 16 hours ago - skipping
+2023-05-02T12:56:44.750Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.5s of which 1586.6s paused, total 1588.1s
+2023-05-02T12:56:58.831Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 0.5s of which 0.0s paused, total 0.5s
+2023-05-02T12:58:10.565Z - info: [ui] [BranchPruner] No branches to prune.
+2023-05-02T12:58:15.179Z - info: [ui] [AppStore.withAuthenticatingUser] account found for repository: NinjaOneProject - BocajBot (has token)
+2023-05-02T16:58:10.569Z - info: [ui] [BranchPruner] Last prune took place 4 hours ago - skipping
+2023-05-02T18:04:29.125Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.5s of which 823.4s paused, total 824.9s
+2023-05-02T18:36:26.366Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.4s of which 1102.4s paused, total 1103.9s
+2023-05-02T18:44:54.706Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.4s of which 308.2s paused, total 309.6s
+2023-05-02T19:41:58.588Z - info: [ui] [AppStore] loading 8 repositories from store
+2023-05-02T19:41:58.604Z - info: [ui] [AppStore] found account: BocajBot (BocajGnuoy)
+2023-05-02T19:41:58.695Z - info: [ui] [BranchPruner] Last prune took place 7 hours ago - skipping
+2023-05-02T19:41:58.933Z - info: [ui] Subscribed 'BocajBot' to Alive channel
+2023-05-02T19:41:59.164Z - info: [ui] launching: 3.2.1-linux1 (Linux 6.2.13-arch1-1)
+2023-05-02T19:41:59.165Z - info: [ui] execPath: '/opt/github-desktop/github-desktop'
+2023-05-02T19:42:05.051Z - info: [ui] [BranchPruner] Last prune took place yesterday - skipping
+2023-05-02T19:42:18.905Z - info: [ui] [Timing] Action 'create commit' for 'BocajBot/Rusty_NinjaOne' took 0.096s
+2023-05-02T19:42:19.879Z - info: [ui] [AppStore.withAuthenticatingUser] account found for repository: Rusty_NinjaOne - BocajBot (has token)
+2023-05-02T19:52:37.315Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.4s of which 0.0s paused, total 1.4s
+2023-05-02T19:52:57.048Z - info: [ui] [Timing] Action 'create commit' for 'BocajBot/Rusty_NinjaOne' took 0.078s
+2023-05-02T19:52:58.313Z - info: [ui] [AppStore.withAuthenticatingUser] account found for repository: Rusty_NinjaOne - BocajBot (has token)
+2023-05-02T23:41:59.302Z - info: [ui] Stats reported.
+2023-05-02T23:42:05.080Z - info: [ui] [BranchPruner] No branches to prune.

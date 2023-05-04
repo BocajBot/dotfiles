@@ -1,0 +1,7 @@
+2023/05/03-14:08:22.204 3855 Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.dell.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/03-14:08:22.204 3855 Recovering log #3
+2023/05/03-14:08:22.204 3855 Reusing old log /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.dell.com_0.indexeddb.leveldb/000003.log 
+2023/05/03-14:47:58.073 3856 Level-0 table #5: started
+2023/05/03-14:47:58.075 3856 Level-0 table #5: 1037 bytes OK
+2023/05/03-14:47:58.082 3856 Delete type=0 #3
+2023/05/03-14:47:58.082 3856 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
