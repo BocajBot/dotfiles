@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+pkill swaybg
+swaybg -o 'DP-1' -i "/home/bocaj/Pictures/DesktopBackgroud.jpg" -m fit &

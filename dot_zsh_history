@@ -1,0 +1,4362 @@
+: 1679662377:0;clear
+: 1679662398:0;sudo pacman -Syyu
+: 1679662569:0;paru -S thunar thunar-volman gvfs
+: 1679662599:0;clear
+: 1679662607:0;paru -S timeshift
+: 1679662715:0;sudo pacman -S grub-btrfs
+: 1679662744:0;paru -S snapper inotify-tools
+: 1679662755:0;clear
+: 1679662760:0;sudo timeshift-gtk
+: 1679662872:0;clear
+: 1679666361:0;xrandr
+: 1679666491:0;feh ~/Pictures/DesktopBackgroundSPACE.png
+: 1679666504:0;paru -S Imlib2
+: 1679666523:0;clear
+: 1679666551:0;paru -S imagemagick jpegexiforient libxt
+: 1679666588:0;paru -S Imlib2
+: 1679666593:0;feh ~/Pictures/DesktopBackgroundSPACE.png
+: 1679666658:0;paru -S imlib2
+: 1679666660:0;feh ~/Pictures/DesktopBackgroundSPACE.png
+: 1679666668:0;clear
+: 1679666670:0;feh ~/Pictures/DesktopBackgroundSPACE.png
+: 1679666678:0;feh --help
+: 1679666701:0;paru -S ffmpeg
+: 1679666734:0;paru -S intel-media-dsk
+: 1679666739:0;paru -S intel-media-sdk
+: 1679666750:0;feh ~/Pictures/DesktopBackgroundSPACE.png
+: 1679666780:0;feh --bg-scale  ~/Pictures/DesktopBackgroundSPACE.png
+: 1679667048:0;picom &
+: 1679667052:0;clear
+: 1679667060:0;picom
+: 1679667072:0;nvim /etc/xdg/picom.conf
+: 1679667079:0;sudo -E -s nvim /etc/xdg/picom.conf
+: 1679667100:0;clear
+: 1679667103:0;picom
+: 1679667109:0;picom &
+: 1679667111:0;clear
+: 1679667118:0;feh --bg-scale  ~/Pictures/SPACE.jpg
+: 1679667175:0;feh --bg-scale  ~/Pictures/SPACE.jpg ~/Pictures/1920x1080-HD-Space-Wallpaper.jpg
+: 1679667204:0;clear
+: 1679667237:0;sudo -E -s nvim /etc/xdg/picom.conf
+: 1679667263:0;clear
+: 1679667269:0;nvim .config/alacritty
+: 1679667288:0;nvim
+: 1679667346:0;c;ear
+: 1679667349:0;clear
+: 1679667354:0;picom &
+: 1679667377:0;nvim .config/i3/config
+: 1679667395:0;picom -b
+: 1679667446:0;cat ~/.fehbg
+: 1679667453:0;clear
+: 1679667498:0;paru -S github-desktop
+: 1679667554:0;paru -S mariadb php-apache php phpmyadmin
+: 1679667580:0;paru -S lua
+: 1679667586:0;clear
+: 1679667648:0;sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+: 1679667677:0;sudo systemctl enable --now mariadb
+: 1679667684:0;sudo mariadb-secure-installation\\
+
+: 1679667707:0;clear
+: 1679668135:0;Documents/GitHub/Linux_Backups
+: 1679668137:0;clear
+: 1679668138:0;ls
+: 1679668145:0;clear
+: 1679668147:0;ls -la
+: 1679668167:0;ls /etc/
+: 1679668170:0;ls ./etc/
+: 1679668184:0;cat /etc/php/php.ini
+: 1679668188:0;clear
+: 1679668204:0;nvim -d /etc/php/php.ini ./etc/php/php.ini
+: 1679668242:0;sudo cp ./etc/php/php.ini /etc/php/
+: 1679668247:0;nvim -d /etc/php/php.ini ./etc/php/php.ini
+: 1679668269:0;/etc/php/
+: 1679668275:0;cd
+: 1679668281:0;Documents/GitHub/Linux_Backups
+: 1679668283:0;clear
+: 1679668285:0;ls -la
+: 1679668297:0;ls -la ./etc/php
+: 1679668301:0;ls -la ./etc/
+: 1679668343:0;ls ./etc/httpd
+: 1679668347:0;ls ./etc/httpd/conf
+: 1679668395:0;sudo cp -r ./etc/httpd/ /etc/httpd/
+: 1679668403:0;ls -la /etc/httpd
+: 1679668423:0;ls -la /etc/httpd/httpd
+: 1679668445:0;sudo mv /etc/httpd/httpd /etc/httpd
+: 1679668457:0;sudo mv -r /etc/httpd/httpd /etc/httpd
+: 1679668473:0;sudo mv /etc/httpd/httpd/* /etc/httpd
+: 1679668482:0;ls -la /etc/httpd/
+: 1679668495:0;sudo rm -rf /etc/httpd
+: 1679668508:0;sudo cp -r ./etc/httpd /etc/httpd
+: 1679668519:0;ls -la /etc/httpd/
+: 1679668521:0;clear
+: 1679668523:0;ls
+: 1679668528:0;clear
+: 1679668529:0;ls -la
+: 1679668549:0;cd usr
+: 1679668551:0;clear
+: 1679668555:0;ls -la
+: 1679668603:0;sudo cp -r ./share/webapps/phpMyAdmin/* /usr/share/webapps/phpMyAdmin
+: 1679668609:0;ls -la /usr/share/webapps/phpMyAdmin
+: 1679668613:0;clear
+: 1679668624:0;sudo mariadb -u root -p
+: 1679668840:0;nvim /etc/httpd/conf/extra/phpmyadmin.conf
+: 1679668845:0;clear
+: 1679668865:0;nvim /usr/share/webapps/phpMyAdmin/config.inc.php
+: 1679668897:0;sudo -E -s nvim /usr/share/webapps/phpMyAdmin/config.inc.php
+: 1679669204:0;clear
+: 1679669264:0;sudo systemctl enable --now httpd
+: 1679669267:0;clear
+: 1679669269:0;exit
+: 1679669322:0;sudo mkdir /usr/share/webapps/phpMyAdmin/tmp/
+: 1679669359:0;sudo chmod 755 /usr/share/webapps/phpMyAdmin/tmp/
+: 1679669360:0;clear
+: 1679669383:0;sudo chown bocaj:bocaj /usr/share/webapps/phpMyAdmin/tmp/
+: 1679669384:0;clear
+: 1679669445:0;sudo systemctl restart httpd
+: 1679669481:0;sudo chmod 755 /usr/share/webapps/phpMyAdmin/tmp
+: 1679669495:0;ls -la /usr/share/webapps/phpMyAdmin/tmp
+: 1679669501:0;ls -la /usr/share/webapps/phpMyAdmin/
+: 1679669613:0;ls -la /usr/share/webapps/
+: 1679669642:0;ls -la /usr/share/webapps/phpMyAdmin/
+: 1679669718:0;sudo chmod 777 /usr/share/webapps/phpMyAdmin/tmp
+: 1679670167:0;sudo chmod 775 ~/Documents/GitHub/AgileInformationUtility
+: 1679670176:0;sudo chmod 775 ~/Documents/GitHub
+: 1679670187:0;sudo chmod 775 ~/Documents
+: 1679670276:0;sudo systemctl restart httpd
+: 1679670286:0;sudo systemctl status httpd
+: 1679670288:0;qclear
+: 1679670290:0;clear
+: 1679670317:0;nvim /etc/httpd/conf/extra/phpmyadmin.conf
+: 1679670338:0;nvim /etc/httpd/conf/extra/agileiu.conf
+: 1679670368:0;/home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679670378:0;ls -la /home/bocaj/Documents/GitHub/
+: 1679670402:0;ls -la /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679670424:0;sudo chmod 775 /home/bocaj/Documents/GitHub/AgileInformationUtility/*
+: 1679670426:0;ls
+: 1679670430:0;ls -la
+: 1679670438:0;clear
+: 1679670444:0;sudo systemctl restart httpd
+: 1679670484:0;sudo chmod -R 775 /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679670590:0;nvim /etc/httpd/conf/extra/agileiu.conf
+: 1679670716:0;paru -S composer
+: 1679670724:0;ls
+: 1679670731:0;composer install
+: 1679670733:0;clear
+: 1679670734:0;ls
+: 1679670761:0;nvim /etc/httpd/conf/httpd.conf
+: 1679670804:0;clear
+: 1679670845:0;sudo systemctl restart httpd
+: 1679670917:0;clear
+: 1679670919:0;ls
+: 1679670926:0;clear
+: 1679670927:0;ls -la
+: 1679671028:0;clear
+: 1679671035:0;nvim ./.env
+: 1679671117:0;git clone https://github.com/github/copilot.vim.git \\
+  ~/.vim/pack/github/start/copilot.vim
+: 1679671119:0;clear
+: 1679671138:0;nvim ./.env
+: 1679671165:0;nvim .config/nvim
+: 1679671237:0;clear
+: 1679671241:0;nvim ./.env
+: 1679671296:0;clear
+: 1679671307:0;sudo systemctl restart httpd
+: 1679671310:0;clear
+: 1679671690:0;/var/log/httpd
+: 1679671693:0;ls
+: 1679671704:0;ls -la
+: 1679671718:0;cat ./error_log
+: 1679671846:0;chmod -R 755 /home/bocaj/Documents
+: 1679671862:0;sudo systemctl restart httpd
+: 1679671889:0;tail /var/log/httpd/error_log
+: 1679672001:0;groups
+: 1679672007:0;groups --help
+: 1679672012:0;groups bocaj
+: 1679672014:0;clear
+: 1679672019:0;httpd --help
+: 1679672023:0;clear
+: 1679672135:0;paru -Qe
+: 1679672143:0;paru -Qe | grep bubblewrap
+: 1679672146:0;clear
+: 1679672150:0;paru -Qe | grep wrap
+: 1679672166:0;paru -Ss bubblewrap-suid
+: 1679672172:0;paru -S bubblewrap-suid
+: 1679672177:0;clear
+: 1679672181:0;sudo systemctl restart httpd
+: 1679672220:0;tail /var/log/httpd/error_log
+: 1679672246:0;ls -la /home/bocaj/Documents/GitHub/
+: 1679672262:0;ls -la /home/bocaj/Documents/
+: 1679672269:0;ls -la /home/bocaj/
+: 1679672284:0;ls -la /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679672309:0;clear
+: 1679672316:0;paru -S openssl
+: 1679672319:0;clear
+: 1679672331:0;tail /var/log/httpd/error_log
+: 1679672409:0;ls -l /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679672497:0;clear
+: 1679672514:0;/etc/httpd/conf/extra/agileiu.conf
+: 1679672523:0;sudo -E -s nvim /etc/httpd/conf/extra/agileiu.conf
+: 1679672591:0;sudo -E -s nvim /etc/httpd/conf/httpd.conf
+: 1679672776:0;sudo systemctl enable httpd
+: 1679672778:0;clear
+: 1679672814:0;neofetch
+: 1679673038:0;sudo apachectl configtest
+: 1679673048:0;sudo ss -tuln | grep http\
+
+: 1679673298:0;clear
+: 1679673317:0;ls -ld /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679673351:0;tail /var/log/httpd/error_log
+: 1679673458:0;clear
+: 1679673463:0;sudo -E -s nvim /etc/httpd/conf/httpd.conf
+: 1679673518:0;sudo systemctl enable httpd
+: 1679673590:0;sudo systemctl restart httpd
+: 1679673627:0;sudo -E -s nvim /etc/httpd/conf/httpd.conf
+: 1679673636:0;sudo systemctl restart httpd
+: 1679673663:0;sudo -E -s nvim /etc/httpd/conf/extra/agileiu.conf
+: 1679673916:0;nvim /run/media/bocaj/4bde288b-6499-45ff-8b94-8099cf96a4fb/etc/httpd/conf
+: 1679673972:0;nvim /run/media/bocaj/4bde288b-6499-45ff-8b94-8099cf96a4fb/
+: 1679673980:0;/run/media/bocaj/4bde288b-6499-45ff-8b94-8099cf96a4fb/
+: 1679673981:0;clear
+: 1679673982:0;ls
+: 1679673986:0;ls -la
+: 1679673998:0;cd home
+: 1679673999:0;ls
+: 1679674002:0;cd bocaj
+: 1679674003:0;clear
+: 1679674005:0;ls -la
+: 1679674022:0;cd Documents
+: 1679674023:0;ls
+: 1679674025:0;ls -la
+: 1679674053:0;cd GitHub
+: 1679674054:0;clear
+: 1679674056:0;ls -la
+: 1679674064:0;AgileInformationUtility
+: 1679674066:0;ls -la
+: 1679674080:0;:q
+: 1679674086:0;clear
+: 1679674096:0;cd Documents/GitHub/AgileInformationUtility
+: 1679674097:0;clear
+: 1679674098:0;ls -la
+: 1679674188:0;chmod -R 644 /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679674191:0;sudo chmod -R 644 /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679674195:0;ls -la
+: 1679674214:0;cd ../
+: 1679674217:0;ls -la
+: 1679674224:0;clear
+: 1679674225:0;ls -la
+: 1679674235:0;ls -la ./AgileInformationUtility
+: 1679674247:0;cd ../
+: 1679674251:0;ls -la
+: 1679674256:0;ls -la ./AgileInformationUtility
+: 1679674259:0;ls -la
+: 1679674305:0;sudo chmod 755 /home/bocaj/Documents/GitHub/AgileInformationUtility
+: 1679674309:0;ls -la ./AgileInformationUtility
+: 1679674315:0;clear
+: 1679674316:0;ls -la ./AgileInformationUtility
+: 1679674346:0;sudo chmod 755 /home/bocaj/Documents/GitHub/AgileInformationUtility/.git
+: 1679674359:0;sudo chmod -R 755 /home/bocaj/Documents/GitHub/AgileInformationUtility/vendor
+: 1679674363:0;ls -la ./AgileInformationUtility
+: 1679674384:0;cd
+: 1679674386:0;clear
+: 1679674611:0;sudo systemctl restart httpd
+: 1679674616:0;sudo systemctl status httpd
+: 1679674691:0;sudo chmod +rx /home/bocaj /home/bocaj/Documents /home/bocaj/Documents/GitHub /home/bocaj/Documents
+: 1679674705:0;sudo systemctl restart httpd
+: 1679674728:0;clear
+: 1679674736:0;cd Documents/GitHub/AgileInformationUtility/
+: 1679674738:0;nvim
+: 1679674785:0;clear
+: 1679674980:0;paru -S nodejs npm
+: 1679674990:0;paru -S npm
+: 1679674993:0;clear
+: 1679675004:0;sudo npm i -g npm@latest
+: 1679675011:0;clear
+: 1679678473:0;nvim Documents/GitHub
+: 1679678567:0;cp Documents/GitHub/AgileInformationUtility/.env Documents/GitHub/NinjaOneProject
+: 1679678568:0;clear
+: 1679678577:0;cp Documents/GitHub/AgileInformationUtility/.env Documents/GitHub/Rusty_NinjaOne
+: 1679678578:0;clear
+: 1679678656:0;Documents/GitHub/Rusty_NinjaOne
+: 1679678657:0;clear
+: 1679678660:0;cargo build
+: 1679678688:0;nvim Documents/GitHub
+: 1679678694:0;clear
+: 1679678698:0;cargo clippy
+: 1679678702:0;clear
+: 1679678706:0;cargo run
+: 1679678847:0;clear
+: 1679678908:0;clelar
+: 1679678909:0;clear
+: 1679678960:0;cd Documents/GitHub/AgileInformationUtility
+: 1679678962:0;clear
+: 1679678966:0;nvim .
+: 1679679076:0;cd Documents/GitHub/AgileInformationUtility
+: 1679679077:0;clear
+: 1679679079:0;nvim .
+: 1679680515:0;cd Documents/GitHub/AgileInformationUtility
+: 1679680516:0;nvim .
+: 1679681529:0;:q
+: 1679681530:0;clear
+: 1679681532:0;nvim .
+: 1679682122:0;nvim .config/nvim
+: 1679682286:0;nvim .
+: 1679682929:0;Documents/GitHub/Rusty_NinjaOne
+: 1679682932:0;cd ../
+: 1679682940:0;cd AgileInformationUtility
+: 1679682942:0;clear
+: 1679682944:0;nvim .
+: 1679683263:0;nvim .config/nvim
+: 1679683376:0;nvim .config/nvim/lua/bocaj/packer.lua
+: 1679683423:0;nvim .config/nvim
+: 1679683561:0;nvim .
+: 1679917327:0;clear
+: 1679917328:0;exit
+: 1679917448:0;nvim Documents/GitHub/AgileInformationUtility
+: 1679919833:0;paru
+: 1679919871:0;paru -S paru-git
+: 1679920024:0;clear
+: 1679920028:0;paru
+: 1679920032:0;exit
+: 1679921970:0;nvim Documents/GitHub/
+: 1679927522:0;paru -S gimp\\
+
+: 1679927548:0;clear
+: 1680003354:0;cd Documents/GitHub/Rusty_NinjaOne
+: 1680003357:0;clear
+: 1680003363:0;cargo build
+: 1680003381:0;cargo help run
+: 1680003422:0;nvim ./src/utils.rs
+: 1680004622:0;clear
+: 1680004625:0;cargo build
+: 1680004630:0;cargo clippy
+: 1680004639:0;cargo run
+: 1680005985:0;clear
+: 1680006005:0;cd Documents/GitHub/AgileInformationUtility
+: 1680006007:0;clear
+: 1680006008:0;ls
+: 1680006012:0;clear
+: 1680006013:0;nvim
+: 1680006020:0;nvim ./
+: 1680010673:0;sudo systemctl restart httpd
+: 1680016572:0;paru
+: 1680016583:0;clear
+: 1680016590:0;paru -S ntfs-3g
+: 1680016599:0;clear
+: 1680016610:0;sudo fdisk -l
+: 1680016618:0;lsblk
+: 1680016774:0;clear
+: 1680016775:0;lsblk
+: 1680016777:0;clear
+: 1680017445:0;cd Documents/GitHub/AgileInformationUtility
+: 1680017446:0;clear
+: 1680017448:0;nvim ./
+: 1680019106:0;paru -Ss eslint
+: 1680019123:0;clear
+: 1680019130:0;paru -S eslint_d
+: 1680019135:0;clear
+: 1680019223:0;nvim ./
+: 1680029594:0;cd Documents/GitHub/Rusty_NinjaOne
+: 1680029595:0;clear
+: 1680029597:0;cargo run
+: 1680029607:0;clear
+: 1680089940:0;paru
+: 1680090068:0;paru -S solaar
+: 1680090086:0;paru -S kcalc
+: 1680092297:0;nvim Documents/GitHub/Rusty_NinjaOne
+: 1680092316:0;cd Documents/GitHub/Rusty_NinjaOne
+: 1680092318:0;clear
+: 1680092321:0;cargo run
+: 1680093855:0;paru -S remenia
+: 1680093884:0;paru -S remmina
+: 1680093952:0;paru -S freerdp libvncserver spice-gtk webkit2gtk-4.1 gtk-vnc 
+: 1680093991:0;clear
+: 1680098051:0;cd Documents/GitHub/AgileInformationUtility
+: 1680098052:0;clear
+: 1680098057:0;nvim ./
+: 1680119893:0;exit
+: 1680176798:0;cd Documents/GitHub/AgileInformationUtility
+: 1680176799:0;clear
+: 1680176801:0;nvim ./
+: 1680177410:0;cd Documents/GitHub/AgileInformationUtility
+: 1680177411:0;nvim ./
+: 1680194778:0;cd Documents/GitHub/AgileInformationUtility
+: 1680194780:0;clear
+: 1680194783:0;nvim ./
+: 1680195408:0;ls -la Documents/GitHub
+: 1680195416:0;ls -la Documents/
+: 1680195422:0;ls -la 
+: 1680195431:0;ls -la Documents/GitHub/AgileInformationUtility
+: 1680195527:0;clear
+: 1680195531:0;cd Documents/GitHub/AgileInformationUtility
+: 1680195549:0;./.git
+: 1680195551:0;ls
+: 1680195554:0;ls -la
+: 1680195568:0;cd..
+: 1680195570:0;cd ..
+: 1680195585:0;sudo chmod +rx ./.git
+: 1680195602:0;ls -la ./.git
+: 1680195614:0;sudo chmod 755 ./.git
+: 1680195616:0;ls -la ./.git
+: 1680195632:0;sudo chmod 777 ./.git
+: 1680195634:0;ls -la ./.git
+: 1680195645:0;sudo chmod 755 ./.git/*
+: 1680195647:0;ls -la ./.git
+: 1680195712:0;ls -la ./.git/info
+: 1680195731:0;sudo chmod 755 ./.git/info/*
+: 1680195744:0;clear
+: 1680195769:0;sudo chmod 755 ./.git/objects/*
+: 1680195773:0;sudo chmod 755 ./.git/objects/info
+: 1680195783:0;ls -la  ./.git/objects/info
+: 1680195791:0;ls -la  ./.git/objects/pack
+: 1680195805:0;sudo chmod 755  ./.git/objects/pack
+: 1680195808:0;sudo chmod 755  ./.git/objects/pack/*
+: 1680195811:0;clear
+: 1680195823:0;ls
+: 1680195828:0;ls -la
+: 1680195835:0;ls -la ./.git/
+: 1680195847:0;ls -la ./.git/branches
+: 1680195867:0;clear
+: 1680195880:0;cd,,
+: 1680195882:0;cd ..
+: 1680195884:0;clear
+: 1680195901:0;sudo cp -r ./AgileInformationUtility ./AgileInformationUtility2
+: 1680195904:0;ls
+: 1680195937:0;rm -rf ./AgileInformationUtility
+: 1680195941:0;sudo rm -rf ./AgileInformationUtility
+: 1680195949:0;clear
+: 1680196153:0;sudo rm -rf ./AgileInformationUtility2
+: 1680196155:0;clear
+: 1680196158:0;paru -Syyu
+: 1680196263:0;clear
+: 1680196277:0;cd Documents/GitHub/AgileInformationUtility
+: 1680196279:0;clear
+: 1680196289:0;nvim ./
+: 1680196295:0;cd Documents/GitHub/AgileInformationUtility
+: 1680196300:0;composer update
+: 1680196309:0;c;ear
+: 1680196312:0;clear
+: 1680197079:0;cd Documents/GitHub/AgileInformationUtility
+: 1680197081:0;clear
+: 1680197083:0;nvim ./
+: 1680200369:0;cd Documents/GitHub/AgileInformationUtility
+: 1680200370:0;nvim ./
+: 1680202006:0;cd Documents/GitHub/AgileInformationUtility
+: 1680202009:0;nvim ./
+: 1680202456:0;cd Documents/GitHub/AgileInformationUtility
+: 1680202458:0;nvim ./
+: 1680202539:0;cd Documents/GitHub/AgileInformationUtility
+: 1680202540:0;nvim ./
+: 1680202572:0;sudo npm i -g eslint_d
+: 1680202580:0;clear
+: 1680202583:0;exti
+: 1680202590:0;cd Documents/GitHub/AgileInformationUtility
+: 1680202591:0;nvim ./
+: 1680202668:0;paru -Qe
+: 1680202685:0;paru -R eslint_d
+: 1680202691:0;clear
+: 1680202692:0;exit
+: 1680202697:0;cd Documents/GitHub/AgileInformationUtility
+: 1680202698:0;nvim ./
+: 1680202730:0;cd Documents/GitHub/AgileInformationUtility
+: 1680202731:0;nvim ./
+: 1680202755:0;nvim .config/nvim/
+: 1680202788:0;nvim .vim
+: 1680202817:0;clear
+: 1680202821:0;paru -Qe
+: 1680202864:0;clear
+: 1680202872:0;nvim .config/nvim
+: 1680203047:0;cd Documents/GitHub/AgileInformationUtility
+: 1680203049:0;nvim ./
+: 1680203129:0;:q
+: 1680205020:0;cd Documents/GitHub/AgileInformationUtility
+: 1680205022:0;nvim ./
+: 1680263272:0;cd Documents/GitHub/AgileInformationUtility
+: 1680263275:0;nvim ./
+: 1680263363:0;cd Documents/GitHub/AgileInformationUtility
+: 1680263364:0;nvim ./
+: 1680265358:0;cd Documents/GitHub/
+: 1680265440:0;paru -Syyu
+: 1680265455:0;clear
+: 1680265462:0;rustup update
+: 1680265498:0;clear
+: 1680265530:0;cargo new rusty_ninja
+: 1680265545:0;cd ./rusty_ninja
+: 1680265548:0;clear
+: 1680265549:0;ls
+: 1680265591:0;git init
+: 1680265597:0;ls -la
+: 1680265600:0;clear
+: 1680265620:0;git commit -m "Initial Commit"
+: 1680265644:0;git add ./*
+: 1680265650:0;git commit -m "Initial Commit"
+: 1680265690:0;ls -la
+: 1680265692:0;clear
+: 1680265699:0;nvim ./
+: 1680266086:0;cd Documents/GitHub/rusty_ninja
+: 1680266087:0;clear
+: 1680266090:0;cargo build
+: 1680266113:0;clear
+: 1680266117:0;cargo run
+: 1680266827:0;clear
+: 1680266828:0;cargo run
+: 1680267507:0;clear
+: 1680267512:0;ls
+: 1680267522:0;mkdir ./static
+: 1680267524:0;;s
+: 1680267525:0;ls
+: 1680267526:0;clear
+: 1680267529:0;nvim ./
+: 1680267569:0;cp ~/Documents/GitHub/AgileInformationUtility/home.html ./static
+: 1680267756:0;clear
+: 1680267761:0;cargo run
+: 1680268694:0;clear
+: 1680268730:0;cargo run
+: 1680268868:0;clear
+: 1680268872:0;ls
+: 1680268881:0;mkdir ./static/root
+: 1680268897:0;mv ./static/index.html ./static/root
+: 1680268900:0;clear
+: 1680268972:0;cargo run
+: 1680269007:0;cd Documents/GitHub/rusty_ninja
+: 1680269008:0;clear
+: 1680269009:0;ls
+: 1680269018:0;mkdir ./static/root/js
+: 1680269020:0;mkdir ./static/root/css
+: 1680269025:0;clear
+: 1680269048:0;cp ~/Documents/GitHub/AgileInformationUtility/utils.js ./static/root/js
+: 1680269072:0;cp ~/Documents/GitHub/AgileInformationUtility/style.css  ./static/root/css
+: 1680269084:0;ls ./static/root/js
+: 1680269088:0;ls ./static/root/css
+: 1680269089:0;clear
+: 1680269101:0;ls ./static/root/css
+: 1680269104:0;clear
+: 1680269105:0;cargo run
+: 1680273873:0;nvim ~/Documents/GitHub/AgileInformationUtility
+: 1680274698:0;nvim ~/Documents/GitHub/AgileInformationUtility/
+: 1680275368:0;clear
+: 1680278094:0;ls ~/Downloads
+: 1680278117:0;systemctl status sshd
+: 1680278131:0;clear
+: 1680278140:0;paru -Sy debtap
+: 1680278168:0;sudo debtap -u
+: 1680278194:0;clear
+: 1680278218:0;debtap ~/Downloads/dwspectrum-client-4.2.0.32842-linux64.deb
+: 1680278308:0;paru -S vi
+: 1680278313:0;clear
+: 1680278317:0;paru -S vim
+: 1680278320:0;clear
+: 1680278321:0;exit
+: 1680278744:0;clear
+: 1680278746:0;ls
+: 1680278749:0;clear
+: 1680278750:0;ls ~/Downloads
+: 1680278806:0;clear
+: 1680278817:0;cd Documents
+: 1680278818:0;ls
+: 1680278840:0;mkdir DWspectrum
+: 1680278844:0;cd DWspectrum
+: 1680278845:0;clear
+: 1680278871:0;git clone https://aur.archlinux.org/digitalwatchdog-client.git
+: 1680278874:0;clear
+: 1680278874:0;ls
+: 1680278878:0;cd digitalwatchdog-client
+: 1680278878:0;ls
+: 1680278887:0;nvim ./
+: 1680279137:0;clear
+: 1680279140:0;ls
+: 1680279150:0;makepkg -sri
+: 1680279187:0;nvim ./
+: 1680279254:0;clear
+: 1680279266:0;ls ~/Documents/DWspectrum/digitalwatchdog-client
+: 1680279295:0;sha512sum -t ~/Documents/DWspectrum/digitalwatchdog-client/dwspectrum-client-4.2.0.32842-linux64.deb
+: 1680279419:0;clear
+: 1680279431:0;makepkg -sri
+: 1680279461:0;clear
+: 1680280094:0;exit
+: 1680280154:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680280156:0;clear
+: 1680280159:0;nvim ./
+: 1680281453:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680281478:0;git commit -m "Updated Tables2"
+: 1680282151:0;clear
+: 1680282154:0;cd
+: 1680282155:0;clear
+: 1680282158:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680282159:0;clear
+: 1680282162:0;nvim ./
+: 1680282301:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680282303:0;cargo run
+: 1680284001:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680284002:0;c;ear
+: 1680284003:0;clear
+: 1680284008:0;nvim ./
+: 1680288044:0;pulseaudio --kill
+: 1680288048:0;pulseaudio --start
+: 1680288685:0;clear
+: 1680288704:0;sudo systemctl status pulseaudio
+: 1680288709:0;sudo systemctl status pulseaudiod
+: 1680288715:0;clear
+: 1680288723:0;nvim .config/i3/config
+: 1680290347:0;cd ~/Documents/GitHub/
+: 1680290352:0;nvim ./
+: 1680290374:0;cargo new rusty_ninja_notifier
+: 1680290388:0;cd rusty_ninja_notifier
+: 1680290523:0;ls
+: 1680290527:0;nvim ./
+: 1680290856:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680290857:0;clear
+: 1680290861:0;cargo build
+: 1680291051:0;clear
+: 1680291055:0;cargo run
+: 1680291682:0;clear
+: 1680291704:0;nvim ~/.config
+: 1680292024:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680292025:0;clear
+: 1680292027:0;cargo run
+: 1680292083:0;systemctl status wired
+: 1680292097:0;systemctl | grep wired
+: 1680292102:0;systemctl | grep notif
+: 1680292103:0;clear
+: 1680292111:0;paru -S wired
+: 1680292142:0;clear
+: 1680292182:0;wired
+: 1680292190:0;clear
+: 1680292195:0;wired --help
+: 1680292203:0;wired --show 10
+: 1680292213:0;wired --run
+: 1680292224:0;sudo wired --run
+: 1680292230:0;clear
+: 1680292236:0;wired --help
+: 1680521640:0;clear
+: 1680521650:0;cargo build
+: 1680521654:0;cargo run
+: 1680523325:0;clear
+: 1680523437:0;cargo build
+: 1680523674:0;clear
+: 1680523677:0;nvim ./
+: 1680523690:0;paru -Syyu
+: 1680523698:0;clear
+: 1680523788:0;paru -Sy sddm-git
+: 1680523815:0;nvim ./
+: 1680524024:0;clear
+: 1680525012:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680525016:0;nvim ./
+: 1680525774:0;clear
+: 1680525782:0;cd ~/Documents/GitHub/Rusty_ninja
+: 1680525790:0;cd ~/Documents/GitHub/rusty_ninja
+: 1680525792:0;clear
+: 1680525795:0;cargo build
+: 1680525942:0;cd ~/Documents/GitHub/rusty_ninja
+: 1680525943:0;cargo build
+: 1680525950:0;cargo run
+: 1680526179:0;clear
+: 1680526180:0;cargo run
+: 1680526276:0;clear
+: 1680526276:0;cargo run
+: 1680526288:0;clear
+: 1680526293:0;cargo run
+: 1680526342:0;clear
+: 1680526343:0;cargo run
+: 1680526368:0;clear
+: 1680526371:0;cargo clippy
+: 1680526378:0;cd
+: 1680526387:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680526389:0;clear
+: 1680526391:0;cargo clippy
+: 1680526396:0;cargo run
+: 1680526419:0;ls -la
+: 1680526436:0;ls -la ~/Documents/GitHub/Rusty_NinjaOne
+: 1680526452:0;cp ~/Documents/GitHub/Rusty_NinjaOne/.env ./
+: 1680526457:0;ls -la
+: 1680526459:0;clear
+: 1680526463:0;cargo run
+: 1680526484:0;clear
+: 1680526502:0;nvim ./
+: 1680526569:0;clear
+: 1680526571:0;cargo run
+: 1680526935:0;clear
+: 1680526935:0;cargo run
+: 1680528875:0;cd ~/Documents/GitHub/
+: 1680528882:0;nvim ./
+: 1680529797:0;nvim ../
+: 1680529987:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680529989:0;cl;ear
+: 1680529990:0;clear
+: 1680529993:0;cargo build
+: 1680530014:0;clear
+: 1680530015:0;cargo build
+: 1680530019:0;clear
+: 1680530062:0;cargo build
+: 1680530069:0;cargo clippy
+: 1680530110:0;cargo clippy --fix
+: 1680530127:0;cargo clippy --fix --allow-dirty
+: 1680530129:0;clear
+: 1680530134:0;cargo clippy
+: 1680530135:0;clear
+: 1680530137:0;cargo build
+: 1680530141:0;clear
+: 1680530358:0;cargo run
+: 1680534992:0;git clone https://github.com/mg979/vim-visual-multi ~/.vim/pack/plugins/start/vim-visual-multi
+: 1680535001:0;nvim ./
+: 1680535044:0;clear
+: 1680535048:0;nvim ./
+: 1680535059:0;cd
+: 1680535061:0;clear
+: 1680535068:0;cd .config/nvim
+: 1680535071:0;nvim ./
+: 1680535217:0;clear
+: 1680535219:0;cd
+: 1680535223:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680535224:0;clear
+: 1680535246:0;nvim ./
+: 1680540585:0;cargo clippy
+: 1680540588:0;clear
+: 1680540592:0;cargo run
+: 1680541028:0;clear
+: 1680541028:0;cargo run
+: 1680541133:0;clear
+: 1680541134:0;cargo run
+: 1680541192:0;clear
+: 1680541193:0;cargo run
+: 1680541220:0;clear
+: 1680541221:0;cargo run
+: 1680541289:0;clear
+: 1680541290:0;pwd
+: 1680541389:0;lear
+: 1680541391:0;clear
+: 1680541485:0;cargo run
+: 1680541656:0;nvim ~/Documents/GitHub/Rusty_NinjaOne
+: 1680542010:0;clear
+: 1680542014:0;cargo clippy
+: 1680542023:0;cargo fmt
+: 1680542072:0;cargo run
+: 1680542640:0;clear
+: 1680542643:0;cargo clippy
+: 1680542709:0;cargo fmt
+: 1680542710:0;clear
+: 1680542713:0;cargo build
+: 1680542721:0;cargo run
+: 1680542912:0;clear
+: 1680543119:0;cargo run
+: 1680543214:0;clear
+: 1680543225:0;cargo run
+: 1680543613:0;clear
+: 1680543614:0;cargo run
+: 1680544148:0;clear
+: 1680544788:0;cargo run
+: 1680544833:0;clear
+: 1680544840:0;wired --help
+: 1680544847:0;wired --run
+: 1680544859:0;clear
+: 1680544863:0;paru -R wired
+: 1680544867:0;clear
+: 1680544895:0;git clone https://github.com/Toqozz/wired-notify.git ~/Downloads
+: 1680544902:0;git clone https://github.com/Toqozz/wired-notify.git ~/Downloads/
+: 1680544934:0;git clone https://github.com/Toqozz/wired-notify.git ~/Downloads/wired-notify
+: 1680544942:0;clear
+: 1680544956:0;cd ~/Downloads/wired-notify
+: 1680544966:0;cargo build --release
+: 1680545023:0;clear
+: 1680545023:0;ls
+: 1680545049:0;sudo chmod +x installer.sh
+: 1680545054:0;./installer.sh
+: 1680545064:0;sudo ./installer.sh
+: 1680545096:0;clear
+: 1680545100:0;wired
+: 1680545102:0;c;ear
+: 1680545103:0;clear
+: 1680545106:0;cd ..
+: 1680545113:0;rm -rf ./wired-notify
+: 1680545115:0;ls
+: 1680545118:0;clear
+: 1680545122:0;paru -S wired
+: 1680545136:0;clear
+: 1680545139:0;wired --run
+: 1680545143:0;sudo wired --run
+: 1680545371:0;paru -S fd
+: 1680545375:0;c;ear
+: 1680545376:0;clear
+: 1680545393:0;fd . '/' xprofile
+: 1680545409:0;paru -S ripgrep
+: 1680545420:0;fd . '/' xprofile | rg xprofile
+: 1680545427:0;fd . '/' | rg xprofile
+: 1680545432:0;fd . | rg xprofile
+: 1680545440:0;cd /
+: 1680545448:0;fd | rg xprofile
+: 1680545569:0;sudo -E -s nvim /usr/share/sddm/scripts/Xsession
+: 1680545708:0;sudo wired --run
+: 1680545718:0;export $(dbus-launch)
+: 1680545720:0;sudo wired --run
+: 1680545786:0;pacman -Qs dbus
+: 1680546019:0;sudo -E -s nvim /usr/share/sddm/scripts/Xsession
+: 1680546033:0;clear
+: 1680546033:0;cd
+: 1680546034:0;clear
+: 1680546038:0;sudo timeshift-gtk
+: 1680546053:0;clear
+: 1680546066:0;sudo -E -s nvim /usr/share/sddm/scripts/Xsession
+: 1680546150:0;paru -Syyu
+: 1680546156:0;clear
+: 1680546158:0;reboot
+: 1680546323:0;sudo wired --run
+: 1680546340:0;exit
+: 1680546410:0;nvim ~/Documents/GitHub/rusty_ninja_notifier
+: 1680546425:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680546427:0;clear
+: 1680546429:0;nvim ./
+: 1680546552:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680546553:0;clear
+: 1680546556:0;cargo run
+: 1680547050:0;clear
+: 1680547050:0;cargo run
+: 1680547344:0;cargo clippy
+: 1680547846:0;clear
+: 1680547848:0;cargo clippy
+: 1680547855:0;cargo clippy --fix --allow-dirty
+: 1680547857:0;clear
+: 1680547860:0;cargo fmt
+: 1680547861:0;clear
+: 1680547867:0;cargo run
+: 1680548351:0;clear
+: 1680548352:0;cargo run
+: 1680548617:0;nvim .config/i3/config
+: 1680548717:0;~/Documents/GitHub/rusty_ninja_notifier/
+: 1680548724:0;cargo build --release
+: 1680548773:0;clear
+: 1680548812:0;sudo chmod +x ./target/release/rusty_ninja_notifier
+: 1680548826:0;./target/release/rusty_ninja_notifier
+: 1680548886:0;nvim ~/.zshrc
+: 1680548985:0;~/.cargo/
+: 1680548986:0;ls
+: 1680548989:0;ls git
+: 1680548993:0;ls 
+: 1680548995:0;ls registry
+: 1680548998:0;clear
+: 1680549013:0;cd
+: 1680549015:0;clear
+: 1680549034:0;ls ~/Documents/GitHub/rusty_ninja_notifier/target/release
+: 1680549061:0;source .zshrc
+: 1680549067:0;source ~/.zshrc
+: 1680549079:0;rusty_ninja_notifier
+: 1680549181:0;cd
+: 1680549182:0;clear
+: 1680549184:0;rusty_ninja_notifier
+: 1680549190:0;nvim ~/.zshrc
+: 1680549219:0;echo $HOME
+: 1680549224:0;echo $PATH
+: 1680549333:0;pwd
+: 1680549360:0;source ~/.zshrc
+: 1680549366:0;echo $PATH
+: 1680549370:0;rusty_ninja_notifier
+: 1680549489:0;ls -la ~/Documents/GitHub/rusty_ninja_notifier
+: 1680549494:0;ls -la ~/Documents/GitHub/rusty_ninja_notifier/target/release
+: 1680549585:0;/bin/
+: 1680549631:0;sudo ln -s /home/bocaj/Documents/GitHub/rusty_ninja_notifier/target/release/rusty_ninja_notifier
+: 1680549645:0;ls -la | rg rusty
+: 1680549653:0;cd
+: 1680549654:0;clear
+: 1680549658:0;rusty_ninja_notifier
+: 1680549675:0;clear
+: 1680549679:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680549680:0;ls
+: 1680549683:0;ls -l
+: 1680549685:0;ls -a
+: 1680549704:0;cp ./.env ./target/release
+: 1680549706:0;clear
+: 1680549708:0;rusty_ninja_notifier
+: 1680549742:0;clear
+: 1680549747:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680549750:0;nvim ./
+: 1680549806:0;reboot
+: 1680549908:0;rusty_ninja_notifier
+: 1680549939:0;RUST_BACKTRACE=1 rusty_ninja_notifier
+: 1680549953:0;RUST_BACKTRACE=full rusty_ninja_notifier
+: 1680550026:0;clear
+: 1680550048:0;ls -a ~/Documents/GitHub/rusty_ninja_notifier/target/release
+: 1680550143:0;rusty_ninja_notifier
+: 1680608168:0;clear
+: 1680608736:0;cd /bin/
+: 1680608737:0;clear
+: 1680608742:0;ls
+: 1680608756:0;ls | rg rusty
+: 1680608757:0;clear
+: 1680608759:0;ls | rg rusty
+: 1680608770:0;clear
+: 1680608773:0;ls -la
+: 1680609210:0;ls -la | less
+: 1680609230:0;clear
+: 1680609248:0;cp ~/Documents/GitHub/Rusty_NinjaOne/.env ./
+: 1680609253:0;sudo cp ~/Documents/GitHub/Rusty_NinjaOne/.env ./
+: 1680609259:0;ls -la | less
+: 1680609271:0;ls -la | rg .env
+: 1680609284:0;cat ./.env
+: 1680609287:0;ecit
+: 1680609290:0;clear
+: 1680609292:0;cd
+: 1680609292:0;clear
+: 1680609295:0;rusty_ninja_notifier
+: 1680609315:0;sudo rm /bin/.env
+: 1680609317:0;clear
+: 1680609332:0;sudo rm /bin/rusty_ninja_notifier
+: 1680609333:0;clear
+: 1680609337:0;rusty_ninja_notifier
+: 1680609339:0;clear
+: 1680609377:0;nvim .zshrc
+: 1680609416:0;source .zshrc
+: 1680609417:0;clear
+: 1680609421:0;rusty_ninja_notifier
+: 1680609422:0;clear
+: 1680609427:0;paru -Syyu
+: 1680609454:0;clear
+: 1680609487:0;nvim /etc/environment
+: 1680609518:0;clear
+: 1680609604:0;rusty_ninja_notifier
+: 1680609606:0;exit
+: 1680609661:0;nvim .zshrc
+: 1680609705:0;source .zshrc
+: 1680609708:0;rusty_ninja_notifier
+: 1680609714:0;echo $PATH
+: 1680609727:0;nvim .zshrc
+: 1680609795:0;source .zshrc
+: 1680609797:0;clear
+: 1680609798:0;echo $PATH
+: 1680609812:0;nvim /etc/zsh
+: 1680609893:0;sudo -E -s nvim /etc/profile
+: 1680609939:0;clear
+: 1680609941:0;reboot
+: 1680609979:0;rusty_ninja_notifier
+: 1680609986:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680609988:0;clear
+: 1680609994:0;./target/release/rusty_ninja_notifier
+: 1680610492:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680610493:0;clear
+: 1680610502:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680610507:0;clear
+: 1680610509:0;nvim ./
+: 1680610666:0;cargo run
+: 1680610775:0;clear
+: 1680610779:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680610781:0;clear
+: 1680610782:0;nvim
+: 1680610853:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680610862:0;clear
+: 1680610865:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680610866:0;clear
+: 1680610873:0;nvim ./
+: 1680617413:0;nvim /etc/xdg/picom.conf
+: 1680617446:0;sudo -E -s nvim /etc/xdg/picom.conf
+: 1680617549:0;xprop WM_CLASS
+: 1680629032:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680629033:0;clear
+: 1680629037:0;nvim ./
+: 1680632414:0;pkill Brave-browser
+: 1680632420:0;htop
+: 1680632440:0;btop
+: 1680632477:0;clear
+: 1680637985:0;cd
+: 1680637986:0;clear
+: 1680638000:0;ls -la .config
+: 1680696577:0;./target/release/rusty_ninja_notifier
+: 1680700460:0;nvim ~/Documents/GitHub/NinjaOne
+: 1680700567:0;clear
+: 1680700570:0;paru -Syyu
+: 1680700581:0;clear
+: 1680700594:0;paru -Ss neovim
+: 1680700633:0;paru -Ss neovim | less
+: 1680700787:0;paru -S neovim-nightly-bin
+: 1680700851:0;clear
+: 1680700859:0;cd ~/Documents/GitHub/NinjaOne
+: 1680700863:0;nvim ./
+: 1680700878:0;cd
+: 1680700879:0;clear
+: 1680700934:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680700936:0;nvim ./
+: 1680704021:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680704023:0;clear
+: 1680704023:0;ls
+: 1680704029:0;ls target
+: 1680704039:0;cargo build --release
+: 1680704091:0;clear
+: 1680704097:0;ls tar
+: 1680704099:0;ls target
+: 1680704104:0;ls target/release
+: 1680704366:0;ls -a target/release
+: 1680704371:0;ls -la target/release
+: 1680704607:0;cp ./target/release/Rusty_NinjaOne ~/Documents/GitHub/AgileInformationUtility
+: 1680704617:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680704618:0;clear
+: 1680704618:0;ls
+: 1680704626:0;nvim ./.env
+: 1680704633:0;clear
+: 1680704730:0;ls
+: 1680704733:0;pwd
+: 1680705861:0;clear
+: 1680706747:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680706748:0;clear
+: 1680706751:0;nvim ./
+: 1680706764:0;cd ~/Documents/GitHub
+: 1680706765:0;ls
+: 1680706773:0;cd ./rusty_ninja_notifier
+: 1680706774:0;clear
+: 1680706774:0;ls
+: 1680706778:0;ls src
+: 1680706808:0;cp ./src/structure.rs ~/Documents/GitHub/Rusty_NinjaOne/src
+: 1680706824:0;clear
+: 1680706826:0;nvim ./
+: 1680707102:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680707103:0;clear
+: 1680707109:0;cargo build
+: 1680707136:0;clear
+: 1680707138:0;nvim ./
+: 1680707156:0;cargo build
+: 1680707162:0;cargo fmt
+: 1680707167:0;cargo clippy 
+: 1680707284:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680707285:0;c;ear
+: 1680707286:0;clear
+: 1680707292:0;cargo clippy | less
+: 1680707330:0;rustup update
+: 1680707349:0;clear
+: 1680707353:0;cargo clippy
+: 1680707377:0;clear
+: 1680707380:0;cargo clippy
+: 1680707381:0;clear
+: 1680707384:0;cargo build
+: 1680707427:0;clear
+: 1680707433:0;nvim ./
+: 1680707466:0;nvim ~/.config/nvim
+: 1680707483:0;clear
+: 1680707488:0;nvim ./
+: 1680708403:0;mv ./src/structure.rs ./src/utilsv2/
+: 1680708418:0;clear
+: 1680708486:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680708487:0;clear
+: 1680708489:0;nvim ./
+: 1680708718:0;git clone https://github.com/github/copilot.vim.git \\
+  ~/.config/nvim/pack/github/start/copilot.vim
+: 1680708720:0;clear
+: 1680708724:0;nvim ./
+: 1680710868:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680710869:0;clear
+: 1680710876:0;nvim ./
+: 1680710923:0;cargo run
+: 1680713216:0;clear
+: 1680713865:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680713867:0;clear
+: 1680713869:0;nvim ./
+: 1680714209:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680714210:0;clear
+: 1680714212:0;nvim ./
+: 1680722419:0;clear
+: 1680722432:0;#./target/release/rusty_ninja_notifier
+: 1680722434:0;clera
+: 1680722436:0;clear
+: 1680781180:0;paru -Syyu
+: 1680781228:0;paru -S brave-bin sddm-git
+: 1680781319:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1680781321:0;clear
+: 1680781326:0;./target/release/rusty_ninja_notifier
+: 1680782294:0;clear
+: 1680782330:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1680782331:0;clear
+: 1680782334:0;nvim ./
+: 1680782968:0;paru -S peazip
+: 1680783038:0;paru -S p7zip quad arc zpaq paq8o upx
+: 1680783177:0;cd ~/Downloads/NinjaOneScriptsWindows
+: 1680783178:0;clear
+: 1680783181:0;nvim ./
+: 1680783298:0;nvim -d ./Acronis_last_backup.ps1 ./acronis_last_bkup.ps1
+: 1680783409:0;clear
+: 1680783456:0;nvim ./
+: 1680783500:0;nvim -d ./Acronis_backup_failed.ps1 ./acronis_back_failed.ps1
+: 1680783544:0;clear
+: 1680784637:0;nvim ./
+: 1680790704:0;cd ~/Documents/GitHub/
+: 1680790719:0;cargo new rusty_acronis
+: 1680790726:0;cd rusty_acronis
+: 1680790727:0;clear
+: 1680790728:0;ls
+: 1680790738:0;git init 
+: 1680790740:0;ls
+: 1680790743:0;ls -la
+: 1680790747:0;clear
+: 1680790782:0;nvim ./
+: 1680795362:0;cd Documents/GitHub/rusty_acronis
+: 1680795363:0;clear
+: 1680795373:0;cargo clippy
+: 1680795374:0;clear
+: 1680795381:0;cargo fmt
+: 1680795385:0;cargo build
+: 1680795441:0;clear
+: 1680795447:0;cargo run
+: 1680795590:0;clear
+: 1680795647:0;cd ..
+: 1680795655:0;cd rusty_ninja_notifier
+: 1680795658:0;nvim ./
+: 1680795751:0;cd Documents/GitHub/rusty_acronis
+: 1680795752:0;clear
+: 1680795753:0;cargo run
+: 1680795764:0;clear
+: 1680795764:0;ls
+: 1680795776:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1680795777:0;clear
+: 1680795778:0;ls
+: 1680795780:0;ls -la
+: 1680795829:0;mv ./src/.env ./
+: 1680795830:0;ls -la
+: 1680795832:0;clear
+: 1680795834:0;cargo run
+: 1680795867:0;cd ..
+: 1680795874:0;cd ./rusty_acronis
+: 1680795875:0;clear
+: 1680795890:0;cargo run
+: 1680796978:0;cargo install serde serde_json
+: 1680796988:0;cargo add serde serde_json
+: 1680796996:0;cargo build
+: 1680797012:0;cat ./Cargo.toml
+: 1680797486:0;cargo build
+: 1680797496:0;clear
+: 1680797497:0;cargo build
+: 1680797697:0;clear
+: 1680797848:0;cargo build
+: 1680797886:0;clear
+: 1680797889:0;cargo run
+: 1680798896:0;clear
+: 1680798896:0;cargo run
+: 1680798929:0;clear
+: 1680798929:0;cargo run
+: 1680799564:0;clear
+: 1680799564:0;cargo run
+: 1680801119:0;nvim ./
+: 1680801165:0;cargo run
+: 1680801483:0;clear
+: 1680801487:0;nvim 
+: 1680801565:0;clear
+: 1680801814:0;nvim 
+: 1680801821:0;clear
+: 1680801827:0;cargo run\\
+
+: 1680801830:0;clear
+: 1680801831:0;cargo run\
+
+: 1680801869:0;clear
+: 1680801870:0;cargo run\
+
+: 1680802122:0;clear
+: 1680802139:0;cargo run\
+
+: 1680802397:0;mv ./src/structures.rs ./src/utils/
+: 1680802398:0;clear
+: 1680802504:0;cargo run
+: 1680802578:0;clear
+: 1680803289:0;cargo run
+: 1680804209:0;clear
+: 1680804209:0;cargo run
+: 1680808750:0;curl -X GET -G \\
+  --url 'https://dev-cloud.acronis.com:443/api/agent_manager/v2/agents' \\
+  -H 'Authorization: Bearer {OAUTH_ACCESS_TOKEN}'\\
+  -H 'Accept: application/json' \\
+  -d 'after=aGVhbHRoY2hlY2s6C' \\
+  -d 'before=aGVhbHRoY2hlY2s6C' \\
+  -d 'hostname=hlike(server1)' \\
+  -d 'limit=100' \\
+  -d 'online=true' \\
+  -d 'order=desc(hostname)' \\
+  -d 'os_family=SOLARIS' \\
+  -d 'tenant_id=62' \\
+  -d 'unit=atp-agent' \\
+  -d 'up_to_date=false'
+: 1680808808:0;clear
+: 1680808821:0;cd ~/Documents/GitHub/rusty_acronis
+: 1680808822:0;clear
+: 1680808824:0;nvim ./
+: 1680808858:0;cd ~/Documents/GitHub/rusty_acronis
+: 1680808861:0;cargo run
+: 1680808902:0;curl -X GET -G \\
+  --url 'https://dev-cloud.acronis.com:443/api/agent_manager/v2/agents' \\
+  -H 'Authorization: Bearer {OAUTH_ACCESS_TOKEN}'\\
+  -H 'Accept: application/json' \\
+  -d 'after=aGVhbHRoY2hlY2s6C' \\
+  -d 'before=aGVhbHRoY2hlY2s6C' \\
+  -d 'hostname=hlike(server1)' \\
+  -d 'limit=100' \\
+  -d 'online=true' \\
+  -d 'order=desc(hostname)' \\
+  -d 'os_family=SOLARIS' \\
+  -d 'tenant_id=62' \\
+  -d 'unit=atp-agent' \\
+  -d 'up_to_date=false'clear
+: 1680808905:0;clear
+: 1680808927:0;cargo run > response.txt
+: 1680809041:0;nvim ./
+: 1680809105:0;cd ~/Documents/GitHub/rusty_acronis
+: 1680809106:0;clear
+: 1680809109:0;nvim ./
+: 1680810532:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1680810535:0;nvim ./
+: 1680867117:0;./target/release/rusty_ninja_notifier
+: 1680883534:0;timeshift-gtk
+: 1680883537:0;sudo timeshift-gtk
+: 1680883588:0;sudo systemctl enable --now timeshift
+: 1680883593:0;sudo systemctl enable --now timeshiftd
+: 1680883596:0;clear
+: 1680884182:0;ls downloads
+: 1680884186:0;ls Downloads
+: 1680884253:0;paru -U Downloads/synergy-1.14.6.snapshot.88fdd263-1-x86_64.pkg.tar.zst
+: 1680884283:0;paru -S aarch64-linux-gnu-gcc
+: 1680884302:0;paru -S aarch64-linux-gnu-glibc
+: 1680884313:0;clear
+: 1680884314:0;paru -U Downloads/synergy-1.14.6.snapshot.88fdd263-1-x86_64.pkg.tar.zst
+: 1680884327:0;exit
+: 1680885841:0;paru -Ss moonlight
+: 1680885875:0;paru -S moonlight-qt
+: 1680888108:0;clear
+: 1680888110:0;exit
+: 1680893095:0;cd ~/Documents/GitHub/rusty_acronis
+: 1680893096:0;clear
+: 1680893098:0;nvim ./
+: 1680893628:0;cd ~/Documents/GitHub/rusty_acronis
+: 1680893630:0;clear
+: 1680893633:0;cargo run
+: 1680893813:0;cargo build 
+: 1680893820:0;clear
+: 1680894449:0;cargo build 
+: 1680894453:0;clear
+: 1680894457:0;cargo clippy
+: 1680894459:0;clear
+: 1680894460:0;cargo run
+: 1680894493:0;nvim ../Rusty_NinjaOne
+: 1680894712:0;cargo run
+: 1680894804:0;clear
+: 1680894805:0;cargo run
+: 1680895449:0;clear
+: 1680895450:0;cargo run
+: 1680895681:0;clear
+: 1680895682:0;cargo run
+: 1680895722:0;clear
+: 1680895723:0;cargo run
+: 1680896064:0;clear
+: 1680896065:0;cargo run
+: 1680896171:0;clear
+: 1680896172:0;cargo run
+: 1680896401:0;clear
+: 1680896401:0;cargo run
+: 1680896425:0;clear
+: 1680896426:0;cargo run
+: 1680897067:0;:w
+: 1680897068:0;clear
+: 1681126593:0;./target/release/rusty_ninja_notifier
+: 1681140143:0;paru -S icedtea-web
+: 1681140159:0;clear
+: 1681140166:0;paru -Syyu
+: 1681141883:0;paru -S github-desktop
+: 1681143152:0;cd ~/Documents/GitHub/rusty_acronis
+: 1681143154:0;clear
+: 1681143158:0;nvim ./
+: 1681143200:0;cd ~/Documents/GitHub/rusty_acronis
+: 1681143201:0;nvim ./
+: 1681143256:0;cd ~/Documents/GitHub/rusty_acronis
+: 1681143257:0;clear
+: 1681143259:0;cargo run
+: 1681143293:0;clear
+: 1681143339:0;cd ~/Documents/GitHub/rusty_acronis
+: 1681143341:0;nvim ./
+: 1681146106:0;cargo run
+: 1681150236:0;clear
+: 1681150238:0;cargo run
+: 1681150286:0;clear
+: 1681150287:0;cargo run
+: 1681150444:0;clear
+: 1681150445:0;cargo run
+: 1681150823:0;clear
+: 1681150824:0;cargo run
+: 1681150870:0;clear
+: 1681150870:0;cargo run
+: 1681150977:0;clear
+: 1681150977:0;cargo run
+: 1681151049:0;clear
+: 1681151050:0;cargo run
+: 1681151091:0;clear
+: 1681151091:0;cargo run
+: 1681151165:0;clear
+: 1681151166:0;cargo run
+: 1681151216:0;clear
+: 1681151216:0;cargo run
+: 1681151262:0;clear
+: 1681151262:0;cargo run
+: 1681151299:0;clear
+: 1681151300:0;cargo run
+: 1681151740:0;clear
+: 1681151740:0;cargo run
+: 1681153114:0;clear
+: 1681153114:0;cargo run
+: 1681153160:0;clear
+: 1681153160:0;cargo run
+: 1681153217:0;clear
+: 1681153218:0;cargo run
+: 1681153343:0;clear
+: 1681153344:0;cargo run
+: 1681154016:0;clear
+: 1681154016:0;cargo run
+: 1681154083:0;clear
+: 1681154084:0;cargo run
+: 1681154136:0;clear
+: 1681154136:0;cargo run
+: 1681154340:0;clear
+: 1681154341:0;cargo run
+: 1681155478:0;clear
+: 1681155479:0;cargo run
+: 1681155590:0;clear
+: 1681155590:0;cargo run
+: 1681155632:0;clear
+: 1681155633:0;cargo run
+: 1681155665:0;paru -S github-desktop
+: 1681155678:0;clear
+: 1681156166:0;nvim ~/Documents/GitHub/Rusty_NinjaOne
+: 1681156253:0;clear
+: 1681213574:0;cargo run
+: 1681214695:0;mariadb -u bocaj -h 192.168.192.8 ninja -p
+: 1681215883:0;clear
+: 1681215887:0;cargo run
+: 1681222087:0;clear
+: 1681222263:0;cargo run
+: 1681224412:0;nvim ./
+: 1681225450:0;clear
+: 1681225455:0;nvim ./
+: 1681225461:0;clear
+: 1681225463:0;cargo run
+: 1681225526:0;clear
+: 1681225526:0;cargo run
+: 1681225553:0;clear
+: 1681225554:0;cargo run
+: 1681225570:0;clear
+: 1681225571:0;cargo run
+: 1681225592:0;clear
+: 1681225593:0;cargo run
+: 1681225599:0;clear
+: 1681225606:0;./target/release/rusty_ninja_notifier
+: 1681225625:0;clear
+: 1681225628:0;cargo run
+: 1681225931:0;clear
+: 1681225933:0;cargo run
+: 1681225995:0;clear
+: 1681225995:0;cargo run
+: 1681227419:0;nvim ./
+: 1681230032:0;cd ~/Documents/GitHub/rusty_acronis
+: 1681230033:0;clear
+: 1681230036:0;nvim ./
+: 1681231126:0;cd ~/Documents/GitHub/rusty_acronis
+: 1681231127:0;clear
+: 1681231129:0;cargo build
+: 1681231137:0;cargo fmy
+: 1681231139:0;cargo fmt
+: 1681231142:0;cargo clippy
+: 1681231178:0;clear
+: 1681231179:0;cargo clippy
+: 1681231185:0;cargo clippy --fix --allow-dirty
+: 1681231208:0;clear
+: 1681231212:0;cargo clippy
+: 1681231287:0;clear
+: 1681231294:0;cargo run
+: 1681231375:0;clear
+: 1681231376:0;cargo run
+: 1681231655:0;clear
+: 1681231711:0;cargo fmt
+: 1681231722:0;cargo run
+: 1681231766:0;clear
+: 1681231768:0;cargo run
+: 1681231900:0;clear
+: 1681231900:0;cargo run
+: 1681231920:0;clear
+: 1681231921:0;cargo run
+: 1681232396:0;clear
+: 1681232396:0;cargo run
+: 1681232485:0;clear
+: 1681232485:0;cargo run
+: 1681232714:0;clear
+: 1681232715:0;cargo run
+: 1681233127:0;clear
+: 1681233130:0;cargo run
+: 1681233260:0;clear
+: 1681235817:0;cargo run
+: 1681235896:0;clear
+: 1681235897:0;cargo run
+: 1681236010:0;clear
+: 1681236011:0;cargo run
+: 1681237090:0;clear
+: 1681237090:0;cargo run
+: 1681237169:0;clear
+: 1681237169:0;cargo run
+: 1681237297:0;clear
+: 1681237297:0;cargo run
+: 1681237436:0;clear
+: 1681237437:0;cargo run
+: 1681237465:0;clear
+: 1681237465:0;cargo run
+: 1681237883:0;clear
+: 1681237883:0;cargo run
+: 1681238107:0;clear
+: 1681238119:0;cargo run
+: 1681239084:0;clear
+: 1681239099:0;cargo run
+: 1681242712:0;paru -Syyu
+: 1681242752:0;clear
+: 1681242756:0;exit
+: 1681299344:0;paru -Syyu
+: 1681299365:0;paru -S sddm-git firefox
+: 1681299540:0;exit
+: 1681314708:0;./target/release/rusty_ninja_notifier
+: 1681316450:0;sudo timeshift-gtk
+: 1681316559:0;moonlighty
+: 1681316560:0;moonlight
+: 1681316729:0;paru -S clonehero
+: 1681316749:0;clear
+: 1681389501:0;paru 
+: 1681389530:0;clear
+: 1681389536:0;paru -Ss navi
+: 1681389567:0;clear
+: 1681391087:0;cd ~/Documents/GitHub/AgileInformationUtility
+: 1681391089:0;nvim ./
+: 1681391128:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1681391151:0;cargo build --release
+: 1681391208:0;clear
+: 1681391230:0;cp ./target/release/Rusty_NinjaOne ~/Documents/GitHub/AgileInformationUtility
+: 1681391232:0;clear
+: 1681400892:0;paru -Ss sniffnet
+: 1681400899:0;paru -S sniffnet
+: 1681400925:0;rustup update
+: 1681400944:0;paru -S sniffnet
+: 1681401375:0;clear
+: 1681401396:0;cargo add sniffnet
+: 1681401408:0;cargo install sniffnet
+: 1681401453:0;paru -S libpcap-dev
+: 1681401463:0;paru -S libasound2-dev
+: 1681401480:0;paru -S libfontconfig
+: 1681401483:0;clear
+: 1681401646:0;sniffnet
+: 1681401738:0;export PATH=$PATH:~/.cargo/bin/
+: 1681401742:0;clera
+: 1681401743:0;clear
+: 1681401759:0;nvim .zshrc
+: 1681401779:0;exit
+: 1681401783:0;sniffnet
+: 1681401815:0;clear
+: 1681401818:0;sudo sniffnet
+: 1681405367:0;paru -S ventoy
+: 1681405471:0;ventoy
+: 1681405571:0;lsblk
+: 1681405585:0;fdisk
+: 1681405588:0;sudo fdisk -l
+: 1681405695:0;clear
+: 1681405698:0;paru -Syyu
+: 1681405703:0;clear
+: 1681405705:0;reboot
+: 1681405768:0;sudo fdisk -l
+: 1681405775:0;clear
+: 1681405784:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1681405789:0;./target/release/rusty_ninja_notifier
+: 1681405858:0;ls fdisk -l
+: 1681405870:0;sudo fdisk -l
+: 1681405887:0;sudo ventoy -u 
+: 1681405907:0;sudo ventoy -u /dev/sda
+: 1681408163:0;paru -Ss arp-scan
+: 1681408167:0;paru -S arp-scan
+: 1681408177:0;clear
+: 1681408179:0;arp-scan
+: 1681408188:0;arp-scan --heko
+: 1681408191:0;arp-scan --help
+: 1681408235:0;clear
+: 1681408247:0;arp-scan -l
+: 1681410733:0;paru -Ss deluge
+: 1681410747:0;paru -S deluge-gtk
+: 1681475228:0;nvim .config/i3/config
+: 1681475815:0;paru -Syyu
+: 1681475827:0;clear
+: 1681475970:0;reboot
+: 1681477121:0;cd ~/Documents/GitHub/Rusty_NinjaOne
+: 1681477123:0;clear
+: 1681477131:0;nvim ./
+: 1681479133:0;cd ~/Documents/GitHub/
+: 1681479162:0;cargo new Rusty-brian
+: 1681479173:0;cd ./Rusty-brian
+: 1681479174:0;clear
+: 1681479180:0;nvim ./
+: 1681479283:0;cargo build
+: 1681479315:0;paru -Ss libtorch
+: 1681479366:0;pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+: 1681479377:0;paru -S python-pip
+: 1681479386:0;clear
+: 1681479389:0;pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+: 1681479439:0;clear
+: 1681479441:0;nvim ./
+: 1681479507:0;nvim ~/.zshrc
+: 1681479546:0;cd /
+: 1681479568:0;sudo fd | rg "torch"
+: 1681479577:0;sudo fd | rg "libtorch"
+: 1681479584:0;sudo fd torch
+: 1681479597:0;sudo fd home
+: 1681479603:0;sudo fd lib
+: 1681479612:0;sudo fd lib | rg torch
+: 1681479622:0;sudo fd zip
+: 1681479629:0;clear
+: 1681479647:0;paru -S locate
+: 1681479651:0;clear
+: 1681479658:0;locate torch
+: 1681479671:0;locate 
+: 1681479679:0;locate pytorch
+: 1681479690:0;paru -S pread
+: 1681479695:0;paru -S read
+: 1681479698:0;clear
+: 1681479701:0;cd
+: 1681479702:0;clear
+: 1681479706:0;locate pytorch
+: 1681479709:0;locate torch
+: 1681479710:0;clear
+: 1681489902:0;pulseaudio --start
+: 1681489907:0;pulseaudio --kill
+: 1681489908:0;pulseaudio --start
+: 1681489972:0;pavucontrol
+: 1681492124:0;paru -Ss codeblocks
+: 1681492199:0;paru -Ss codelite
+: 1681492229:0;paru -S codelite
+: 1681492258:0;paru -Ss kdevelop
+: 1681492269:0;paru -S kdevelop
+: 1681492333:0;clear
+: 1681492334:0;exit
+: 1681497245:0;paru -S codelite
+: 1681497273:0;paru -S gdb valgrind
+: 1681497298:0;paru -S elfutils
+: 1681497301:0;clear
+: 1681497303:0;exit
+: 1681731357:0;clear
+: 1681731360:0;paru -Syyu
+: 1681731686:0;paru -S brave-bin
+: 1681731997:0;clear
+: 1681734627:0;cd Documents/GitHub/AgileInformationUtility
+: 1681734629:0;nvim ./
+: 1681735434:0;clear
+: 1681735472:0;nvim ~/Documents/Support\ Tickets\ \&\ Helpdesk\ _\ Ubold\ -\ Responsive\ Bootstrap\ 5\ Admin\ Dashboard.html
+: 1681747337:0;paru -Ss dislocker
+: 1681747363:0;paru -S dislocker
+: 1681747650:0;paru -S tk
+: 1681747659:0;clear
+: 1681747661:0;dislocker
+: 1681747860:0;lsblk
+: 1681747877:0;sudo lsblk
+: 1681747880:0;clear
+: 1681748018:0;paru -Ss gparted
+: 1681748025:0;paru -S gparted
+: 1681748032:0;clear
+: 1681748036:0;sudo gparted
+: 1681755266:0;clear
+: 1681755273:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1681755277:0;./target/release/rusty_ninja_notifier
+: 1681757854:0;pulseaudio --kill
+: 1681757857:0;pulseaudio --start
+: 1681906404:0;paru -S putty
+: 1681906433:0;clear
+: 1681906437:0;sudo putty
+: 1681906488:0;clear
+: 1681906496:0;dmesg -k
+: 1681906499:0;sudo dmesg -k
+: 1681906504:0;sudo dmesg -f
+: 1681906507:0;sudo dmesg -m
+: 1681906512:0;sudo dmesg -k
+: 1681906573:0;sudo dmesg -wH
+: 1681906660:0;sudo putty
+: 1681906703:0;clear
+: 1681906734:0;ls /dev/\\
+clea
+: 1681906737:0;ls /dev/\
+clea
+: 1681906766:0;dmesg
+: 1681906770:0;sudo dmesg
+: 1681906831:0;sudo dmesg -w
+: 1681906838:0;sudo dmesg -H
+: 1681906861:0;sudo dmesg -w
+: 1681906874:0;clear
+: 1681906877:0;ls /dev/\
+clea
+: 1681906882:0;ls /dev
+: 1681906893:0;ls /dev/
+: 1681906907:0;clear
+: 1681907180:0;groups
+: 1681907184:0;groups bocaj
+: 1681907283:0;sudo usermod -aG uucp bocaj
+: 1681907291:0;groups
+: 1681907294:0;groups bocaj
+: 1681907304:0;clear
+: 1681907309:0;sudo dmesg -wH
+: 1681907331:0;clear
+: 1681907350:0;ls /dev/
+: 1681907360:0;clear
+: 1681907364:0;paru -Syyu
+: 1681907449:0;paru -S paru-git
+: 1681907476:0;sudo gpasswd -a bocaj uucp
+: 1681907483:0;clear
+: 1681907488:0;sudo dmesg -wH
+: 1681907502:0;clear
+: 1681907506:0;ls /dev/
+: 1681907708:0;paru -S minicom
+: 1681907718:0;paru -S lrzsz
+: 1681907721:0;clear
+: 1681907723:0;minicom
+: 1681907746:0;clear
+: 1681907748:0;minicom -s
+: 1681907775:0;clear
+: 1681907858:0;udev
+: 1681907860:0;clear
+: 1681907864:0;paru -S udev
+: 1681907875:0;lsusb
+: 1681907879:0;paru -S lsusb
+: 1681907896:0;clera
+: 1681907898:0;clear
+: 1681907902:0;paru -S usbutils
+: 1681907907:0;clear
+: 1681907915:0;sudo dmesg -wH
+: 1681907935:0;clear
+: 1681907939:0;ls /dev
+: 1681907978:0;clear
+: 1681907981:0;lsusb
+: 1681908050:0;sudo modprobe pl2303
+: 1681908064:0;paru -Ss pl2303
+: 1681908147:0;ls /lib/modules
+: 1681908170:0;ls /lib/modules/6.2.11-arch1-1/kernel/drivers/
+: 1681908181:0;ls /lib/modules/6.2.11-arch1-1/kernel/drivers/usb
+: 1681908188:0;ls /lib/modules/6.2.11-arch1-1/kernel/drivers/usb/serial
+: 1681908215:0;sudo modprobe ftdi_sio
+: 1681908226:0;sudo modprobe ftdi_sio.ko.zst
+: 1681908249:0;ls /lib/modules/6.2.11-arch1-1/
+: 1681908259:0;cat /lib/modules/6.2.11-arch1-1/modules.alias
+: 1681908268:0;cat /lib/modules/6.2.11-arch1-1/modules.alias | rg ftdi
+: 1681908319:0;clear
+: 1681908322:0;paru -Ss pl2303
+: 1681908333:0;paru -s pacseek
+: 1681908337:0;paru -S pacseek
+: 1681909016:0;clear
+: 1681909074:0;pacseek
+: 1681909104:0;paru -S yay
+: 1681909206:0;clear
+: 1681909209:0;pacseek
+: 1681909354:0;clear
+: 1681909379:0;reboot
+: 1681909427:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1681909429:0;./target/release/rusty_ninja_notifier
+: 1681909446:0;ls /dev/
+: 1681909457:0;ls /dev/usb
+: 1681909462:0;ls /dev/usb/hiddev0
+: 1681909467:0;cat /dev/usb/hiddev0
+: 1681909470:0;sudo cat /dev/usb/hiddev0
+: 1681909489:0;sudo -E -s nvim /dev/usb/hiddev0
+: 1681909498:0;clear
+: 1681909503:0;ls /dev/usb/hiddev0
+: 1681909505:0;ls /dev/usb/
+: 1681909507:0;ls /dev/
+: 1681909518:0;sudo putty
+: 1681916252:0;paru -S android-studio
+: 1681916358:0;paru -S ncurses5-compat-libs
+: 1681916751:0;clear
+: 1681916990:0;M
+: 1681917074:0;Eyes4you
+: 1681919095:0;synergy
+: 1681919116:0;synergy --help
+: 1681919125:0;synergy --no-tray
+: 1681919323:0;pkill synergy
+: 1681919328:0;synergy
+: 1681931280:0;ecit
+: 1681931282:0;exit
+: 1681931295:0;htop
+: 1681931333:0;clear
+: 1681931335:0;btop
+: 1681931390:0;clear
+: 1681931403:0;sudo synergy
+: 1681931428:0;cleaqr
+: 1681931429:0;clear
+: 1681931431:0;synergy
+: 1681931435:0;clear
+: 1681931437:0;exit
+: 1681932882:0;reboot
+: 1681933009:0;nvim .config/i3/config
+: 1681933044:0;xrandr
+: 1681933057:0;xrandr --help
+: 1681933064:0;exit
+: 1681993265:0;paru -Ss teamviewer
+: 1681993299:0;paru -S teamviewer
+: 1681993363:0;sudo systemctl enable --now teamviewerd
+: 1681993364:0;clear
+: 1681993370:0;teamviewer
+: 1681995070:0;xdg-settings get default-url-scheme-handler teamviewerapi
+: 1681995101:0;xdg-settings set default-url-scheme-handler teamviewerapi com.teamviewer.TeamViewer.desktop
+: 1681995111:0;clear
+: 1681995192:0;cd /
+: 1681995202:0;fd teamviewer
+: 1681995240:0;sudo -E -s nvim /usr/share/applications/com.teamviewer.TeamViewer.desktop
+: 1681996555:0;sudo timeshift-gtk
+: 1682004821:0;paru -Syyu
+: 1682004832:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1682004835:0;./target/release/rusty_ninja_notifier
+: 1682009450:0;clear
+: 1682009461:0;synergy
+: 1682010496:0;cd Documents/GitHub/AgileInformationUtility
+: 1682010498:0;clear
+: 1682010499:0;nvim ./
+: 1682011195:0;cd Documents/GitHub/AgileInformationUtility
+: 1682011202:0;paru -Ss eslint
+: 1682011213:0;paru -S eslint
+: 1682011221:0;clear
+: 1682011226:0;eslint --init
+: 1682011246:0;sudo npm i -g npm@latest
+: 1682011250:0;eslint --init
+: 1682011254:0;clear
+: 1682011255:0;eslint --init
+: 1682011318:0;npm init @eslint/config
+: 1682011327:0;npm init 
+: 1682011361:0;clear
+: 1682011367:0;npm init -y
+: 1682011373:0;clear
+: 1682011379:0;eslint --init
+: 1682011429:0;clear
+: 1682011437:0;nvim ./
+: 1682018679:0;nvim ~/.config/nvim
+: 1682018702:0;clear
+: 1682018704:0;nvim ./
+: 1682095965:0;cd Documents/GitHub/AgileInformationUtility
+: 1682095967:0;nvim ./
+: 1682097068:0;nvim .config/nvim
+: 1682097164:0;nvim ./
+: 1682097561:0;nvim ~/.config/nvim
+: 1682097610:0;nvim ./
+: 1682097953:0;nvim ~/.config/nvim
+: 1682098144:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1682098372:0;nvim ./
+: 1682098414:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1682098436:0;nvim ./
+: 1682335606:0;cd Documents/GitHub/AgileInformationUtility
+: 1682335632:0;cd ../rusty_ninja_notifier
+: 1682335636:0;./target/release/rusty_ninja_notifier
+: 1682335833:0;paru -Syyu
+: 1682336024:0;paru -S brave-bin ncurses5-compat-libs virtualbox6.1-bin
+: 1682336274:0;neofetch
+: 1682336304:0;nvim .config/neofetch
+: 1682336341:0;neofe
+: 1682336343:0;neofetch
+: 1682336387:0;exit
+: 1682336448:0;sudo virtualbox
+: 1682336472:0;exit
+: 1682337097:0;btop
+: 1682340017:0;clear
+: 1682340018:0;exit
+: 1682340028:0;sudo timeshift-gtk
+: 1682340086:0;clear
+: 1682340110:0;sudo timeshift-gtk
+: 1682340465:0;sudo gparted
+: 1682340496:0;lsblki
+: 1682340497:0;lsblk
+: 1682340499:0;clear
+: 1682340506:0;reboot
+: 1682341625:0;thunar
+: 1682341653:0;lsblk
+: 1682341666:0;clear
+: 1682341672:0;exit
+: 1682341710:0;xit
+: 1682341711:0;exit
+: 1682341918:0;cd Downloads
+: 1682341924:0;wget https://github.com/bedrocklinux/bedrocklinux-userland/releases/download/0.7.28/bedrock-linux-0.7.28-x86_64.sh
+: 1682341947:0;ls
+: 1682341977:0;sudo sh bedrock-linux-0.7.28-x86_64.sh --hijack
+: 1682342435:0;paru -S refind
+: 1682342475:0;paru -S sbsigntools
+: 1682342479:0;clear
+: 1682342519:0;refind-install
+: 1682342661:0;sudo pacman -Rns grub
+: 1682342680:0;sudo pacman -Rns grub-btrfs
+: 1682342699:0;sudo pacman -Rns libguestfs
+: 1682342710:0;clear
+: 1682342712:0;sudo pacman -Rns grub
+: 1682342715:0;clear
+: 1682342782:0;sudo rm -rf /boot/grub
+: 1682342806:0;sudo install-refind
+: 1682342815:0;sudo refind-install
+: 1682342817:0;clear
+: 1682342819:0;reboot
+: 1682342875:0;cd Downloads
+: 1682342877:0;ls
+: 1682342886:0;sudo sh bedrock-linux-0.7.28-x86_64.sh --hijack
+: 1682342905:0;reboot
+: 1682342971:0;neofetch
+: 1682342993:0;sudo brl fetch debian
+: 1682343124:0;sudo timeshift-gtk
+: 1682343152:0;sudo apt update
+: 1682343156:0;sudo apt upgrade
+: 1682343160:0;clear
+: 1682343165:0;sudo apt install neofetch
+: 1682343198:0;clear
+: 1682343263:0;strat arch neofetch
+: 1682343275:0;strat debian neofetch
+: 1682343283:0;clear
+: 1682343300:0;paru -S neofetch
+: 1682343310:0;paru -R neofetch
+: 1682343313:0;neofetch
+: 1682343316:0;clear
+: 1682343330:0;rm -rf .config/neofetch
+: 1682343332:0;clear
+: 1682343336:0;neofetch
+: 1682343344:0;ls .config/neofetch
+: 1682343358:0;cat .config/neofetch/config.conf
+: 1682343371:0;clear
+: 1682343375:0;paru -S neofetch
+: 1682343391:0;clear
+: 1682343394:0;neofetch
+: 1682343401:0;clear
+: 1682343538:0;brl list | xargs -i strat -r {} neofetch
+: 1682343618:0;nvim .zshrc
+: 1682343663:0;source .zshrc
+: 1682343665:0;clear
+: 1682343669:0;neofetch-all
+: 1682343946:0;clear
+: 1682343949:0;cd Downloads
+: 1682343950:0;ls
+: 1682343959:0;sudo apt install agileinformationservicesmainoffice-5.3.6261-installer.deb
+: 1682343999:0;sudo apt install ./agileinformationservicesmainoffice-5.3.6261-installer.deb
+: 1682344028:0;clear
+: 1682344057:0;neofetch-all
+: 1682344073:0;nvim /etc/hostname
+: 1682344089:0;sudo nvim /etc/hostname
+: 1682344100:0;clear
+: 1682344206:0;where
+: 1682344281:0;strat debian locate agile
+: 1682344290:0;sudo apt install locate
+: 1682344300:0;clear
+: 1682344302:0;strat debian locate agile
+: 1682344308:0;strat debian where agile
+: 1682344315:0;clear
+: 1682344362:0;strat debian find agile
+: 1682344372:0;strat debian locate agile
+: 1682344388:0;strat debian update db
+: 1682344400:0;updatedb
+: 1682344403:0;sudo updatedb
+: 1682344410:0;strat debian updatedb
+: 1682344417:0;strat debian sudo updatedb
+: 1682344422:0;sudo strat debian updatedb
+: 1682344444:0;strat debian locate agile
+: 1682344488:0;strat debian locate njbar
+: 1682344531:0;strat debian ls /opt/NinjaRMMAgent
+: 1682344545:0;strat debian ls -la /opt/NinjaRMMAgent/programfiles/
+: 1682344558:0;strat debian /opt/NinjaRMMAgent/programfiles/njbar
+: 1682344612:0;strat debian /opt/NinjaRMMAgent/programfiles/ninjarmm-linagent
+: 1682344642:0;strat debian vi /opt/NinjaRMMAgent/programfiles/config
+: 1682344648:0;apt install vim
+: 1682344651:0;sudo apt install vim
+: 1682344674:0;nvim /opt/NinjaRMMAgent
+: 1682344684:0;strat debian vim /opt/NinjaRMMAgent/programfiles/config
+: 1682344694:0;sudo strat debian vim /opt/NinjaRMMAgent/programfiles/config
+: 1682344748:0;nvim /opt/
+: 1682344808:0;sudo strat debian vim /opt/NinjaRMMAgent/programfiles/config
+: 1682344881:0;clear
+: 1682344895:0;sudo strat debian vim /opt/NinjaRMMAgent/programfiles/njbar
+: 1682344903:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/njbar
+: 1682344941:0;sudo apt install libglu
+: 1682344946:0;sudo apt search libglu
+: 1682344954:0;sudo apt install libglu1-mesa
+: 1682344971:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/njbar
+: 1682344986:0;sudo apt search libxkbcommon
+: 1682345000:0;sudo apt install libxkbcommon
+: 1682345002:0;sudo apt install libxkbcommon0
+: 1682345007:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/njbar
+: 1682345019:0;sudo apt install libxkbcommon-x11-0
+: 1682345022:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/njbar
+: 1682345032:0;sudo apt search libEGL
+: 1682345065:0;sudo apt search libEGL1-mesa
+: 1682345070:0;sudo apt install libEGL1-mesa
+: 1682345073:0;sudo apt install libegl1-mesa
+: 1682345078:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/njbar
+: 1682345080:0;clear
+: 1682345126:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/njbar
+: 1682345151:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/ninjarmm-liagent
+: 1682345163:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/ninjarmm-linagent
+: 1682345206:0;sudo strat debian ls ~/
+: 1682345209:0;sudo strat debian ls ~/Downloads
+: 1682345225:0;sudo strat debian apt install ~/Downloads/agileinformationservicesmainoffice-5.3.6261-installer.deb
+: 1682345243:0;clear
+: 1682345256:0;sudo strat debian systemctl enable --now /opt/NinjaRMMAgent/programfiles/ninjarmm-linagent
+: 1682345281:0;sudo strat debian service --help
+: 1682345333:0;sudo strat debian /opt/NinjaRMMAgent/programfiles/ninjarmm-linagent
+: 1682345371:0;exit
+: 1682345377:0;reboot
+: 1682345436:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1682345438:0;./target/release/rusty_ninja_notifier
+: 1682349870:0;cd Documents/GitHub/Agil
+: 1682349873:0;cd Documents/GitHub/AgileInformationUtility
+: 1682349875:0;clear
+: 1682349878:0;nvim ./
+: 1682352317:0;ls Documents/GitHub
+: 1682352341:0;node Documents/GitHub/NinjaOneProject
+: 1682352349:0;npm i Documents/GitHub/NinjaOneProject
+: 1682352377:0;clear
+: 1682352379:0;node Documents/GitHub/NinjaOneProject
+: 1682352416:0;clear
+: 1682352417:0;ls
+: 1682352425:0;ls Documents/GitHub/NinjaOneProject
+: 1682352433:0;ls -la Documents/GitHub/NinjaOneProject
+: 1682352444:0;cat Documents/GitHub/NinjaOneProject/.env
+: 1682352475:0;clear
+: 1682352538:0;cd Documents/GitHub/Rusty_NinjaOne
+: 1682352541:0;nvim ./
+: 1682354365:0;rustup update
+: 1682354449:0;cargo clippy
+: 1682354475:0;clear
+: 1682354479:0;cargo build --release
+: 1682354556:0;clear
+: 1682354566:0;ls ./target/release
+: 1682354586:0;#cp ./target/release/Rusty_NinjaOne ~/Documents/GitHub/AgileInformationUtility
+: 1682354599:0;rm ~/Documents/GitHub/AgileInformationUtility/Rusty_NinjaOne
+: 1682354603:0;cp ./target/release/Rusty_NinjaOne ~/Documents/GitHub/AgileInformationUtility
+: 1682354604:0;clear
+: 1682354613:0;./target/release/Rusty_NinjaOne
+: 1682354980:0;nvim ./
+: 1682355310:0;cd Documents/GitHub/Rusty_NinjaOne
+: 1682355314:0;cargo fmt
+: 1682355315:0;clear
+: 1682355316:0;exit
+: 1682355535:0;cd Documents/GitHub/Rusty_NinjaOne
+: 1682355540:0;cargo run
+: 1682355637:0;clear
+: 1682355637:0;cargo run
+: 1682355708:0;clear
+: 1682355709:0;cargo run
+: 1682355955:0;clear
+: 1682355956:0;cargo run
+: 1682356282:0;clear
+: 1682356283:0;cargo run
+: 1682356793:0;cargo fmt
+: 1682356825:0;nvim ./
+: 1682357436:0;cargo clippy
+: 1682357588:0;cargo fmt
+: 1682357590:0;clear
+: 1682357687:0;nvim ./
+: 1682358668:0;cargo clippy
+: 1682358670:0;cargo fmt
+: 1682358671:0;clear
+: 1682358674:0;cargo run
+: 1682358717:0;clear
+: 1682358765:0;rm ~/Documents/GitHub/AgileInformationUtility/Rusty_NinjaOne
+: 1682358770:0;cp ./target/release/Rusty_NinjaOne ~/Documents/GitHub/AgileInformationUtility
+: 1682358773:0;clear
+: 1682358778:0;cargo build --release
+: 1682358783:0;rm ~/Documents/GitHub/AgileInformationUtility/Rusty_NinjaOne
+: 1682358785:0;cp ./target/release/Rusty_NinjaOne ~/Documents/GitHub/AgileInformationUtility
+: 1682358786:0;clear
+: 1682359559:0;git help
+: 1682359584:0;git diff
+: 1682359620:0;git git --help commit
+: 1682359632:0;git --help commit
+: 1682359714:0;git commit -m "Fixed Ticket Logs"
+: 1682359737:0;git commit -m -a "Fixed Ticket Logs"
+: 1682359792:0;git add src/main.rs
+: 1682359799:0;git add src/utilsv2.rs
+: 1682359806:0;git commit -m "Fixed Ticket Logs"
+: 1682359842:0;git help
+: 1682359872:0;git push
+: 1682360013:0;git credential-manager
+: 1682360047:0;paru -Ss git
+: 1682360214:0;git push origin master
+: 1682360307:0;clear
+: 1682360313:0;paru -S github-cli
+: 1682360331:0;clear
+: 1682360336:0;gh auth login
+: 1682360402:0;clear
+: 1682360489:0;git push origin master
+: 1682362335:0;nvim .config/nvim
+: 1682362476:0;clear
+: 1682362666:0;nvim .config/nvim
+: 1682362890:0;clear
+: 1682366050:0;crontab -e
+: 1682366100:0;crontab --help
+: 1682366115:0;crontab -l
+: 1682366162:0;sudo chmod +x Documents/GitHub/Rusty_NinjaOne/target/release/Rusty_NinjaOne
+: 1682366174:0;cd Documents/GitHub/Rusty_NinjaOne/target/release/Rusty_NinjaOne
+: 1682366177:0;cd Documents/GitHub/Rusty_NinjaOne/target/release/
+: 1682366181:0;pwd
+: 1682366196:0;crontab -e
+: 1682366271:0;clear
+: 1682366329:0;crontab --help
+: 1682366351:0;clear
+: 1682366361:0;crontab -e
+: 1682366388:0;clear
+: 1682366393:0;crontab -h
+: 1682366410:0;clear
+: 1682366454:0;crontab -e
+: 1682366508:0;clear
+: 1682366509:0;cd
+: 1682366511:0;cd Documents
+: 1682366512:0;ls
+: 1682366520:0;touch ./cron.log
+: 1682366525:0;ls
+: 1682366534:0;cat crong.log
+: 1682366540:0;cat cron.log
+: 1682366542:0;clear
+: 1682366564:0;crontab -h
+: 1682366566:0;crontab -T
+: 1682366577:0;crontab -l
+: 1682366618:0;clear
+: 1682366623:0;cat cron.log
+: 1682366626:0;cat ./cron.log
+: 1682366628:0;clear
+: 1682421914:0;nvim Documents/
+: 1682421928:0;clear
+: 1682421931:0;crontab -l
+: 1682421944:0;crontab -e
+: 1682422293:0;sudo systemctl enable --now cronie
+: 1682422310:0;crontab -e
+: 1682422338:0;paru -Qe | grep cron
+: 1682422343:0;paru -Qe
+: 1682422467:0;clear
+: 1682422600:0;nvim /etc/cron.daily
+: 1682422717:0;sudo -E -s nvim /etc/cron.hourly
+: 1682422846:0;clear
+: 1682422858:0;sudo systemctl restart cronie
+: 1682422863:0;sudo systemctl status cronie
+: 1682422898:0;clear
+: 1682422906:0;nvim Documents/
+: 1682422944:0;nvim /etc/cron.daily
+: 1682422981:0;cd /etc/cron.d
+: 1682422982:0;ls
+: 1682422983:0;clear
+: 1682422991:0;sudo cp ~/Documents/GitHub/Rusty_NinjaOne/.env ./
+: 1682422993:0;clear
+: 1682422997:0;cd
+: 1682423004:0;nvim Documents/
+: 1682423016:0;nvim Documents/cron.log
+: 1682423026:0;cat Documents/cron.log
+: 1682423722:0;cd /etc/cron.d
+: 1682423725:0;nvim ./
+: 1682423813:0;/home/bocaj/Documents/GitHub/Rusty_NinjaOne/target/release/Rusty_NinjaOne
+: 1682423838:0;nvim ./
+: 1682424050:0;cat Documents/cron.log
+: 1682424083:0;sudo nvim ./
+: 1682424160:0;sudo rm ./.env
+: 1682424161:0;cd
+: 1682424162:0;clear
+: 1682424168:0;cat Documents/cron.log
+: 1682424184:0;nvim Documents/cron.log
+: 1682424197:0;clear
+: 1682424200:0;cat Documents/cron.log
+: 1682424223:0;clear
+: 1682424486:0;cat Documents/cron.log
+: 1682424532:0;clear
+: 1682424537:0;cd /etc/cron.d
+: 1682424553:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1682424556:0;nvim ./
+: 1682424599:0;sudo -E -s nvim ./
+: 1682424923:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1682424926:0;cargo build --release
+: 1682424992:0;cargo fmt
+: 1682424993:0;clear
+: 1682424996:0;exit
+: 1682425155:0;sudo cp ~/Documents/GitHub/Rusty_NinjaOne/target/release/Rusty_NinjaOne /usr/bin/
+: 1682425188:0;sudo chmod +x /usr/bin/Rusty_NinjaOne
+: 1682425193:0;clear
+: 1682425201:0;exit
+: 1682425238:0;sudo systemctl restart cronie
+: 1682425242:0;\\
+sudo systemctl restart cronie
+: 1682425244:0;clear
+: 1682425365:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1682425367:0;nvim ./
+: 1682435214:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1682435217:0;cargo clippy
+: 1682435226:0;cargo run
+: 1682435328:0;clear
+: 1682435329:0;cargo run
+: 1682435377:0;clear
+: 1682440694:0;git commit -m "Removed Deleted Tickets"
+: 1682440704:0;git add src/utilsv2.rs
+: 1682440709:0;git add src/main.rs
+: 1682440711:0;git commit -m "Removed Deleted Tickets"
+: 1682440716:0;git push origin master
+: 1682440720:0;clear
+: 1682440795:0;nvim ./.env
+: 1682440841:0;clear
+: 1682440847:0;cargo build --release
+: 1682440885:0;cd /etc/cron.d
+: 1682440886:0;ls
+: 1682440904:0;cat ./0hourly
+: 1682440918:0;sudo rm /usr/bin/Rusty_NinjaOne
+: 1682440953:0;sudo cp ~/Documents/GitHub/Rusty_NinjaOne/target/release/Rusty_NinjaOne /usr/bin/
+: 1682440959:0;sudo chmod +x /usr/bin/Rusty_NinjaOne
+: 1682440960:0;clear
+: 1682441021:0;cd
+: 1682441027:0;cd Documents/GitHub/AgileInformationUtility
+: 1682441028:0;ls
+: 1682441038:0;rm ./Rusty_NinjaOne
+: 1682441056:0;cp ~/Documents/GitHub/Rusty_NinjaOne/target/release/Rusty_NinjaOne ./
+: 1682441057:0;ls
+: 1682441067:0;sudo chmod +x Rusty_NinjaOne
+: 1682441069:0;clear
+: 1682441128:0;Rusty_NinjaOne
+: 1682445533:0;clear
+: 1682445543:0;cargo run
+: 1682445855:0;ls
+: 1682445862:0;clear
+: 1682445873:0;cd ../Rusty_NinjaOne
+: 1682445875:0;cargo run
+: 1682450304:0;clear
+: 1682450306:0;cargo run
+: 1682450324:0;clear
+: 1682450325:0;cargo run
+: 1682450509:0;clear
+: 1682450511:0;cargo run
+: 1682450564:0;clear
+: 1682450565:0;cargo run
+: 1682451049:0;clear
+: 1682451063:0;cargo run
+: 1682451166:0;clear
+: 1682451167:0;cargo run
+: 1682451217:0;clear
+: 1682451291:0;cargo run
+: 1682451410:0;clear
+: 1682451410:0;cargo run
+: 1682451594:0;clear
+: 1682451595:0;cargo run
+: 1682451711:0;clear
+: 1682451712:0;cargo run
+: 1682451912:0;clear
+: 1682451913:0;cargo run
+: 1682532476:0;clear
+: 1682532591:0;cargo run'
+: 1682532592:0;cargo run
+: 1682532999:0;clear
+: 1682533077:0;cargo run
+: 1682533313:0;clear
+: 1682533484:0;cargo run
+: 1682535115:0;clear
+: 1682535116:0;cargo run
+: 1682535212:0;clear
+: 1682535213:0;cargo run
+: 1682535778:0;clear
+: 1682535791:0;cargo run
+: 1682535837:0;clear
+: 1682535837:0;cargo run
+: 1682535923:0;clear
+: 1682535924:0;cargo run
+: 1682536169:0;clear
+: 1682536169:0;cargo run
+: 1682536233:0;clear
+: 1682536234:0;cargo run
+: 1682536818:0;clear
+: 1682536820:0;cargo run
+: 1682536840:0;clear
+: 1682536930:0;git add src/main.rs
+: 1682536938:0;git add src/utilsv2.rs
+: 1682536969:0;git commit -m "Removed Deleted Tickets and Their Logs"
+: 1682536972:0;git push origin master
+: 1682536975:0;clear
+: 1682536997:0;nvim ./.env
+: 1682537094:0;clear
+: 1682537107:0;cargo build --release
+: 1682537123:0;sudo rm /usr/bin/Rusty_NinjaOne
+: 1682537151:0;sudo cp ~/Documents/GitHub/Rusty_NinjaOne/target/release/Rusty_NinjaOne /usr/bin/
+: 1682537162:0;sudo chmod +x /usr/bin/Rusty_NinjaOne
+: 1682537188:0;sudo chmod +x ./target/release/Rusty_NinjaOne
+: 1682537197:0;rm ~/Documents/GitHub/AgileInformationUtility/Rusty_NinjaOne
+: 1682537215:0;cp ./target/release/Rusty_NinjaOne ~/Documents/GitHub/AgileInformationUtility/
+: 1682537216:0;clear
+: 1682595955:0;pulseaudio --kill
+: 1682595957:0;pulseaudio --start
+: 1682600449:0;sudo putty
+: 1682600907:0;paru -Syyu
+: 1682601076:0;paru -S virtualbox6.1-bin
+: 1682601105:0;paru -Ss intel
+: 1682601594:0;paru -S xf86-video-intel
+: 1682601614:0;clear
+: 1682602277:0;sudo putty
+: 1682602376:0;iwctl
+: 1682602379:0;clear
+: 1682602389:0;sudo systemctl enable --now iwctl
+: 1682602392:0;sudo systemctl enable --now iwctld
+: 1682602401:0;iwctl --help
+: 1682602415:0;sudo iwctl
+: 1682602418:0;clear
+: 1682602422:0;nmtui
+: 1682602632:0;ping 172.16.16.16
+: 1682602660:0;ip route show
+: 1682602673:0;nmtui
+: 1682602762:0;ip route show
+: 1682602863:0;cat Documents/cron.log
+: 1682602872:0;clear
+: 1682603110:0;sudo putty
+: 1682603356:0;nmtui
+: 1682603628:0;arp-scan -l
+: 1682603648:0;ip route show
+: 1682604195:0;sudo putty
+: 1682604524:0;nmtui
+: 1682608661:0;cd Documents/GitHub/AgileInformationUtility
+: 1682608664:0;nvim ./
+: 1682609004:0;nmtui
+: 1682610390:0;nvim /etc/cron.d
+: 1682610413:0;sudo nvim /etc/cron.d
+: 1682610446:0;clear
+: 1682610447:0;exit
+: 1682613269:0;nvim ./
+: 1682692065:0;cd Documents/GitHub/AgileInformationUtility
+: 1682711465:0;Rusty_NinjaOne
+: 1682711691:0;clear
+: 1682711695:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1682711698:0;cargo run
+: 1682711764:0;nvim ./
+: 1682711774:0;clear
+: 1682940874:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1682940875:0;clear
+: 1682940882:0;cd ~/Documents/GitHub/Rusty_NinjaOne/
+: 1682940884:0;clear
+: 1682940885:0;nvim ./
+: 1682940968:0;clear
+: 1682940996:0;cargo
+: 1682940998:0;clear
+: 1682941004:0;paru -Syyu
+: 1682941019:0;clear
+: 1682941024:0;rustup update
+: 1682941044:0;clear
+: 1682941048:0;cd ~/Documents/GitHub/Rusty_NinjaOne/
+: 1682941049:0;clear
+: 1682941052:0;cargo run
+: 1682941209:0;clear
+: 1682941210:0;cargo run
+: 1682941242:0;clear
+: 1682941243:0;cargo run
+: 1682941295:0;clear
+: 1682941299:0;paru -S teamviewer
+: 1682941389:0;clear
+: 1682941392:0;nvim ./
+: 1682941422:0;cd ~/Documents/GitHub/Rusty_NinjaOne/
+: 1682941424:0;cargo run
+: 1682941445:0;clear
+: 1682941457:0;cargo run
+: 1682941476:0;clear
+: 1682941477:0;cargo run
+: 1682942611:0;clear
+: 1682942618:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1682943118:0;nvim ./
+: 1682943867:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1682944052:0;nvim ~/.config/nvim/after/plugin/lsp.lua
+: 1682946909:0;paru -S vim
+: 1682946913:0;clear
+: 1682947108:0;nvim ~/.config/nvim/after/
+: 1682947136:0;nvim ~/.config/nvim/after/plugin
+: 1682947358:0;clear
+: 1682947362:0;nvim ./
+: 1682948598:0;./target/release/rusty_ninja_notifier
+: 1682948630:0;nvim ./
+: 1682949288:0;cd ~/Documents/GitHub/Rusty_NinjaOne/
+: 1682949294:0;cargo 
+: 1682949301:0;cargo add libc
+: 1682949305:0;clear
+: 1682949356:0;cargo remove libc
+: 1682949358:0;clear
+: 1682949460:0;cargo run
+: 1682949490:0;clear
+: 1682949512:0;cargo run
+: 1682949623:0;clear
+: 1682949623:0;cargo run
+: 1682949732:0;clear
+: 1682949732:0;cargo run
+: 1682950487:0;clear
+: 1682950625:0;cargo run
+: 1682950655:0;cat ./.env
+: 1682950696:0;clear
+: 1682950696:0;cat ./.env
+: 1682950698:0;clear
+: 1682950702:0;cargo run
+: 1682950720:0;clear
+: 1682950721:0;cargo run
+: 1682951377:0;clear
+: 1682951378:0;cargo run
+: 1682951881:0;clear
+: 1682951882:0;cargo run
+: 1682951971:0;cat /etc/cron.d/0hourly
+: 1682951989:0;sudo nvim /etc/cron.d/0hourly
+: 1682952180:0;clear
+: 1682952193:0;cargo run
+: 1682952297:0;clear
+: 1682952299:0;cargo run
+: 1682952565:0;clear
+: 1682952573:0;cargo run
+: 1682952872:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1682952909:0;nvim ./
+: 1682953601:0;clear
+: 1682953603:0;nvim ./
+: 1682953606:0;clear
+: 1682953608:0;cargo run
+: 1682953646:0;clear
+: 1682953648:0;cargo run
+: 1682953741:0;clear
+: 1682953742:0;cargo run
+: 1682953822:0;clear
+: 1682953823:0;cargo run
+: 1682953956:0;clear
+: 1682953962:0;cargo run
+: 1682956903:0;clear
+: 1682956905:0;cargo run
+: 1682957038:0;clear
+: 1682957044:0;cargo run
+: 1682969644:0;clear
+: 1682969657:0;cargo run
+: 1682969990:0;clear
+: 1682970007:0;cargo run
+: 1682970199:0;clear
+: 1682970217:0;cargo run
+: 1682970496:0;clear
+: 1682970508:0;cargo run
+: 1682970717:0;clear
+: 1682970726:0;cargo run
+: 1682970744:0;clear
+: 1682970745:0;cargo run
+: 1682970934:0;clear
+: 1682970944:0;cargo run
+: 1682970957:0;clear
+: 1682970961:0;cargo run
+: 1682970973:0;clear
+: 1682970981:0;cargo run
+: 1682971404:0;clear
+: 1682971413:0;cargo run
+: 1682971496:0;clear
+: 1682971497:0;cargo run
+: 1682971560:0;clear
+: 1682971560:0;cargo run
+: 1682971573:0;clear
+: 1682971573:0;cargo run
+: 1683026809:0;clear
+: 1683028130:0;cargo fmt
+: 1683030012:0;clear
+: 1683030015:0;cargo clippy
+: 1683030031:0;cargo clippy --fix --allow-dirty
+: 1683030298:0;clear
+: 1683030301:0;cargo clippy 
+: 1683030355:0;clear
+: 1683030356:0;cargo clippy 
+: 1683030374:0;clear
+: 1683030376:0;cargo build
+: 1683030404:0;nvim ./
+: 1683030425:0;cargo run
+: 1683030441:0;clear
+: 1683030442:0;cargo run
+: 1683030581:0;clear
+: 1683030589:0;cargo run
+: 1683030988:0;clear
+: 1683030996:0;cargo run
+: 1683031019:0;clear
+: 1683032088:0;cargo clippy 
+: 1683032095:0;cargo clippy --fix --allow-dirty
+: 1683032097:0;clear
+: 1683032100:0;cargo fmt
+: 1683032102:0;clear
+: 1683032114:0;cargo run
+: 1683032307:0;nvim Documents/GitHub/NinjaOneProject
+: 1683032328:0;node .
+: 1683032342:0;cd ~/Documents/GitHub/NinjaOneProject
+: 1683032342:0;clear
+: 1683032345:0;node .
+: 1683032389:0;nvim ./
+: 1683032437:0;clear
+: 1683032438:0;nvim ./
+: 1683032445:0;node .
+: 1683053192:0;/etc/cron.d
+: 1683053199:0;reboot
+: 1683053296:0;sudo nvim /etc/cron.d/0hourly
+: 1683056186:0;cd ~/Documents/GitHub/Rusty_NinjaOne/
+: 1683056187:0;clear
+: 1683056190:0;nvim ./
+: 1683056779:0;cd ~/Documents/GitHub/Rusty_NinjaOne/
+: 1683056780:0;clear
+: 1683056782:0;cargo clippy --fix --allow-dirty
+: 1683056790:0;clear
+: 1683056792:0;cargo fmy
+: 1683056795:0;cargo fmt
+: 1683056796:0;clear
+: 1683056797:0;cargo run
+: 1683056825:0;clear
+: 1683056826:0;cargo run
+: 1683056997:0;clear
+: 1683057010:0;cargo run
+: 1683057052:0;clear
+: 1683057053:0;cargo run
+: 1683057224:0;clear
+: 1683057232:0;cargo run
+: 1683057445:0;clear
+: 1683057453:0;cargo run
+: 1683057677:0;clear
+: 1683057687:0;cargo run
+: 1683113396:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1683113399:0;./target/release/rusty_ninja_notifier
+: 1683114354:0;clear
+: 1683114406:0;cargo run
+: 1683115133:0;clear
+: 1683115148:0;cargo run
+: 1683115212:0;clear
+: 1683115221:0;cargo run
+: 1683115421:0;clear
+: 1683115424:0;cargo run
+: 1683115439:0;clear
+: 1683115444:0;cargo run
+: 1683115459:0;clear
+: 1683115460:0;cargo run
+: 1683115519:0;clear
+: 1683115532:0;cargo run
+: 1683115754:0;clear
+: 1683115767:0;cargo run
+: 1683115815:0;clear
+: 1683115826:0;cargo run
+: 1683115907:0;clear
+: 1683115956:0;cargo run
+: 1683116041:0;clear
+: 1683116041:0;cargo run
+: 1683116100:0;clear
+: 1683116113:0;cargo run
+: 1683116406:0;clear
+: 1683116424:0;cargo run
+: 1683116497:0;clear
+: 1683116508:0;cargo run
+: 1683116571:0;clear
+: 1683116580:0;cargo run
+: 1683116758:0;clear
+: 1683116825:0;cargo run
+: 1683116886:0;clear
+: 1683116999:0;cargo run
+: 1683117236:0;nvim .config/nvim
+: 1683117818:0;nvim ./
+: 1683117830:0;nvim .config/nvim
+: 1683118054:0;nvim ./
+: 1683118465:0;nvim .config/nvim
+: 1683118715:0;nvim ./
+: 1683118968:0;clear
+: 1683118979:0;cargo run
+: 1683119168:0;clear
+: 1683119178:0;cargo run
+: 1683120301:0;clear
+: 1683120321:0;cargo run
+: 1683121536:0;clear
+: 1683121546:0;cargo run
+: 1683121624:0;clear
+: 1683121632:0;nvim Documents/
+: 1683121809:0;clear
+: 1683121810:0;nvim Documents/
+: 1683121813:0;clear
+: 1683121815:0;cargo run
+: 1683121833:0;clear
+: 1683121835:0;cargo run
+: 1683122664:0;clear
+: 1683123035:0;cd ../
+: 1683123036:0;clear
+: 1683123067:0;cargo new Rusty-Ninja
+: 1683123075:0;cd Rusty-Ninja
+: 1683123076:0;c;ear
+: 1683123077:0;clear
+: 1683123081:0;nvim ./
+: 1683123119:0;cp ../Rusty_NinjaOne/.env ./
+: 1683123148:0;cp ../Rusty_NinjaOne/src/utilsv2/structure.rs ./src
+: 1683123175:0;clear
+: 1683123177:0;nvim ./
+: 1683123336:0;cd ../Rusty-Ninja
+: 1683123338:0;clear
+: 1683123341:0;cargo build
+: 1683123820:0;clear
+: 1683123822:0;cargo build
+: 1683123825:0;clear
+: 1683123978:0;cargo build
+: 1683123980:0;clear
+: 1683124444:0;cargo build
+: 1683135032:0;mv ./src/structure.rs ./src/utils/
+: 1683135616:0;clear
+: 1683135622:0;cargo fmt
+: 1683135627:0;cargo clippy
+: 1683135630:0;clear
+: 1683135631:0;cargo run
+: 1683135925:0;cat ../Rusty_NinjaOne/src/utilsv2.rs
+: 1683136017:0;nvim ./
+: 1683136031:0;clear
+: 1683136034:0;cargo run
+: 1683136183:0;cat ../Rusty_NinjaOne/src/utilsv2.rs
+: 1683136284:0;clear
+: 1683136286:0;cargo run
+: 1683136330:0;clear
+: 1683136331:0;cargo run
+: 1683136377:0;clear
+: 1683136381:0;cargo run
+: 1683136420:0;nvim ../Rusty_NinjaOne/src
+: 1683136585:0;cd ~/Documents/GitHub/rusty-ninja
+: 1683136589:0;cd ~/Documents/GitHub/Rusty-Ninja
+: 1683136591:0;clear
+: 1683136596:0;cargo run
+: 1683136758:0;clear
+: 1683136770:0;cargo run
+: 1683136802:0;clear
+: 1683137296:0;nvim ../Rusty_NinjaOne/src
+: 1683144098:0;cp -r ~/.config /home/bocaj/Documents/GitHub/Linux_Backups/
+: 1683144142:0;pkill github-desktop
+: 1683144144:0;btop
+: 1683200085:0;paru -Syyu
+: 1683200702:0;./target/release/rusty_ninja_notifier
+: 1683200734:0;yay 
+: 1683200990:0;sudo systemctl restart cronie
+: 1683200998:0;sudo systemctl status cronie
+: 1683201007:0;clear
+: 1683201016:0;exit
+: 1683203328:0;rm /usr/bin/Rusty_NinjaOne
+: 1683203341:0;sudo rm /usr/bin/Rusty_NinjaOne
+: 1683203347:0;clear
+: 1683204699:0;yay -S chezmoi
+: 1683204742:0;clear
+: 1683204819:0;chezmoi init
+: 1683204849:0;chezmoi add ~/.config
+: 1683205174:0;ls
+: 1683205181:0;ls -la
+: 1683205202:0;fd 
+: 1683205211:0;fd | rg chezmoi
+: 1683205218:0;cd /
+: 1683205220:0;fd | rg chezmoi
+: 1683205309:0;cd
+: 1683205311:0;clear
+: 1683205320:0;chezmoi help
+: 1683205339:0;chezmoi cd
+: 1683205343:0;pwd
+: 1683205346:0;clear
+: 1683205368:0;pwd
+: 1683205515:0;ls -la
+: 1683205525:0;git help
+: 1683205557:0;clear
+: 1683206712:0;ls -la
+: 1683206730:0;chezmoi add ~/Documents
+: 1683206755:0;sudo rm -rf ~/Documents/GitHub/AgileInformationUtility2
+: 1683206759:0;clear
+: 1683206762:0;chezmoi add ~/Documents
+: 1683207395:0;ls ~/.local/share/chezmoi
+: 1683207401:0;ls -la ~/.local/share/chezmoi
+: 1683207412:0;clear
+: 1683207417:0;ls -la ~/Documents
+: 1683208547:0;clear
+: 1683208569:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1683208573:0;./target/release/rusty_ninja_notifier
+: 1683208622:0;sudo systemctl status cronie
+: 1683208648:0;crontab -e
+: 1683208662:0;crontab -l
+: 1683208669:0;crontab -T
+: 1683208675:0;clear
+: 1683208681:0;sudo systemctl status cronie
+: 1683208700:0;sudo systemctl restart cronie
+: 1683208702:0;clear
+: 1683208703:0;sudo systemctl status cronie
+: 1683208707:0;clear
+: 1683209416:0;cd ~/Documents/
+: 1683209439:0;yay -Qqe > pkglist.txt
+: 1683209443:0;cat pkglist.txt
+: 1683209558:0;clear
+: 1683209560:0;cd
+: 1683209561:0;clear
+: 1683209567:0;ls -la 
+: 1683209596:0;chezmoi add ~/.cargo
+: 1683209683:0;ls -la .vim
+: 1683209699:0;ls -la .oh-my-zsh
+: 1683565256:0;source .zshrc
+: 1683565260:0;clear
+: 1683565293:0;sudo pacman -S arp-scan
+: 1683565302:0;sudo pacman -S mariadb
+: 1683565318:0;sudo pacman -S php-apache
+: 1683565355:0;sudo pacman -S phpmyadmin
+: 1683565373:0;sudo pacman -Ss php
+: 1683565384:0;nvim /etc/pacman.conf
+: 1683565405:0;sudo nvim /etc/pacman.conf
+: 1683565430:0;clear
+: 1683565434:0;sudo pacman -Ss php
+: 1683565461:0;yay -S icedtea-web
+: 1683565495:0;sudo nvim /etc/httpd/conf/httpd.conf
+: 1683565580:0;clear
+: 1683565596:0;sudo systemctl enable --now httpd
+: 1683565597:0;clear
+: 1683565627:0;sudo nvim /etc/php/php.ini
+: 1683565692:0;clear
+: 1683565701:0;sudo systemctl restart httpd
+: 1683565702:0;clear
+: 1683565806:0;sudo nvim /etc/httpd/conf/extra
+: 1683565845:0;sudo nvim /etc/httpd/conf/httpd.conf
+: 1683565872:0;clear
+: 1683565876:0;sudo systemctl restart httpd
+: 1683565877:0;clear
+: 1683565891:0;sudo nvim /etc/httpd/conf/extra
+: 1683565991:0;clear
+: 1683565994:0;sudo systemctl restart httpd
+: 1683565995:0;clear
+: 1683566001:0;yay -S github-desktop
+: 1683566033:0;sudo rm -rf ~/.config/GitHub\ Desktop
+: 1683566036:0;clear
+: 1683566037:0;exit
+: 1683566146:0;sudo pacman -S debtap
+: 1683566152:0;yay -S debtap
+: 1683566163:0;clear
+: 1683566166:0;sudo debtap -u
+: 1683566182:0;cd Downloads
+: 1683566183:0;clear
+: 1683566184:0;ls
+: 1683566193:0;sudo debtap synergy_1.14.6-stable.455c59b4_debian11_amd64.deb
+: 1683566224:0;sudo pacman -S vi vim
+: 1683566235:0;clear
+: 1683566237:0;sudo pacman -S vi vim
+: 1683566372:0;clear
+: 1683566380:0;sudo pacman -U ./synergy-1.14.6.stable.455c59b4-1-x86_64.pkg.tar.zst
+: 1683566391:0;clear
+: 1683566482:0;mariadb -u bocaj -p
+: 1683566491:0;sudo systemctl enable --now mariadb
+: 1683566528:0;sudo pacman -S cronie
+: 1683566531:0;clear
+: 1683566539:0;sudo systemctl enable --now cronie
+: 1683566540:0;clear
+: 1683566556:0;sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+: 1683566587:0;sudo systemctl enable --now mariadb
+: 1683566599:0;sudo mariadb-secure-installation
+: 1683566628:0;clear
+: 1683566636:0;sudo systemctl restart mariadb
+: 1683566637:0;clear
+: 1683566645:0;sudo systemctl restart httpd
+: 1683566646:0;clear
+: 1683566647:0;exit
+: 1683566656:0;mariadb -u bocaj -p
+: 1683566668:0;sudo mariadb -u root -p
+: 1683566920:0;clear
+: 1683566950:0;sudo nvim /usr/share/webapps/phpMyAdmin/config.inc.php
+: 1683567055:0;clear
+: 1683567059:0;sudo systemctl restart httpd
+: 1683567060:0;clear
+: 1683567114:0;sudo mkdir /usr/share/webapps/phpMyAdmin/tmp/
+: 1683567135:0;sudo chmod 775 /usr/share/webapps/phpMyAdmin/tmp/
+: 1683567136:0;clear
+: 1683567157:0;sudo systemctl restart httpd
+: 1683567184:0;sudo chmod 777 /usr/share/webapps/phpMyAdmin/tmp/
+: 1683567191:0;clear
+: 1683567480:0;i3 exit
+: 1683567521:0;reboot
+: 1683567806:0;sudo nvim /etc/lightdm/lightdm.conf
+: 1683568070:0;yay -S composer
+: 1683568075:0;clear
+: 1683568080:0;cd Documents/GitHub/AgileInformationUtility
+: 1683568083:0;composer update
+: 1683568086:0;clear
+: 1683568164:0;sudo systemctl restart httpd
+: 1683568172:0;clear
+: 1683568195:0;sudo nvim /etc/httpd/conf/extra
+: 1683568224:0;sudo systemctl restart httpd
+: 1683568292:0;clear
+: 1683568293:0;exit
+: 1683568312:0;sudo systemctl restart httpd
+: 1683568317:0;sudo systemctl status httpd
+: 1683568347:0;clear
+: 1683568355:0;sudo systemctl restart httpd
+: 1683568368:0;clear
+: 1683568399:0;cat Documents/GitHub/AgileInformationUtility/LINUX_403_ERROR_FIX.txt
+: 1683568409:0;sudo chmod +rx /home/bocaj /home/bocaj/Documents /home/bocaj/Documents/GitHub /home/bocaj/Documents
+: 1683568417:0;exit
+: 1683568432:0;clear
+: 1683568569:0;cd Documents/GitHub/Rusty-Ninja
+: 1683568570:0;clear
+: 1683568577:0;cargo build
+: 1683568634:0;clear
+: 1683568662:0;cargo build
+: 1683568694:0;cargo fix --bin "rusty_ninja"
+: 1683568711:0;clear
+: 1683568714:0;cargo build
+: 1683568719:0;nvim ./
+: 1683568757:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1683568791:0;ls -la .config/nvim
+: 1683568816:0;ls -la .config/nvim/lua
+: 1683568823:0;ls -la .config/nvim/lua/bocaj/
+: 1683568845:0;ls -la .config/nvim/after
+: 1683568849:0;ls -la .config/nvim/after/plugin
+: 1683568863:0;nvim .config/nvim/after/plugin
+: 1683568972:0;ls -la .config/nvim/plugin/
+: 1683569002:0;sudo chmod +xr .config/nvim/*
+: 1683569008:0;ls -la .config/nvim/
+: 1683569019:0;ls -la .config/nvim/plugin
+: 1683569027:0;sudo chmod +xr .config/nvim/plugin/*
+: 1683569034:0;sudo chmod +xr .config/nvim/pack/*
+: 1683569051:0;sudo chmod +xr .config/nvim/lua/bocaj
+: 1683569059:0;sudo chmod +xr .config/nvim/after/plugin/*
+: 1683569060:0;clear
+: 1683569067:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1683569861:0;ls -la .local/share/
+: 1683569895:0;sudo chmod +xr .local/share/nvim/*
+: 1683569898:0;ls -la .local/share/
+: 1683569912:0;sudo chmod +xr .local/share/nvim
+: 1683569914:0;ls -la .local/share/
+: 1683569922:0;ls -la .local/share/nvim
+: 1683569937:0;nvim ~/.config/nvim/lua/bocaj/packer.lua
+: 1683570004:0;ls -la .local/share/nvim/
+: 1683570027:0;sudo chown bocaj:bocaj .local/share/nvim/harpoon.json
+: 1683570030:0;clear
+: 1683570030:0;ls
+: 1683570032:0;ckear
+: 1683570033:0;clear
+: 1683570057:0;cd Documents/GitHub/Rusty-Ninja
+: 1683570058:0;clear
+: 1683570061:0;nvim ./
+: 1683572691:0;cd Documents/GitHub/Rusty-Ninja
+: 1683572693:0;clear
+: 1683572695:0;nvim ./
+: 1683573183:0;sudo nvim /etc/httpd/conf/httpd.conf
+: 1683573254:0;sudo nvim /usr/share/webapps/phpMyAdmin/config.inc.php
+: 1683573307:0;sudo nvim /etc/php/php.ini
+: 1683573465:0;sudo systemctl restart httpd
+: 1683573519:0;clear
+: 1683574293:0;sudo pacman -Qe | auto
+: 1683574298:0;sudo pacman -Qe | grep auto
+: 1683574307:0;autotiling-rs
+: 1683574315:0;clear
+: 1683574324:0;yay -R autotiling-rs
+: 1683574326:0;clear
+: 1683574331:0;sudo pacman -S autotiling
+: 1683574337:0;yay -S autotiling
+: 1683574355:0;clear
+: 1683574363:0;autotiling --help
+: 1683574437:0;cd Documents/GitHub/Rusty-Ninja
+: 1683574437:0;clear
+: 1683574440:0;cargo build
+: 1683574445:0;cargo clippy
+: 1683574449:0;cargo clippy --fix --allow-dirty
+: 1683574452:0;clear
+: 1683574457:0;cargo clippy 
+: 1683574459:0;clear
+: 1683574463:0;cargo build
+: 1683574469:0;clear
+: 1683574471:0;nvim ./
+: 1683574475:0;clear
+: 1683574478:0;cargo run
+: 1683574487:0;cat ./.env
+: 1683574556:0;clear
+: 1683574559:0;cargo run
+: 1683574574:0;clear
+: 1683574594:0;cargo run
+: 1683574662:0;clear
+: 1683574858:0;cargo run
+: 1683575402:0;cd ../AgileInformationUtility
+: 1683575403:0;clear
+: 1683575405:0;nvim ./
+: 1683575456:0;sudo nvim /etc/php/php.ini
+: 1683575789:0;clear
+: 1683575794:0;sudo systemctl restart httpd
+: 1683575800:0;sudo systemctl status httpd
+: 1683575914:0;exit
+: 1683631829:0;yay
+: 1683631875:0;clear
+: 1683631883:0;yay -Ss blender
+: 1683631950:0;sudo pacman -S blender
+: 1683631973:0;sudo pacman -Syyu blender
+: 1683632667:0;exit
+: 1683632876:0;btop
+: 1683632881:0;yay -S btop
+: 1683632887:0;clear
+: 1683632888:0;btop
+: 1683632918:0;clear
+: 1683632924:0;pacman -Qe
+: 1683632938:0;clear
+: 1683632940:0;pacman -Qe
+: 1683632942:0;clear
+: 1683632945:0;pacman -Qe | head
+: 1683632951:0;pacman -Qe | head 20
+: 1683632962:0;exit
+: 1683633399:0;sudo pacman -R blender
+: 1683633403:0;clear
+: 1683633408:0;yay -Ss blender
+: 1683633485:0;yay -S blender-2.7-bin
+: 1683633514:0;sudo pacman -S graphviz
+: 1683633566:0;sudo pacman -S mono lua ocaml r tcl qt6-base gtk2 
+: 1683633638:0;clear
+: 1683633648:0;cd Documents/GitHub/Rusty-Ninja
+: 1683633649:0;clear
+: 1683633666:0;nvim ./
+: 1683633722:0;cd Documents/GitHub/Ninja_Access_Token_Renewal
+: 1683633734:0;cargo build
+: 1683634482:0;yay -S blender-2.7-bin
+: 1683634496:0;clear
+: 1683634564:0;sudo pacman -S blender
+: 1683634587:0;sudo pacman -S intel-compute-runtime
+: 1683637840:0;sudo pacman -S remmina
+: 1683637846:0;exit
+: 1683637867:0;sudo pacman -S remmina
+: 1683637873:0;sudo pacman -R remmina
+: 1683637875:0;sudo pacman -S remmina
+: 1683637887:0;sudo pacman -S freedrop
+: 1683637890:0;sudo pacman -S freedrdp
+: 1683637893:0;sudo pacman -S freerdp
+: 1683637896:0;remmina
+: 1683638669:0;clear
+: 1683646718:0;sudo pacman -S libreoffice
+: 1683647008:0;clear
+: 1683659038:0;neofetch
+: 1683659049:0;nvim
+: 1683659071:0;clear
+: 1683659302:0;sudo systemctl restart lightdm
+: 1683659449:0;sudo pacman -S plasma-desktop
+: 1683659509:0;clear
+: 1683659513:0;i3 exit
+: 1683663080:0;reboot
+: 1683718303:0;yay -Ss tls
+: 1683718324:0;sudo pacman -S libcurl-gnutls
+: 1683718371:0;yay -Ss tls | less
+: 1683718385:0;sudo pacman -Ss tls | less
+: 1683718448:0;clear
+: 1683719867:0;openssl version
+: 1683722524:0;cd Documents/GitHub/Rusty-Ninja\\
+
+: 1683722526:0;clear
+: 1683722527:0;nvim .
+: 1683723871:0;cd Documents/GitHub/Ninja_Access_Token_Renewal
+: 1683723872:0;clear
+: 1683723873:0;nvim .
+: 1683724003:0;sudo pacman -S xclip
+: 1683724037:0;nvim .
+: 1683724254:0;clear
+: 1683724258:0;cargo build
+: 1683724262:0;clear
+: 1683724264:0;cargo run
+: 1683724280:0;nvim .
+: 1683724366:0;cargo run
+: 1683724385:0;clear
+: 1683724386:0;nvim .
+: 1683724452:0;cargo run
+: 1683728692:0;cd Documents/GitHub/Rusty-Ninja\\
+
+: 1683728695:0;cargo build
+: 1683728718:0;clear
+: 1683728722:0;cargo add futures
+: 1683729612:0;clear
+: 1683729617:0;cargo build
+: 1683729630:0;clear
+: 1683729632:0;yay
+: 1683729662:0;sudo pacman -R plasma-desktop
+: 1683729673:0;sudo pacman -Rns plasma-desktop
+: 1683729678:0;sudo pacman -S plasma-desktop
+: 1683729685:0;sudo pacman -Rns plasma-desktop
+: 1683729695:0;sudo pacman -Rs plasma-desktop
+: 1683729706:0;clear
+: 1683729708:0;yay
+: 1683729921:0;clear
+: 1683729923:0;cargo run
+: 1683730406:0;ulimit -a
+: 1683730469:0;sudo nvim /etc/security/limits.conf
+: 1683730591:0;clear
+: 1683730599:0;ulimit -help
+: 1683730602:0;ulimit --help
+: 1683730606:0;ulimit
+: 1683730608:0;ulimit -a
+: 1683730620:0;ulimit -n
+: 1683730627:0;ulimit -n 2048
+: 1683730630:0;ulimit -n
+: 1683730635:0;clear
+: 1683730695:0;cargo run
+: 1683730729:0;clear
+: 1683730735:0;cargo run
+: 1683730789:0;btop
+: 1683731030:0;clear
+: 1683731047:0;cargo run
+: 1683731154:0;ulimit -a
+: 1683731166:0;ulimit -n
+: 1683731181:0;sudo ulimit -n unlimited
+: 1683731188:0;ulimit -n unlimited
+: 1683731192:0;ulimit -n 
+: 1683731282:0;clear
+: 1683731285:0;cargo clippy
+: 1683731287:0;clear
+: 1683731324:0;nvim .
+: 1683731352:0;cargo add rayon
+: 1683731354:0;clear
+: 1683731761:0;cargo run
+: 1683732117:0;clear
+: 1683732121:0;cargo run
+: 1683736960:0;clear
+: 1683736964:0;cargo run
+: 1683737205:0;clera
+: 1683737209:0;cd ../
+: 1683737219:0;cd ./Rusty_NinjaOne
+: 1683737219:0;clear
+: 1683737223:0;cargo build
+: 1683737226:0;clear
+: 1683737242:0;cat ./.env
+: 1683737260:0;sudo cp ./.env ../Rusty_NinjaOne
+: 1683737264:0;clera
+: 1683737265:0;clear
+: 1683737274:0;cd ../Rusty_NinjaOne
+: 1683737276:0;clera
+: 1683737277:0;clear
+: 1683737285:0;nvim .
+: 1683737309:0;clear
+: 1683737535:0;nvim .
+: 1683737559:0;cargo build
+: 1683737608:0;clear
+: 1683737611:0;cargo clippy
+: 1683737619:0;cargo clippy --fix --allow-dirty
+: 1683737622:0;clear
+: 1683737626:0;cargo clippy 
+: 1683737947:0;clear
+: 1683737955:0;cargo build
+: 1683737967:0;cargo clippy
+: 1683738144:0;clear
+: 1683738146:0;cargo clippy
+: 1683738149:0;clear
+: 1683738152:0;cargo run
+: 1683738835:0;clear
+: 1683738837:0;nvim .
+: 1683738866:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1683738867:0;clear
+: 1683738871:0;cargo build
+: 1683738872:0;clear
+: 1683741987:0;cargo build
+: 1683742087:0;clear
+: 1683742088:0;cargo build
+: 1683742093:0;cargo run
+: 1683742117:0;cat ./.env
+: 1683742135:0;cargo run
+: 1683742201:0;clear
+: 1683742204:0;nvim .
+: 1683742247:0;cargo run
+: 1683742443:0;cd Documents/GitHub/AgileInformationUtility
+: 1683742445:0;nvim .
+: 1683742517:0;clear
+: 1683742519:0;uname -r
+: 1683742524:0;neofetch
+: 1683742527:0;clear
+: 1683742579:0;nvim .
+: 1683742636:0;cat ./LINUX_403_ERROR_FIX.txt
+: 1683742659:0;sudo chmod +xr ./*
+: 1683742665:0;ls -la
+: 1683742667:0;clear
+: 1683742721:0;nvim .
+: 1683742764:0;sudo chmod -x ./*
+: 1683742768:0;ls -la
+: 1683742813:0;clear
+: 1683742815:0;nvim .
+: 1683743105:0;cd Documents/GitHub/AgileInformationUtility
+: 1683743109:0;composer update
+: 1683743122:0;composer install
+: 1683743131:0;sudo pacman -S composer
+: 1683743139:0;clear
+: 1683743143:0;sudo composer update
+: 1683743157:0;clear
+: 1683743362:0;nvim .
+: 1683743394:0;ls ./vendor
+: 1683743411:0;ls -la
+: 1683743426:0;sudo chmod 755 ./*
+: 1683743430:0;ls -la
+: 1683743444:0;clear
+: 1683743447:0;ls ./vendor
+: 1683743467:0;nvim .
+: 1683743522:0;composer install
+: 1683743529:0;composer update
+: 1683804572:0;sudo pacman -S reflector
+: 1683804577:0;clear
+: 1683804609:0;sudo reflector --verbose --latest 5 rate --save /etc/pacman.d/mirrorlist
+: 1683804621:0;sudo reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+: 1683804676:0;sudo reflector --verbose --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
+: 1683804750:0;clear
+: 1683804757:0;cat /etc/pacman.d/mirrorlist
+: 1683804761:0;clear
+: 1683804770:0;yay -Syyu
+: 1683804790:0;clear
+: 1683891860:0;sudo pacman -Ss php
+: 1683891909:0;clear
+: 1683891914:0;sudo nvim /etc/php/php.ini
+: 1683891969:0;clear
+: 1683891973:0;yay -Syyu
+: 1683892047:0;clear
+: 1683892078:0;sudo pacman -S php-apache
+: 1683892081:0;clear
+: 1683892151:0;sudo systemctl status httpd
+: 1683892158:0;clear
+: 1683892174:0;nvim /var/log/httpd
+: 1683892220:0;cat Documents/GitHub/AgileInformationUtility/.env
+: 1683892230:0;nvim Documents/GitHub/AgileInformationUtility/.env
+: 1683892268:0;cat /var/log/httpd/error_log
+: 1683892313:0;clear
+: 1683892320:0;sudo systemctl restart httpd
+: 1683892327:0;clear
+: 1683892328:0;cat /var/log/httpd/error_log
+: 1683892348:0;nvim Documents/GitHub/AgileInformationUtility/
+: 1683892407:0;cat Documents/GitHub/AgileInformationUtility/.env
+: 1683892418:0;nvim Documents/GitHub/AgileInformationUtility/.env
+: 1683892430:0;clear
+: 1683892455:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1683892457:0;cargo run
+: 1683892471:0;clear
+: 1683892517:0;nvim ./
+: 1683892619:0;clear
+: 1683892625:0;sudo chmod 755 ./*
+: 1683892636:0;cd ../AgileInformationUtility
+: 1683892637:0;clear
+: 1683892640:0;sudo chmod 755 ./*
+: 1683892644:0;ls -la
+: 1683892650:0;clear
+: 1683892660:0;cd ../Rusty_NinjaOne
+: 1683892664:0;cargo run
+: 1683892678:0;clear
+: 1683895909:0;pulseaudio --kill
+: 1683895911:0;pulseaudio --start
+: 1683895954:0;pavucontrol
+: 1683895961:0;sudo pacman -S pavucontrol
+: 1683895966:0;clear
+: 1683895969:0;pavucontrol
+: 1683899479:0;sudo pacman -S gparted
+: 1683899484:0;clear
+: 1683899490:0;sudo gparted
+: 1683914536:0;yay -Syyu
+: 1683914540:0;clear
+: 1683914544:0;yay -S debtap
+: 1683914558:0;clear
+: 1683914564:0;sudo debtap -u
+: 1683914576:0;clear
+: 1683914588:0;sudo debtap Downloads/agileinformationservicesmainoffice-5.3.6261-installer.deb
+: 1683914650:0;cd Downloads
+: 1683914661:0;sudo debtap ./agileinformationservicesmainoffice-5.3.6261-installer.deb
+: 1683914744:0;clear
+: 1683914754:0;sudo pacman -U ./NinjaRMM-1-x86_64.pkg.tar.zst
+: 1683915800:0;yay -R remmina
+: 1683915804:0;clear
+: 1683915808:0;yay -S remmina
+: 1683915856:0;yay -S libvncserver spice-gtk webkit2gtk-4.1 gtk-vnc 
+: 1683915868:0;clear
+: 1684154606:0;sudo pacman -S icedtea-web
+: 1684154611:0;clear
+: 1684154612:0;exit
+: 1684154698:0;sudo pacman -Ss java
+: 1684154731:0;sudo pacman -Ss jre8-openjdk
+: 1684154734:0;sudo pacman -S jre8-openjdk
+: 1684154741:0;clear
+: 1684154754:0;javaw
+: 1684154756:0;clear
+: 1684154761:0;exit
+: 1684161147:0;cd Documents/GitHub/
+: 1684161459:0;cargo new agile-installation-solution
+: 1684161467:0;cd agile-installation-solution
+: 1684161467:0;clear
+: 1684161519:0;nvim ./
+: 1684162318:0;pkg-config --modversion gtk4
+: 1684162323:0;clear
+: 1684162338:0;sudo pacman -S gtk4 base-devel
+: 1684162352:0;sudo pacman -S evince
+: 1684162776:0;clear
+: 1684162784:0;sudo pacman -S gtk4 
+: 1684162789:0;clear
+: 1684162791:0;sudo pacman -S evince
+: 1684162796:0;clear
+: 1684162804:0;sudo reflector --verbose --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
+: 1684162953:0;sudo pacman -S evince
+: 1684162963:0;clear
+: 1684162965:0;pkg-config --modversion gtk4\
+
+: 1684162967:0;clear
+: 1684163028:0;cargo add gtk4
+: 1684163046:0;cd Documents/GitHub/agile-installation-solution
+: 1684163048:0;cargo add gtk4
+: 1684163182:0;clear
+: 1684163318:0;cargo add gtk4 --rename gtk --features v4_10
+: 1684163320:0;clear
+: 1684163323:0;cargo run
+: 1684163374:0;clear
+: 1684163604:0;cargo run
+: 1684163944:0;clear
+: 1684163951:0;cargo run
+: 1684164113:0;clear
+: 1684164114:0;cargo run
+: 1684165076:0;btop
+: 1684165123:0;sudo swapoff -a; sudo swapon -a
+: 1684165156:0;btop
+: 1684165162:0;exit
+: 1684165165:0;clear
+: 1684165183:0;nvim ~/.config/i3status-rust
+: 1684165208:0;chezmoi update
+: 1684165232:0;gh auth login
+: 1684165282:0;chezmoi update
+: 1684165374:0;chezmoi status
+: 1684165403:0;chezmoi help
+: 1684165439:0;chezmoi target-path
+: 1684165496:0;chezmoi init --apply BocajBot
+: 1684165554:0;clear
+: 1684165559:0;chezmoi update
+: 1684165583:0;clear
+: 1684165763:0;cargo run
+: 1684165792:0;clear
+: 1684165827:0;cargo run
+: 1684165863:0;clear
+: 1684165863:0;cargo run
+: 1684166339:0;clear
+: 1684166340:0;cargo run
+: 1684166357:0;clear
+: 1684166531:0;cargo run
+: 1684168695:0;clera
+: 1684168696:0;exit
+: 1684179175:0;nvim Downloads/scripts2.1.txt
+: 1684179282:0;nvim .config/nvim/after/plugin
+: 1684236609:0;yay
+: 1684236649:0;clear
+: 1684236664:0;yay -S wired
+: 1684236687:0;rustup update
+: 1684236703:0;clear
+: 1684236716:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1684236719:0;nvim ./
+: 1684236733:0;nvim .config/nvim/after/plugin
+: 1684236745:0;clear
+: 1684236750:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1684236751:0;clear
+: 1684236887:0;cd ..
+: 1684236888:0;ls
+: 1684236895:0;cd Ninja_Access_Token_Renewal
+: 1684236906:0;cargo run
+: 1684237020:0;cd Documents/GitHub/Ninja_Access_Token_Renewal
+: 1684237030:0;cargo add mysql
+: 1684237036:0;clear
+: 1684237203:0;cargo remove mysql
+: 1684237206:0;clear
+: 1684237208:0;cd ../
+: 1684237212:0;cd rusty_ninja_notifier
+: 1684237215:0;cargo add mysql
+: 1684237217:0;c;ear
+: 1684237218:0;clear
+: 1684237473:0;cargo build
+: 1684237504:0;clear
+: 1684237507:0;cargo clippy
+: 1684237509:0;clear
+: 1684237510:0;cargo run
+: 1684237530:0;cargo add dotenv
+: 1684237535:0;clear
+: 1684237544:0;cargo run
+: 1684237573:0;nvim ./.env
+: 1684237587:0;clear
+: 1684237595:0;cargo run
+: 1684237664:0;clear
+: 1684237668:0;cargo run
+: 1684237708:0;clear
+: 1684237744:0;nvim ~/.config/i3status-rust
+: 1684237756:0;clear
+: 1684237762:0;chezmoi update
+: 1684238215:0;clear
+: 1684238385:0;cd ../
+: 1684238387:0;cd Rusty-Ninja
+: 1684238390:0;clear
+: 1684238392:0;cd ../
+: 1684238397:0;cd Rusty_NinjaOne
+: 1684238398:0;clear
+: 1684238405:0;cat ./.env
+: 1684238426:0;clear
+: 1684238428:0;nvim ./
+: 1684238443:0;nvim ~/.config/i3status-rust
+: 1684238489:0;clear
+: 1684238495:0;chezmoi help
+: 1684238547:0;chezmoi re-add ~/.config/nvim
+: 1684238563:0;chezmoi help re-add
+: 1684238580:0;chezmoi re-add
+: 1684238637:0;clear
+: 1684238654:0;nvim ./
+: 1684238855:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1684238855:0;clear
+: 1684238859:0;cat ./.env
+: 1684238910:0;nvim ./
+: 1684239083:0;cargo build
+: 1684239088:0;clear
+: 1684239266:0;cargo build
+: 1684239445:0;clear
+: 1684239446:0;cargo build
+: 1684239452:0;cargo clippy
+: 1684239454:0;clear
+: 1684239457:0;cargo run
+: 1684239485:0;clear
+: 1684239486:0;cargo run
+: 1684239488:0;exit
+: 1684239531:0;cd ../AgileInformationUtility
+: 1684239532:0;nvim ./
+: 1684240792:0;cd Documents/GitHub/agile-installation-solution
+: 1684240794:0;clear
+: 1684240795:0;nvim ./
+: 1684241938:0;cd ../Rusty_NinjaOne
+: 1684241939:0;clear
+: 1684241943:0;cargo build --release
+: 1684242027:0;clear
+: 1684242044:0;cd ../AgileInformationUtility
+: 1684242051:0;ls -la
+: 1684242083:0;cat ./updateTickets.php
+: 1684242091:0;clear
+: 1684242094:0;nvim ./
+: 1684242147:0;sudo pacman -S eslint
+: 1684242154:0;sudo pacman -S eslint_d
+: 1684242157:0;clear
+: 1684242455:0;ls -la
+: 1684242478:0;sudo chmod -x ./*
+: 1684242481:0;ls -la
+: 1684242625:0;sudo chmod -R 755 ./*
+: 1684242627:0;ls -la
+: 1684242696:0;clear
+: 1684245383:0;yay -S xidlehook
+: 1684246187:0;clear
+: 1684246204:0;ssh
+: 1684246206:0;clear
+: 1684246227:0;ssh agileis@192.168.192.145
+: 1684251113:0;cd Documents/GitHub/
+: 1684251115:0;clear
+: 1684251156:0;mkdir Dom-Join
+: 1684251162:0;cd Dom-Join
+: 1684251163:0;clear
+: 1684251168:0;nvim ./
+: 1684251463:0;rm ~/.vim/undodir
+: 1684251468:0;rm -rf ~/.vim/undodir
+: 1684251472:0;nvim ./
+: 1684251499:0;yay -Ss pwsh
+: 1684251503:0;yay -Ss powershell
+: 1684251532:0;yay -S powershell
+: 1684254361:0;yay
+: 1684254372:0;clear
+: 1684254376:0;yay -S powershell
+: 1684254492:0;clear
+: 1684254494:0;pwsh
+: 1684254498:0;clear
+: 1684254507:0;cd Documents/GitHub/
+: 1684254508:0;ls
+: 1684254515:0;Dom-Join
+: 1684254516:0;clear
+: 1684254519:0;nvim ./
+: 1684255606:0;java --help
+: 1684255627:0;clear
+: 1684255638:0;yay -R icedtea-web
+: 1684255648:0;clear
+: 1684255652:0;yay -S icedtea-web
+: 1684262360:0;nvim .config/i3/config
+: 1684262417:0;thunar
+: 1684263909:0;ls /run/media/bocaj
+: 1684264192:0;nvim ./
+: 1684264211:0;clear
+: 1684264694:0;cd
+: 1684264697:0;clear
+: 1684264707:0;ssh agileis@192.168.192.145
+: 1684266780:0;arp-scan -l
+: 1684336091:0;ssh agileis@192.168.192.145
+: 1684336939:0;clear
+: 1684337250:0;mariadb -u agileis -h=172.72.0.2 -p
+: 1684337270:0;mariadb -u agileis -h=192.168.192.145 -p
+: 1684337621:0;mysql -h 172.17.0.2 -P 3306 --protocol=TCP -u root -p
+: 1684337667:0;clear
+: 1684337669:0;mysql -h 172.17.0.2 -P 3306 --protocol=TCP -u root -p
+: 1684337682:0;mysql -h 172.17.0.2 -P 3306 --protocol=TCP -u agileis -p
+: 1684338593:0;ssh agileis@192.168.192.145
+: 1684339721:0;mariadb -u agileis -h=192.168.192.145 -p
+: 1684339734:0;mariadb -u agileis -h=192.168.192.145:3306 -p
+: 1684339755:0;mariadb -u agileis -h=172.17.0.2:3306 -p
+: 1684339764:0;mariadb -u agileis -h=172.17.0.1:3306 -p
+: 1684339770:0;mariadb -u agileis -h=172.17.0.3:3306 -p
+: 1684339833:0;clear
+: 1684339835:0;ssh agileis@192.168.192.145
+: 1684343101:0;pulseaudio --kill
+: 1684343103:0;pulseaudio --start
+: 1684344184:0;arp-scan -l
+: 1684344234:0;clear
+: 1684344267:0;mariadb -h 192.168.192.145 -P 3306 -u agileis -p
+: 1684344457:0;clear
+: 1684344557:0;cd Documents/GitHub/
+: 1684344565:0;cd ./Rusty_NinjaOne
+: 1684344569:0;nvim .
+: 1684344584:0;cat ./.ev
+: 1684344587:0;cat ./.env
+: 1684344649:0;nvim ./
+: 1684344683:0;nvim ~/.config/nvim
+: 1684347330:0;nvim ./.env
+: 1684347350:0;nvim ~/.config/nvim
+: 1684347565:0;nvim ./.env
+: 1684347591:0;nvim ~/.config/nvim
+: 1684347639:0;nvim ./.env
+: 1684347648:0;nvim ~/.config/nvim
+: 1684347695:0;nvim ./.env
+: 1684347700:0;clear
+: 1684347716:0;nvim .\\
+
+: 1684347927:0;clear
+: 1684347930:0;cargo build --release
+: 1684347936:0;cargo run
+: 1684347957:0;clear
+: 1684347975:0;cd ../rusty_ninja_notifier
+: 1684347980:0;nvim .
+: 1684348030:0;rm ./.env
+: 1684348045:0;cp ../Rusty_NinjaOne/.env ./
+: 1684348047:0;clear
+: 1684348049:0;nvim .
+: 1684348112:0;cargo build
+: 1684348115:0;cargo build --release
+: 1684348266:0;clear
+: 1684348280:0;./target/release/rusty_ninja_notifier
+: 1684409532:0;clear
+: 1684409538:0;crontab -T
+: 1684409546:0;crontab -l
+: 1684409552:0;crontab -e
+: 1684409569:0;nvim /etc/cron.d/
+: 1684409611:0;clear
+: 1684410242:0;nvim .
+: 1684410355:0;nvim .zshrc
+: 1684410451:0;clear
+: 1684410455:0;source .zshrc
+: 1684410477:0;nvim .zshrc
+: 1684410486:0;nvim ~/.zshrc
+: 1684410497:0;source .zshrc
+: 1684410501:0;source ~/.zshrc
+: 1684410517:0;nvim ~/.zshrc
+: 1684410535:0;~/Documents/GitHub/rusty_ninja_notifier/target/release/rusty_ninja_notifier
+: 1684410572:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1684410574:0;nvim .
+: 1684410668:0;cargo build --release
+: 1684410677:0;nvim .
+: 1684410687:0;clear
+: 1684410688:0;exit
+: 1684410694:0;~/Documents/GitHub/rusty_ninja_notifier/target/release/rusty_ninja_notifier
+: 1684410712:0;clear
+: 1684410718:0;exit
+: 1684410733:0;source ~/.zshrc
+: 1684410756:0;nvim ~/.zshrc
+: 1684410772:0;source ~/.zshrc
+: 1684410801:0;nvim ~/.zshrc
+: 1684410808:0;clear
+: 1684410812:0;./target/release/rusty_ninja_notifier
+: 1684413147:0;xset s off
+: 1684413204:0;xset -dpms
+: 1684413208:0;xset --help
+: 1684415315:0;mkdir ~/.ssh
+: 1684415319:0;clear
+: 1684415324:0;ls .ssh
+: 1684415333:0;ls .ssh/known_hosts
+: 1684415339:0;cat .ssh/known_hosts
+: 1684415443:0;cat .ssh/
+: 1684415445:0;cat .ssh
+: 1684415449:0;ls .ssh
+: 1684415451:0;clear
+: 1684415468:0;ssh aisadmin@192.168.192.10
+: 1684415480:0;clear
+: 1684415484:0;ssh aisadmin@192.168.192.10
+: 1684415487:0;clear
+: 1684415629:0;ssh aisadmin@192.168.192.10
+: 1684416909:0;cd Documents/GitHub/AgileInformationUtility
+: 1684416911:0;nvim .
+: 1684417086:0;cd ../Rusty_NinjaOne
+: 1684417088:0;clear
+: 1684417090:0;nvim .
+: 1684417352:0;ssh aisadmin@192.168.192.10
+: 1684420669:0;nvim .
+: 1684420766:0;cd Documents/GitHub/AgileInformationUtility
+: 1684420769:0;nvim .
+: 1684421342:0;clear
+: 1684421346:0;cd ../
+: 1684421348:0;ls
+: 1684421353:0;rusty_ninja_notifier
+: 1684421356:0;nvim .
+: 1684421374:0;clear
+: 1684421418:0;ssh agileis@192.168.192.145
+: 1684421445:0;clear
+: 1684421531:0;cd ../Ninja_Access_Token_Renewal
+: 1684421533:0;clear
+: 1684422055:0;cd ../
+: 1684422057:0;clear
+: 1684422154:0;scp ./Ninja_Access_Token_Renewal aisadmin:192.168.192.10:~/
+: 1684422181:0;scp ./Ninja_Access_Token_Renewal aisadmin@192.168.192.10:~/
+: 1684422197:0;scp -r ./Ninja_Access_Token_Renewal aisadmin@192.168.192.10:~/
+: 1684422269:0;rm -rf ./Ninja_Access_Token_Renewal/target
+: 1684422271:0;clear
+: 1684422287:0;scp -r ./Ninja_Access_Token_Renewal aisadmin@192.168.192.10:~/
+: 1684422291:0;clear
+: 1684423120:0;sudo pacman -Ss jre
+: 1684423146:0;sudo pacman -S jre17-openjdk
+: 1684423183:0;archlinux-java help
+: 1684423186:0;archlinux-java get
+: 1684423208:0;archlinux-java set java-8-openjdk
+: 1684423211:0;sudo archlinux-java set java-8-openjdk
+: 1684423232:0;ls /user/lib/jvm/
+: 1684423237:0;ls /user/lib/
+: 1684423244:0;sudo ls /user/lib/jvm/
+: 1684423248:0;ls -la
+: 1684423251:0;clear
+: 1684427326:0;scp -r .config/nvim aisadmin@192.168.192.10:~/.config/
+: 1684427510:0;clear
+: 1684427527:0;nvim .
+: 1684427530:0;nvim
+: 1684428059:0;clear
+: 1684429135:0;sudo pacman -S flameshot
+: 1684429156:0;flameshot --help
+: 1684429169:0;flameshot
+: 1684429200:0;clear
+: 1684429849:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1684429851:0;clear
+: 1684429853:0;nvim .
+: 1684430319:0;clear
+: 1684430326:0;ssh aisadmin@192.168.192.10
+: 1684432110:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1684432111:0;clear
+: 1684432117:0;nvim .
+: 1684432444:0;clear
+: 1684432447:0;cargo build --release
+: 1684432452:0;clear
+: 1684432454:0;./target/release/rusty_ninja_notifier
+: 1684432479:0;nvim .
+: 1684432498:0;mariadb -h 192.168.192.10 -P 3306 -u agileis -p
+: 1684433397:0;sudo systemctl enable --now mariadb
+: 1684433400:0;clera
+: 1684433402:0;clear
+: 1684433409:0;sudo systemctl status mariadb
+: 1684437939:0;ssh aisadmin@192.168.192.10
+: 1684438570:0;clear
+: 1684438572:0;mariadb -h 192.168.192.10 -P 3306 -u agileis -p
+: 1684438785:0;mariadb -h 192.168.192.10 --protocol=tcp --port=3306 test
+: 1684438962:0;ping 192.168.192.10
+: 1684438965:0;clear
+: 1684439073:0;mariadb -h 192.168.192.10 --protocol=tcp --port=3306 test
+: 1684439315:0;clear
+: 1684439330:0;./target/release/rusty_ninja_notifier
+: 1684500846:0;rusty_ninja_notifier
+: 1684500849:0;clear
+: 1684500857:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1684500861:0;./target/release/rusty_ninja_notifier
+: 1684501132:0;ssh aisadmin@192.168.192.10
+: 1684502629:0;clear
+: 1684502631:0;yay
+: 1684503205:0;clear
+: 1684503288:0;./target/release/rusty_ninja_notifier
+: 1684503293:0;ls
+: 1684503295:0;clear
+: 1684503297:0;ls -la
+: 1684503299:0;clear
+: 1684503301:0;ssh aisadmin@192.168.192.10
+: 1684503328:0;./target/release/rusty_ninja_notifier
+: 1684511245:0;clear
+: 1684511253:0;cat ./.env
+: 1684511791:0;clear
+: 1684511794:0;./target/release/rusty_ninja_notifier
+: 1684516905:0;ssh aisadmin@192.168.192.10
+: 1684517529:0;clear
+: 1684517532:0;./target/release/rusty_ninja_notifier
+: 1684765069:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1684765070:0;./target/release/rusty_ninja_notifier
+: 1684765128:0;cd ../Ninja_Access_Token_Renewal
+: 1684765132:0;cargo build --release
+: 1684765181:0;./target/release/ninja_access_token_renewal
+: 1684765209:0;cd ~/Documents/GitHub/Ninja_Access_Token_Renewal
+: 1684765211:0;nvim
+: 1684765214:0;nvim .
+: 1684765240:0;cd ~/Documents/GitHub/rusty_ninja_notifier
+: 1684765241:0;./target/release/ninja_access_token_renewal
+: 1684765250:0;./target/release/rusty_ninja_notifier
+: 1684765261:0;cargo ryb
+: 1684765263:0;cargo run
+: 1684765295:0;./target/release/rusty_ninja_notifier
+: 1684765302:0;clear
+: 1684765304:0;nvim .
+: 1684765334:0;cargo run
+: 1684765339:0;./target/release/rusty_ninja_notifier
+: 1684765395:0;nvim .
+: 1684765814:0;yay
+: 1684765859:0;clear
+: 1684765869:0;yay -S firefox debtap
+: 1684765893:0;sudo debtap -u
+: 1684765935:0;cd Downloads
+: 1684765936:0;ls
+: 1684765942:0;sudo debtap dwspectrum-client-4.2.0.32842-linux64.deb
+: 1684765949:0;sudo pacman -S sway 
+: 1684765991:0;sudo usermod -aG seat bocaj
+: 1684766026:0;yay -S rofi-lbonn-wayland-git
+: 1684766159:0;clear
+: 1684766242:0;ls
+: 1684766253:0;sudo pacman -U ./digitalwatchdog-client-4.2.0-1-x86_64.pkg.tar.zst
+: 1684766375:0;yay -S clipman
+: 1684766529:0;yay -S sddm-git
+: 1684766554:0;clear
+: 1684766739:0;sudo systemctl enable --now sddm
+: 1684766751:0;sudo systemctl disable lightdm
+: 1684766757:0;sudo pacman -R lightdm
+: 1684766770:0;sudo pacman -R lightdm lightdm-gtk-greeter
+: 1684766775:0;clear
+: 1684766870:0;i3 exit
+: 1684766894:0;sudo systemctl enable --now sddm
+: 1684766933:0;nvim .config/sway/config
+: 1684767016:0;swaymsg -t get_outputs
+: 1684767050:0;exit
+: 1684767081:0;yay -S azote
+: 1684767157:0;exit
+: 1684767178:0;yay -S waynergy
+: 1684767205:0;clear
+: 1684767206:0;exit
+: 1684767225:0;sudo waynergy
+: 1684767254:0;sudo waynergy --help
+: 1684767292:0;exit
+: 1684767986:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1684767988:0;./target/release/rusty_ninja_notifier
+: 1684768409:0;nvim /etc/udev/rules.d/
+: 1684768420:0;sudo nvim /etc/udev/rules.d/
+: 1684768484:0;su
+: 1684768793:0;./target/release/rusty_ninja_notifier
+: 1684769529:0;reboot
+: 1684769756:0;waynergy
+: 1684769768:0;clear
+: 1684769776:0;nvim .config/waynergy
+: 1684769786:0;mkdir .config/waynergy
+: 1684769791:0;nvim .config/waynergy
+: 1684770006:0;waynergy
+: 1684770460:0;yay -S libxkbcommon libtls wl-clipboard
+: 1684770550:0;clear
+: 1684770553:0;waynergy -h
+: 1684770567:0;waynergy -b uinput
+: 1684770580:0;sudo pacman -Ss uinput
+: 1684770587:0;yay -Ss uinput
+: 1684770641:0;yay -S python-uinput
+: 1684770666:0;clear
+: 1684770667:0;exit
+: 1684770674:0;waynergy -b uinput
+: 1684770714:0;waynergy -h
+: 1684770724:0;waynergy -b wlr
+: 1684770846:0;nvim .config/waynergy
+: 1684770865:0;clear
+: 1684770871:0;waynergy
+: 1684771092:0;nvim .config/waynergy
+: 1684771291:0;waynergy
+: 1684771471:0;clear
+: 1684771476:0;nvim .config/waynergy
+: 1684771486:0;waynergy
+: 1684771589:0;clear
+: 1684772279:0;cd Downloads
+: 1684772293:0;sudo debtap ./synergy-linux_x64-libssl1.1-v3.0.70.34-beta.deb
+: 1684772589:0;synergy --version
+: 1684772594:0;synergy --help
+: 1684772620:0;ls /opt/ | grep synergy
+: 1684772700:0;swaymsg exit
+: 1684774203:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1684774204:0;./target/release/rusty_ninja_notifier
+: 1684775140:0;xset s off
+: 1684775158:0;nvim .zsh_history
+: 1684775182:0;xset -dpms
+: 1684775231:0;nvim .config/i3/config
+: 1684775282:0;exit
+: 1684775296:0;./target/release/rusty_ninja_notifier
+: 1684777219:0;clear
+: 1684777338:0;ssh aisadmin@192.168.192.10
+: 1684778104:0;./target/release/rusty_ninja_notifier
+: 1684778179:0;ssh aisadmin@192.168.192.10
+: 1684778239:0;./target/release/rusty_ninja_notifier
+: 1684778431:0;ssh aisadmin@192.168.192.10
+: 1684778475:0;./target/release/rusty_ninja_notifier
+: 1684778567:0;ssh aisadmin@192.168.192.10
+: 1684779010:0;./target/release/rusty_ninja_notifier
+: 1684779181:0;ssh aisadmin@192.168.192.10\\
+
+: 1684841128:0;clear
+: 1684841131:0;ls
+: 1684841133:0;ckear
+: 1684841133:0;clear
+: 1684841140:0;./target/release/rusty_ninja_notifier
+: 1684841149:0;ssh aisadmin@192.168.192.10\\
+
+: 1684841596:0;clear
+: 1684841606:0;cd Documents/GitHub/AgileInformationUtility
+: 1684841610:0;nvim .
+: 1684841805:0;composer update
+: 1684841812:0;yay
+: 1684841876:0;clear
+: 1684841877:0;ls
+: 1684841897:0;cd ../Rusty_NinjaOne
+: 1684841899:0;clear
+: 1684841900:0;nvim .
+: 1684841933:0;clera
+: 1684841934:0;clear
+: 1684841944:0;cargo run
+: 1684841957:0;nvim .
+: 1684842006:0;clear
+: 1684842007:0;cargo run
+: 1684842030:0;nvim .
+: 1684842116:0;clear
+: 1684842118:0;cargo run
+: 1684853720:0;clear
+: 1684853723:0;cargo run
+: 1684853736:0;clear
+: 1684853744:0;yay -Ss platform-tools
+: 1684853759:0;yay -S android-sdk-platform-tools
+: 1684853798:0;source /etc/profile
+: 1684853802:0;clear
+: 1684853837:0;fastboot devices
+: 1684853842:0;sudo fastboot devices
+: 1684853843:0;clear
+: 1684853858:0;cd
+: 1684853859:0;clear
+: 1684854114:0;sudo pacman -Ss peazip
+: 1684854124:0;yay -Ss peazip
+: 1684854137:0;yay -S peazip-qt5
+: 1684854285:0;sudo pacman -S quad\
+    unace\
+    paq8o\
+    upx\
+    zpaq
+: 1684854316:0;clear
+: 1684854487:0;lsblk
+: 1684854493:0;clear
+: 1684854560:0;cd Downloads/nairo
+: 1684854560:0;clear
+: 1684854561:0;ls
+: 1684854580:0;mv ./nairo-twrp-3.6.2_11.0_RC-1.0.img twrp.img
+: 1684854584:0;ls
+: 1684854632:0;clear
+: 1684854636:0;fastboot devices
+: 1684854640:0;sudo fastboot devices
+: 1684854690:0;sudo fastboot flash recovery /home/bocaj/Downloads/nairo/twrp.img
+: 1684854763:0;sudo fastboot flash recovery_a twrp.img
+: 1684855740:0;sudo fastboot flashing unlock
+: 1684855821:0;sudo fastboot oem unlock 031519
+: 1684855849:0;sudo fastboot oem unlock
+: 1684855882:0;sudo fastboot oem unlock 031519
+: 1684856252:0;adb reboot bootloader
+: 1684856275:0;clear
+: 1684856289:0;sudo fastboot oem unlock
+: 1684856398:0;sudo fastboot oem unlock 031519
+: 1684856469:0;sudo fastboot get_unlock_data
+: 1684856476:0;sudo fastboot oem get_unlock_data
+: 1684857485:0;sudo fastboot flashing unlock
+: 1684857551:0;sudo fastboot oem unlock
+: 1684857856:0;adb devices
+: 1684858839:0;clear
+: 1684859353:0;./target/release/rusty_ninja_notifier
+: 1684861040:0;yay -S localsend-bin
+: 1684861070:0;clear
+: 1684861086:0;localsend
+: 1684861093:0;sudo pacman -Ss fuse
+: 1684861107:0;sudo pacman -S fuse
+: 1684861112:0;clear
+: 1684861114:0;localsend
+: 1684861177:0;clear
+: 1684861178:0;localsend
+: 1684861189:0;sudo pacman -Ss gtk3
+: 1684861209:0;sudo pacman -Ss gtk3 | grep xapp
+: 1684861234:0;sudo pacman -S lxappearance-gtk3
+: 1684861252:0;sudo pacman -Ss canberra
+: 1684861267:0;sudo pacman -S lib32-libcanberra
+: 1684861277:0;clear
+: 1684861281:0;localsend
+: 1684861373:0;ls ~/.ssh/id_rsa
+: 1684861376:0;cat ~/.ssh/id_rsa
+: 1684861377:0;c;ear
+: 1684861378:0;clear
+: 1684861381:0;cat ~/.ssh/
+: 1684861385:0;ls ~/.ssh/
+: 1684861676:0;arp-scan -l
+: 1684861874:0;scp ~/.ssh/id_rsa aphillips@192.168.192.148:~/.ssh/id_rsa
+: 1684861940:0;clear
+: 1684863919:0;pacman -Qe | grep openjdk
+: 1684864360:0;ssh root@192.168.192.105
+: 1684864940:0;ssh u0_a307@192.168.192.105
+: 1684865023:0;ssh u0_a307@192.168.192.105 -pw j0y03iw 8022
+: 1684865032:0;ssh u0_a307@192.168.192.105 -p 8022
+: 1684865312:0;sudo pacman -Ss btop
+: 1684865316:0;exit
+: 1684928914:0;clear
+: 1684928917:0;./target/release/rusty_ninja_notifier
+: 1684929125:0;ls /etc/ | grep rc
+: 1684929190:0;sudo nvim /etc/bash.bashrc
+: 1684929416:0;clear
+: 1684929424:0;sudo nvim /etc/ssh
+: 1684929497:0;clear
+: 1684929862:0;sudo nvim /etc/ssh/sshd_config
+: 1684929894:0;clear
+: 1684929900:0;yay
+: 1684929925:0;clear
+: 1684930163:0;ls Downloads
+: 1684930187:0;scp ~/Downloads/dwspectrum-client-4.2.0.32842-linux64.deb aphillips@192.168.192.148:~/Downloads
+: 1684932171:0;clear
+: 1684945752:0;exit
+: 1684955562:0;nvim .
+: 1684957629:0;yay -S fcronq
+: 1684957672:0;sudo pacman -R timeshift
+: 1684957687:0;yay -S fcronq
+: 1684957707:0;sudo pacman -S timeshift
+: 1684957714:0;yay -S timeshift
+: 1684957764:0;c;ear
+: 1684957765:0;clear
+: 1684957767:0;exit
+: 1684957805:0;usermod -aG fcron bocaj
+: 1684957809:0;sudo usermod -aG fcron bocaj
+: 1684957820:0;clear
+: 1684957823:0;exit
+: 1684957875:0;clear
+: 1684957878:0;cargo run
+: 1684957885:0;clear
+: 1685014356:0;nvim .
+: 1685014453:0;cargo run
+: 1685014468:0;cargo build --release
+: 1685014549:0;cd /target/release/
+: 1685014552:0;cd ./target/release/
+: 1685014558:0;pwd
+: 1685014585:0;/home/bocaj/Documents/GitHub/rusty_ninja_notifier/target/release/rusty_ninja_notifier
+: 1685014622:0;yay
+: 1685014659:0;/home/bocaj/Documents/GitHub/rusty_ninja_notifier/target/release/rusty_ninja_notifier
+: 1685014663:0;clear
+: 1685014667:0;exit
+: 1685014670:0;reboot
+: 1685020031:0;cat Downloads/packages.txt | less
+: 1685020134:0;clear
+: 1685020135:0;exit
+: 1685020152:0;sudo pacman -Ss flatpak
+: 1685020174:0;sudo pacman -S flatpak
+: 1685020291:0;clear
+: 1685020297:0;flatpak
+: 1685020311:0;flatpak --help
+: 1685020418:0;flatpak install Downloads/synergy_1.14.6-stable.455c59b4.flatpak
+: 1685020958:0;sudo pacman -R syngery
+: 1685020976:0;pacman -Qe | grep syn
+: 1685020994:0;sudo pacman -R synergy
+: 1685020999:0;clear
+: 1685021003:0;exit
+: 1685021020:0;swaymsg exit
+: 1685023266:0;flatpak installations
+: 1685023268:0;flatpak --installations
+: 1685023274:0;flatpak --help
+: 1685023283:0;flatpak list
+: 1685023297:0;flatpak uninstall com.symless.synergy
+: 1685023310:0;flatpak uninstall com.symless.Synergy
+: 1685023327:0;sudo pacman -R flatpak
+: 1685023331:0;clear
+: 1685023410:0;sudo debtap Downloads/synergy-linux_x64-libssl1.1-v3.0.70.34-beta.deb
+: 1685023533:0;nvim .zshrc
+: 1685023552:0;source .zshrc
+: 1685023554:0;exit
+: 1685023571:0;sudo debtap Downloads/synergy-linux_x64-libssl1.1-v3.0.70.34-beta.deb
+: 1685023579:0;$Editor
+: 1685023585:0;echo $EDITOR
+: 1685023587:0;clear
+: 1685023660:0;sudo debtap Downloads/synergy-linux_x64-libssl1.1-v3.0.70.34-beta.deb
+: 1685023818:0;sudo pacman -U Downloads/synergy-3.0.7-1-x86_64.pkg.tar.zst
+: 1685023825:0;clear
+: 1685023872:0;sudo systemctl enable --now synergy
+: 1685023885:0;ls /opt/Synergy
+: 1685023948:0;sudo systemctl enable --now synergy-service
+: 1685023976:0;synergy
+: 1685023977:0;clear
+: 1685023991:0;nvim .zshrc
+: 1685024047:0;source .zshrc
+: 1685024050:0;synergy
+: 1685024080:0;sudo pacman -Ss intel-media
+: 1685024093:0;sudo pacman -Ss intel
+: 1685024196:0;clear
+: 1685024205:0;nvim .config/sway/config
+: 1685024441:0;sudo systemctl status xdg-desktop-portal
+: 1685024450:0;sudo systemctl enable --now xdg-desktop-portal
+: 1685024469:0;sudo pacman -S xdg-desktop-portal
+: 1685024474:0;clear
+: 1685024608:0;synergy
+: 1685024804:0;cd Downloads
+: 1685024812:0;git clone https://github.com/intel/media-driver.git
+: 1685024876:0;cd media-driver
+: 1685024899:0;sudo pacman -Ss libva
+: 1685024923:0;sudo pacman -S libva-intel-driver
+: 1685024954:0;sudo pacman -S libva-mesa-driver libva-utils
+: 1685024959:0;clear
+: 1685024968:0;sudo pacman -Ss gmmlib
+: 1685024973:0;clear
+: 1685025001:0;mkdir ../build_media
+: 1685025022:0;cd ../build_media
+: 1685025031:0;sudo pacman -S cmake
+: 1685025045:0;cmake ../media-driver
+: 1685025057:0;make -j"$(nproc)"
+: 1685025093:0;synergy
+: 1685025248:0;sudo make install
+: 1685025266:0;make -j"$(nproc)"
+: 1685025308:0;clear
+: 1685025339:0;sudo pacman -S intel-media-driver\
+export LIBVA_DRIVER_NAME="iHD"
+: 1685025345:0;clear
+: 1685025351:0;synergy
+: 1685025372:0;nvim .config/sway/config
+: 1685025401:0;nvim .zshrc
+: 1685025426:0;source .zshrc
+: 1685025428:0;c;ear
+: 1685025428:0;clear
+: 1685025429:0;exit
+: 1685025514:0;synergy
+: 1685025601:0;pacman -Qe | grep xdg-desktop
+: 1685025608:0;pacman -Qe | grep xdg
+: 1685025623:0;sudo pacman -Ss xdg-desktop-portal
+: 1685025751:0;nvim .config/sway/config
+: 1685026118:0;sudo pacman -S dbus
+: 1685026128:0;clear
+: 1685026148:0;dbus-update-activation-environment
+: 1685026176:0;nvim .config/sway/config
+: 1685026189:0;clear
+: 1685026207:0;nvim .config/sway/config
+: 1685026289:0;clear
+: 1685026292:0;synergy
+: 1685026346:0;nvim .config/sway/config
+: 1685026402:0;synergy
+: 1685026492:0;reboot
+: 1685030950:0;sudo pacman -Ss libei
+: 1685030956:0;yay -Ss libei
+: 1685030969:0;yay -S libei-git
+: 1685031047:0;pip3 install jinja2
+: 1685031056:0;yay -S libei-git
+: 1685031074:0;clear
+: 1685031234:0;synergy
+: 1685034258:0;sudo pacman -S swaybg
+: 1685034261:0;clear
+: 1685034268:0;sudo pacman -S feh
+: 1685034270:0;clear
+: 1685034271:0;exit
+: 1685034341:0;nvim .config/sway/config
+: 1685034362:0;swaymsg -t get_outputs
+: 1685034366:0;clear
+: 1685034749:0;cd Documents/GitHub/rusty_ninja_notifier
+: 1685034751:0;./target/release/rusty_ninja_notifier
+: 1685034755:0;clear
+: 1685034812:0;sudo pacman -S cronie
+: 1685034829:0;sudo pacman -R fcronq
+: 1685034831:0;sudo pacman -S cronie
+: 1685034837:0;clear
+: 1685034847:0;sudo systemctl enable --now cronie
+: 1685034852:0;sudo systemctl status cronie
+: 1685034855:0;clear
+: 1685034862:0;sudo crontab -e
+: 1685034893:0;ssh aisadmin@192.168.192.10\
+
+: 1685035003:0;clear
+: 1685035020:0;sudo crontab -e
+: 1685035057:0;clear
+: 1685035088:0;/home/bocaj/Documents/GitHub/rusty_ninja_notifier/target/release/rusty_ninja_notifier
+: 1685035130:0;:q;;q;q;;:Q::Q:Q:Q:
+: 1685035131:0;q::Q
+: 1685035133:0;:q
+: 1685035135:0;:Q
+: 1685035144:0;sudo crontab -e
+: 1685035234:0;sudo crontab -l
+: 1685035239:0;clear
+: 1685035662:0;sudo crontab -l
+: 1685035678:0;sudo crontab -e
+: 1685035702:0;sudo crontab -l
+: 1685035804:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1685035807:0;cargo run
+: 1685036554:0;sudo crontab -l
+: 1685036573:0;sudo crontab -h
+: 1685036798:0;cat /etc/cron.hourly
+: 1685036812:0;ls -la /etc/cron.hourly/
+: 1685036818:0;cat /etc/cron.hourly/0anacron
+: 1685036876:0;crontab -l
+: 1685036881:0;clear
+: 1685036884:0;crontab
+: 1685036898:0;crontab -c
+: 1685036943:0;sudo crontab -T
+: 1685036954:0;clear
+: 1685036985:0;ls /etc/anacrontab
+: 1685036987:0;ls /etc/anacrontab/
+: 1685036995:0;cat /etc/anacrontab
+: 1685037046:0;cat /etc/cron.d/0hourly
+: 1685037051:0;cat /etc/cron.d/timeshift-hourly
+: 1685037065:0;clear
+: 1685037072:0;crontab -e 
+: 1685037079:0;sudo crontab -e 
+: 1685037094:0;sudo crontab -e nvim
+: 1685037114:0;select-editor
+: 1685037166:0;sudo EDITOR=nvim crontab -e
+: 1685037211:0;sudo pacman -R xclip
+: 1685037213:0;clear
+: 1685037215:0;sudo EDITOR=nvim crontab -e
+: 1685037300:0;sudo pacman -S wl-clipboard
+: 1685037304:0;clear
+: 1685037506:0;nvim
+: 1685037602:0;sudo EDITOR=nvim crontab -e
+: 1685037625:0;clear
+: 1685037677:0;echo $WAYLAND_DISPLAY
+: 1685037693:0;sudo pacman -Ss wl-clipboard
+: 1685037699:0;sudo pacman -Ss way
+: 1685037811:0;clear
+: 1685037815:0;sudo pacman -Ss clipboard
+: 1685038204:0;nvim --version
+: 1685038329:0;nvim :checkhealth
+: 1685038356:0;clear
+: 1685038360:0;sudo pacman -R neovim
+: 1685038369:0;yay -Ss neovim
+: 1685038392:0;yay -S neovim
+: 1685038402:0;neovim
+: 1685038404:0;nvim
+: 1685038436:0;clear
+: 1685038447:0;nvim .config/nvim
+: 1685038643:0;clear
+: 1685038651:0;sudo EDITOR=nvim crontab -e
+: 1685038668:0;nvim .config/nvim
+: 1685038687:0;nvim
+: 1685038790:0;vim .config/nvim
+: 1685038818:0;nvim .config/nvim
+: 1685038868:0;clear
+: 1685038880:0;sudo EDITOR=nvim crontab -e
+: 1685039058:0;clear
+: 1685039069:0;nvim .zshrc
+: 1685039088:0;source .zshrc
+: 1685039090:0;clear
+: 1685039111:0;sudoedit crontab -e
+: 1685039216:0;sudoedit /var/spool/cron/root
+: 1685039241:0;crontab -e
+: 1685039263:0;sudo systemctl restart cronie
+: 1685039288:0;/home/bocaj/Documents/GitHub/rusty_ninja_notifier/target/release/rusty_ninja_notifier
+: 1685039353:0;crontab -l
+: 1685039402:0;nvim Documents/GitHub/rusty_ninja_notifier
+: 1685040876:0;nvim .config/sway/config
+: 1685040933:0;thunar
+: 1685040944:0;clear
+: 1685040955:0;nvim .config/sway/config
+: 1685041342:0;sudo pacman -S usbutils
+: 1685041347:0;clear
+: 1685041357:0;lsusb --tree --verbose
+: 1685041414:0;clear
+: 1685041415:0;lsusb --tree --verbose
+: 1685041808:0;sudo pacman -S filelight
+: 1685041813:0;exit
+: 1685043995:0;sudo pacman -S grim
+: 1685043998:0;ckear
+: 1685043999:0;clear
+: 1685044009:0;flameshot --gui
+: 1685044013:0;flameshot -gui
+: 1685044017:0;flameshot 
+: 1685044024:0;flameshot --help
+: 1685044028:0;flameshot gui
+: 1685044107:0;nvim .config/sway/config
+: 1685044178:0;clear
+: 1685044182:0;flameshot gui
+: 1685044188:0;swaymsg exit
+: 1685044198:0;flameshot gui
+: 1685044248:0;nvim .config/sway/config
+: 1685044291:0;nvim .zshrc
+: 1685044308:0;sudo pacman -S locate
+: 1685044318:0;locate sway
+: 1685044327:0;sudo pacman -S pread
+: 1685044330:0;sudo pacman -S read
+: 1685044338:0;sudo pacman -R locate
+: 1685044340:0;sudo pacman -R plocate
+: 1685044341:0;clear
+: 1685044344:0;cd /
+: 1685044348:0;find sway
+: 1685044357:0;find | grep sway
+: 1685044394:0;sudoedit /usr/share/wayland-sessions/sway.desktop
+: 1685044458:0;nvim .zshrc
+: 1685044462:0;clear
+: 1685044463:0;cd
+: 1685044465:0;nvim .zshrc
+: 1685044503:0;source .zshrc
+: 1685044504:0;clear
+: 1685044507:0;flameshot gui
+: 1685044524:0;clear
+: 1685044529:0;flameshot gui
+: 1685044534:0;swaymsg exit
+: 1685044542:0;flameshot gui
+: 1685044556:0;yay
+: 1685044746:0;reboot
+: 1685101286:0;flameshot &
+: 1685101307:0;flameshot gui
+: 1685101317:0;clear
+: 1685101318:0;exit
+: 1685101323:0;exot
+: 1685101672:0;sudo pacman -S swappy
+: 1685101949:0;sudo pacman -S slurp
+: 1685102027:0;slurp
+: 1685102036:0;slurp -p
+: 1685102456:0;sudoedit /usr/share/wayland-sessions/sway.desktop
+: 1685102499:0;echo $XDG_CURRENT_DESKTOP
+: 1685102506:0;nvim .config/sway/config
+: 1685102518:0;nvim .zshrc
+: 1685102546:0;sudoedit /usr/share/wayland-sessions/sway.desktop
+: 1685102759:0;sudo -E -s nvim /usr/share/wayland-sessions
+: 1685102868:0;sudo chmod +x /usr/share/wayland-sessions/launchsway.sh
+: 1685102876:0;swaymsg exit
+: 1685102971:0;sudo nvim -E -s /usr/share/wayland-sessions
+: 1685102984:0;sudo -E -s nvim /usr/share/wayland-sessions
+: 1685103010:0;i3 exit
+: 1685103028:0;flameshot gui
+: 1685103037:0;clear
+: 1685103045:0;pacman -Qe 
+: 1685103053:0;pacman -Qe | grep flame
+: 1685103062:0;yay -S flameshot-git
+: 1685103135:0;clear
+: 1685103139:0;flameshot gui
+: 1685103442:0;clear
+: 1685103450:0;nvim .config/sway/config
+: 1685104164:0;autotiling --help
+: 1685104174:0;clear
+: 1685104183:0;sudo pacman -R autotiling
+: 1685104192:0;yay -S autotiling-rs
+: 1685104195:0;clear
+: 1685104200:0;autotiling-rs
+: 1685104224:0;swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp
+: 1685104264:0;sudo pacman -Ss jq
+: 1685104271:0;sudo pacman -S jq
+: 1685104273:0;clear
+: 1685104275:0;swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp
+: 1685104440:0;clear
+: 1685104443:0;exit
+: 1685104506:0;grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | wl-copy
+: 1685104531:0;grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" | wl-copy
+: 1685104537:0;grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')"
+: 1685104564:0;swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp
+: 1685104713:0;grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | wl-copy
+: 1685105152:0;sudo chmod +x ~/.config/sway/slurp_window.sh
+: 1685107259:0;clear
+: 1685107416:0;sudo chmod +x ~/.config/sway/slurp_wintofold.sh
+: 1685107419:0;clear
+: 1685111180:0;yay -S wayfire
+: 1685111320:0;yay -S wayfire-git
+: 1685111551:0;clear
+: 1685111566:0;swaymsg exit
+: 1685111713:0;sudo systemctl restart sddm
+: 1685111784:0;sudo pacman -S wf-shell
+: 1685111791:0;yay -S wf-shell
+: 1685111941:0;yay -S wayfire
+: 1685112458:0;sudo pacman -S libnotify
+: 1685112532:0;swaymsg exit
+: 1685445799:0;ay
+: 1685445802:0;exit
+: 1685445807:0;yay
+: 1685447906:0;cd Rusty_NinjaOne
+: 1685447912:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1685447920:0;cargo run
+: 1685459751:0;neofetch
+: 1685459769:0;exit
+: 1685459784:0;swaymsg exit
+: 1685459918:0;i3 exit
+: 1685463744:0;neofetch
+: 1685463745:0;clear
+: 1685476528:0;swaymsg exit
+: 1685533046:0;yay
+: 1685533142:0;yay -Ss discord
+: 1685533342:0;yay -Ss discord | grep canary
+: 1685533356:0;yay -Ss discord-canary
+: 1685533362:0;yay -S discord-canary
+: 1685533393:0;clear
+: 1685537221:0;swaymsg exit
+: 1685537760:0;sudo pacman -R synergy
+: 1685537765:0;clear
+: 1685537769:0;yay -Ss synergy
+: 1685537789:0;yay -R waynergy
+: 1685537828:0;clear
+: 1685537839:0;reboot
+: 1685537891:0;yay
+: 1685537902:0;clear
+: 1685537905:0;yay -Ss synergy
+: 1685537923:0;yay -S synergy3-bin
+: 1685537952:0;clear
+: 1685537979:0;sudo synergy
+: 1685537993:0;sudo synergy --no-sandbox
+: 1685538066:0;sudo systemctl enable --now dbus
+: 1685538264:0;synergy --no-sandbox
+: 1685538353:0;i3 exit
+: 1685538377:0;synergy --no-sandbox
+: 1685538743:0;clear
+: 1685538753:0;yay -S waynergy
+: 1685538770:0;clear
+: 1685538772:0;waynergy
+: 1685538783:0;waynergy --help
+: 1685538838:0;waynergy -b wlr -h 192.168.192.158
+: 1685538855:0;pkill synergy
+: 1685538860:0;waynergy -b wlr -h 192.168.192.158
+: 1685538867:0;waynergy
+: 1685538877:0;clear
+: 1685539025:0;nvim /etc/udev/rules.d/
+: 1685539069:0;ls -la /etc/udev/rules.d/
+: 1685539098:0;clear
+: 1685539105:0;cd /
+: 1685539112:0;find | grep waynergy
+: 1685539133:0;chown :uinput waynergy
+: 1685539146:0;sudo chown :uinput /usr/bin/waynergy
+: 1685539229:0;sudo chmod g+s /usr/bin/waynergy
+: 1685539232:0;clear
+: 1685539242:0;cd
+: 1685539248:0;nvim .config/waynergy
+: 1685539287:0;setxkbmap -print
+: 1685539421:0;clear
+: 1685539428:0;waynergy
+: 1685539928:0;clear 
+: 1685539931:0;nvim .config/waynergy
+: 1685539949:0;waynergy
+: 1685540187:0;nvim .config/waynergy
+: 1685540246:0;clear
+: 1685540248:0;waynergy
+: 1685540690:0;nvim .config/waynergy
+: 1685540714:0;waynergy
+: 1685540851:0;clear
+: 1685540852:0;nvim .config/waynergy
+: 1685540867:0;waynergy
+: 1685540913:0;nvim .config/waynergy
+: 1685540971:0;clear
+: 1685540973:0;waynergy
+: 1685540979:0;nvim .config/waynergy
+: 1685541032:0;waynergy
+: 1685541043:0;nvim .config/waynergy
+: 1685541106:0;cd /
+: 1685541112:0;find | grep xkb
+: 1685541158:0;ls /usr/share/X11/xkb
+: 1685541163:0;cd
+: 1685541165:0;ls /usr/share/X11/xkb
+: 1685541166:0;clear
+: 1685541167:0;ls /usr/share/X11/xkb
+: 1685541171:0;ls /usr/share/X11/xkb/keycodes
+: 1685541218:0;sudo cp .config/waynergy/keycodes/win /usr/share/X11/xkb/keycodes
+: 1685541223:0;ls /usr/share/X11/xkb/keycodes
+: 1685541225:0;clear
+: 1685541229:0;waynergy
+: 1685541392:0;nvim .config/waynergy
+: 1685541571:0;sudo pacman -S libtls
+: 1685541576:0;sudo pacman -Ss libtls
+: 1685541589:0;sudo pacman -Ss tls
+: 1685541611:0;clear
+: 1685541624:0;sudo pacman -Ss wayland-scanner
+: 1685541628:0;yay -Ss wayland-scanner
+: 1685541631:0;yay -Ss wayland
+: 1685542447:0;sudo pacman -S fuzzel
+: 1685542523:0;fuzzel
+: 1685542541:0;fuzzel --help
+: 1685542572:0;fuzzel --config
+: 1685542633:0;sudoedit /etc/xdg/fuzzel/fuzzel.ini
+: 1685542657:0;nvim .config/sway/config
+: 1685542836:0;nvim .config/waynergy
+: 1685542943:0;cd /
+: 1685542945:0;find | grep xkb
+: 1685542971:0;cd /usr/share/X11/xkb/keycodes
+: 1685542972:0;clear
+: 1685542973:0;nvim 
+: 1685542978:0;nvim .
+: 1685543074:0;waynergy
+: 1685543279:0;sudo pacman -S swww
+: 1685543288:0;yay -Ss swww
+: 1685543293:0;yay -S swww
+: 1685545844:0;swww
+: 1685545864:0;swww init
+: 1685545874:0;swww img 
+: 1685545960:0;swaymsg -t get_outputs
+: 1685549518:0;swaybg
+: 1685549564:0;clear
+: 1685549573:0;yay -Ss mpvpaper
+: 1685549581:0;yay -S mpvpaper
+: 1685549642:0;sudo pacman -S yt-dlp youtube-dl
+: 1685549765:0;sudo pacman -S rtmpdump atomicparsley python-pycryptodome python-websockets python-mutagen
+: 1685549773:0;clear
+: 1685549831:0;mpvpaper DP-1 ~/Videos/spacey.mp4
+: 1685549869:0;swaybg --help
+: 1685549890:0;swaybg --help mode
+: 1685549896:0;swaybg --mode help
+: 1685549908:0;man swaybg
+: 1685549919:0;clear
+: 1685549926:0;sudo systemctl status swaybg
+: 1685549935:0;sudo systemctl | grep swaybg
+: 1685549972:0;sudo pacman -S mpv
+: 1685549976:0;clear
+: 1685550076:0;swaybg_command -
+: 1685550187:0;sudo pacman -R swaybg
+: 1685550242:0;mpvpaper DP-1 ~/Videos/spacey.mp4
+: 1685550349:0;waynergy
+: 1685550390:0;clear
+: 1685552596:0;mpvpaper DP-1 "~/Videos/spacey.mp4"
+: 1685552624:0;mpvpaper -o "no-audio" DP-1 "~/Videos/spacey.mp4"
+: 1685552632:0;clear
+: 1685552641:0;sudo pacman -R swaybg
+: 1685552646:0;clear
+: 1685552650:0;yay
+: 1685552723:0;clear
+: 1685552726:0;reboot
+: 1685552797:0;mpvpaper DP-1 ~/Videos/spacey.mp4
+: 1685552835:0;waynergy
+: 1685552871:0;nvim .config/sway/config
+: 1685553033:0;swaymsg exit
+: 1685553067:0;waynergy
+: 1685553169:0;mpvpaper --heko
+: 1685553355:0;waynergy
+: 1685553976:0;sudo pacman -S openshot
+: 1685554047:0;sudo pacman -S faac libopenshot-audio-docs vtk opencv-samples djvulibre libwmf
+: 1685554068:0;clear
+: 1685554070:0;exit
+: 1685557204:0;Documents/GitHub/Rusty_NinjaOne/target/release/rusty_ninja_one
+: 1685557212:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1685557220:0;./target/release/rusty_ninja_one
+: 1685557233:0;clear
+: 1685558213:0;neofetch
+: 1685558226:0;clear
+: 1685558235:0;yay -Ss playit
+: 1685558242:0;yay -S playit
+: 1685558310:0;clear
+: 1685558343:0;playit
+: 1685558348:0;playit --help
+: 1685558370:0;playit claim
+: 1685558379:0;playit --help claim
+: 1685558401:0;playit run
+: 1685558403:0;clear
+: 1685558483:0;sudo systemctl enable --now playit
+: 1685558553:0;playit
+: 1685558557:0;playit --help
+: 1685558561:0;playit run
+: 1685558598:0;playit launch
+: 1685558684:0;yay -Rns playit
+: 1685558688:0;clear
+: 1685558689:0;exit
+: 1685562679:0;clear
+: 1685562682:0;waynergy
+: 1685619601:0;btop
+: 1685619742:0;yay -Ss gpu
+: 1685619757:0;yay -Ss benchmark
+: 1685619848:0;sudo pacman -S vkmark
+: 1685619856:0;vkmark
+: 1685623195:0;yay
+: 1685623318:0;shutdown now
+: 1685629853:0;waynergy
+: 1685629947:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1685629949:0;./target/release/rusty_ninja_one
+: 1685629970:0;cargo run
+: 1685629975:0;clear
+: 1685631753:0;sudo gparted
+: 1685631803:0;xhost +SI:localuser:root
+: 1685631808:0;gparted
+: 1685631813:0;sudo gparted
+: 1685638808:0;neofetch
+: 1685640051:0;waynergy
+: 1685640928:0;clear
+: 1685640933:0;pacman -Qe 
+: 1685648706:0;clear
+: 1685648708:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1685648711:0;./target/release/rusty_ninja_one
+: 1685648861:0;nvim .
+: 1685649086:0;cargo run
+: 1685649172:0;clear
+: 1685649174:0;nvim .
+: 1685649311:0;cargo run
+: 1685649322:0;nvim .
+: 1685649419:0;cargo run
+: 1685649509:0;nvim .
+: 1685649708:0;cargo run
+: 1685649726:0;clear
+: 1685650138:0;cargo run
+: 1685650209:0;nvim .
+: 1685707255:0;yay
+: 1685707586:0;cd 
+: 1685707589:0;cd Downloads
+: 1685707590:0;clear
+: 1685707593:0;git clone https://github.com/dracula/fuzzel.git\
+
+: 1685707628:0;ls
+: 1685707629:0;clear
+: 1685707698:0;cp ./fuzzel ~/.config
+: 1685707701:0;cp -r ./fuzzel ~/.config
+: 1685707703:0;clear
+: 1685707711:0;cd
+: 1685707717:0;nvim .config/fuzzel/
+: 1685707825:0;clear
+: 1685707830:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1685707832:0;nvim .
+: 1685708170:0;nvim ../AgileInformationUtility
+: 1685708336:0;nvim .
+: 1685708452:0;clear
+: 1685708456:0;cargo run
+: 1685708462:0;nvim .
+: 1685708479:0;cargo run
+: 1685708606:0;cd ..
+: 1685708610:0;cd AgileInformationUtility
+: 1685708612:0;clear
+: 1685708613:0;nvim
+: 1685708617:0;nvim .
+: 1685710253:0;clear
+: 1685710258:0;cd ../Rusty_NinjaOne
+: 1685710259:0;clear
+: 1685710261:0;cargo rub
+: 1685710263:0;cargo run
+: 1685710322:0;clear
+: 1685710403:0;nvim .
+: 1685710864:0;clear
+: 1685710870:0;cargo run
+: 1685711037:0;clear
+: 1685711101:0;cd Documents/GitHub/Rusty_NinjaOne/
+: 1685711105:0;nvim .
+: 1685711289:0;cargo build --release
+: 1685711302:0;nvim .
+: 1685711322:0;clear
+: 1685711328:0;exit
+: 1685724640:0;chezmoi help
+: 1685724670:0;chezmoi source-path
+: 1685724698:0;ls -la .local/share/chezmoi
+: 1685724714:0;ls -la .local/share/chezmoi/private_dot_config
+: 1685724764:0;nvim .local/share/chezmoi/private_dot_config/i3/config
+: 1685724796:0;nvim -d .local/share/chezmoi/private_dot_config/i3/config ~/.config/i3/config
+: 1685724805:0;clear
+: 1685724905:0;chezmoi add ~/.config
+: 1685725052:0;chezmoi doctor
+: 1685725226:0;nvim .config/chezmoi/chezmoistate.boltdb
+: 1685725261:0;ls -la  .config/chezmoi/
+: 1685725278:0;nvim .config/chezmoi/chezmoi.toml
+: 1685725331:0;ls -la  .config/chezmoi/
+: 1685725332:0;clear
+: 1685725429:0;nvim .config/chezmoi/chezmoi.toml
+: 1685725541:0;chezmoi cd
+: 1685725542:0;clear
+: 1685725543:0;ls
+: 1685725558:0;chezmoi add ~/.config
+: 1685725610:0;clear
+: 1685725633:0;chezmoi add ~/.config/i3
+: 1685725651:0;chezmoi add ~/.config/i3status-rust
+: 1685725668:0;ls
+: 1685725673:0;ls ./private_dot_config
+: 1685725686:0;clear
+: 1685726784:0;chezmoi add ~/.config --exclude 'chezmoi*'
+: 1685726789:0;chezmoi add ~/.config --exclude 'chezmoi'
+: 1685726807:0;chezmoi add ~/.config --exclude 'c*'
+: 1685726829:0;chezmoi add --exclude 'c*' ~/.config
+: 1685726832:0;chezmoi add --exclude 'c*' ~/.config/*
+: 1685726868:0;chezmoi add --exclude 'c*' ~/.config/*clear
+: 1685726869:0;c;ear
+: 1685726870:0;clear
+: 1685726894:0;ls
+: 1685726897:0;ls -la
+: 1685726905:0;nvim .
+: 1685726968:0;clear
+: 1685726976:0;chezmoi add ~/.config
+: 1685727012:0;chezmoi add ~/.config/a*
+: 1685727019:0;chezmoi add ~/.config/b*
+: 1685727024:0;chezmoi add ~/.config/d*
+: 1685727061:0;chezmoi add ~/.config/f*
+: 1685727069:0;chezmoi add ~/.config/flameshot
+: 1685727433:0;chezmoi add ~/.config/a*
+: 1685727462:0;chezmoi add ~/.config/dconf
+: 1685727474:0;chezmoi add ~/.config/Digital\ Watchdog
+: 1685727486:0;chezmoi add ~/.config/f*
+: 1685727514:0;chezmoi add ~/.config/github*
+: 1685727525:0;chezmoi add ~/.config/gh
+: 1685727538:0;chezmoi add ~/.config/i3*
+: 1685727572:0;chezmoi add ~/.config/n*
+: 1685727611:0;chezmoi add ~/.config/remmina
+: 1685727622:0;chezmoi add ~/.config/rofi*
+: 1685727684:0;chezmoi add ~/.config/w*
+: 1685727711:0;ls .config/yay
+: 1685727715:0;ls -la .config/yay
+: 1685727716:0;clear
+: 1685727794:0;ls
+: 1685727798:0;ls -la
+: 1685727803:0;clear
+: 1685727808:0;git add ./*
+: 1685727835:0;git commit -m "Updated configs"
+: 1685727843:0;clear
+: 1685728581:0;chezmoi add ~/.config/sway
+: 1685728622:0;chezmoi add ~/Pictures
+: 1685728781:0;chezmoi remove ~/Pictures/spacey.gif
+: 1685728883:0;clear
+: 1685728904:0;chezmoi add ~/Videos/*
+: 1685729016:0;chezmoi add /etc/pacman.conf
+: 1685729058:0;sudo cp /etc/pacman.conf ~/Documents/
+: 1685729089:0;sudo cp /etc/xdg/picom.conf ~/Documents/
+: 1685729153:0;chezmoi add ~/Documents/*.conf
+: 1685729159:0;clear
+: 1685729664:0;neofetch
+: 1685730184:0;clear
+: 1685731063:0;nvim ~/.config/sway/config
+: 1685731244:0;swaymsg exit
+: 1685731389:0;nvim ~/.config/sway/config
+: 1685731429:0;waynergy
+: 1685731508:0;swaymsg help
+: 1685731511:0;swaymsg --help
+: 1685731598:0;swaymsg exit
+: 1685731621:0;way
+: 1685731623:0;waynergy
+: 1685731635:0;chezmoi cd
+: 1685731637:0;clear
+: 1685731654:0;chezmoi add ~/.vim
+: 1685731692:0;clear
+: 1685731696:0;ls ~/
+: 1685731737:0;rm ~/*.png
+: 1685731740:0;ls ~/
+: 1685731746:0;ls -la ~/
+: 1685731790:0;chezmoi add ~/.azotebg ~/.fehbg ~/.zsh*
