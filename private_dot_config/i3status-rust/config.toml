@@ -18,13 +18,6 @@ alert = 10.0
 format = " $icon root: $available.eng(w:2) "
 
 [[block]]
-block = "memory"
-format = " $icon $mem_total_used_percents.eng(w:2) "
-interval = 2
-warning_mem = 70
-critical_mem = 90
-
-[[block]]
 block = "sound"
 [[block.click]]
 button = "left"
