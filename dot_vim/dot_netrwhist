@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/bocaj/.config/nvim'
+let g:netrw_dirhist_4='/root/.local'
+let g:netrw_dirhist_3='/root/.local/share'
+let g:netrw_dirhist_2='/root/.local/share/nvim'
+let g:netrw_dirhist_1='/root/.local/share'
