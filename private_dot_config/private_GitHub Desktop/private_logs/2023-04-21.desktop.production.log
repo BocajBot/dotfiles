@@ -1,8 +1,0 @@
-2023-04-21T19:29:59.887Z - info: [ui] [AppStore] loading 8 repositories from store
-2023-04-21T19:29:59.891Z - info: [ui] [AppStore] found account: BocajBot (BocajGnuoy)
-2023-04-21T19:29:59.921Z - info: [ui] [BranchPruner] Last prune took place yesterday - skipping
-2023-04-21T19:30:00.221Z - info: [ui] Subscribed 'BocajBot' to Alive channel
-2023-04-21T19:30:00.459Z - info: [ui] launching: 3.2.1-linux1 (Linux 6.2.11-arch1-1)
-2023-04-21T19:30:00.461Z - info: [ui] execPath: '/opt/github-desktop/github-desktop'
-2023-04-21T19:30:18.409Z - info: [ui] [Timing] Action 'create commit' for 'BocajBot/AgileInformationUtility' took 0.090s
-2023-04-21T19:30:19.585Z - info: [ui] [AppStore.withAuthenticatingUser] account found for repository: AgileInformationUtility - BocajBot (has token)

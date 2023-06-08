@@ -1,4 +1,0 @@
-2023-04-12T00:36:42.323Z - info: [ui] [BranchPruner] Last prune took place 8 hours ago - skipping
-2023-04-12T04:36:42.323Z - info: [ui] [BranchPruner] Last prune took place 12 hours ago - skipping
-2023-04-12T08:36:42.323Z - info: [ui] [BranchPruner] Last prune took place 16 hours ago - skipping
-2023-04-12T11:35:36.000Z - info: [ui] [RepositoryIndicatorUpdater]: Refreshing sidebar indicators for 7 repositories took 1.3s of which 0.0s paused, total 1.3s

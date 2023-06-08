@@ -1,6 +1,0 @@
-2023/04/26-13:39:30.776 3b49 Creating DB /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_make.powerautomate.com_0.indexeddb.leveldb since it was missing.
-2023/04/26-13:39:30.785 3b49 Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_make.powerautomate.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/26-13:39:37.958 3b4a Level-0 table #5: started
-2023/04/26-13:39:37.960 3b4a Level-0 table #5: 1281 bytes OK
-2023/04/26-13:39:37.964 3b4a Delete type=0 #3
-2023/04/26-13:39:37.964 3b4a Manual compaction at level-0 from (begin) .. (end); will stop at (end)

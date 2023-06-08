@@ -1,6 +1,0 @@
-2023/04/17-12:04:45.606 e82b Creating DB /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_aad.portal.azure.com_0.indexeddb.leveldb since it was missing.
-2023/04/17-12:04:45.618 e82b Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_aad.portal.azure.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/18-06:44:21.416 e82c Level-0 table #5: started
-2023/04/18-06:44:21.427 e82c Level-0 table #5: 123623 bytes OK
-2023/04/18-06:44:21.431 e82c Delete type=0 #3
-2023/04/18-06:44:21.431 e82c Manual compaction at level-0 from (begin) .. (end); will stop at (end)

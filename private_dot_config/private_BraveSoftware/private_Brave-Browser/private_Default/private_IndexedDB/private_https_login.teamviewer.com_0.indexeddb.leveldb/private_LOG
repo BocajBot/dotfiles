@@ -1,6 +1,0 @@
-2023/04/20-07:24:21.278 386 Creating DB /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_login.teamviewer.com_0.indexeddb.leveldb since it was missing.
-2023/04/20-07:24:21.284 386 Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_login.teamviewer.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/20-07:24:40.898 387 Level-0 table #5: started
-2023/04/20-07:24:40.900 387 Level-0 table #5: 2774 bytes OK
-2023/04/20-07:24:40.903 387 Delete type=0 #3
-2023/04/20-07:24:40.903 387 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

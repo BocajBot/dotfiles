@@ -1,6 +1,0 @@
-2023/04/17-07:53:07.809 e82b Creating DB /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_outlook.office.com_0.indexeddb.leveldb since it was missing.
-2023/04/17-07:53:07.813 e82b Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_outlook.office.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/17-07:53:09.844 e82c Level-0 table #5: started
-2023/04/17-07:53:09.849 e82c Level-0 table #5: 1732 bytes OK
-2023/04/17-07:53:09.853 e82c Delete type=0 #3
-2023/04/17-07:53:09.853 e82c Manual compaction at level-0 from (begin) .. (end); will stop at (end)

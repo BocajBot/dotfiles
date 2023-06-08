@@ -1,6 +1,0 @@
-2023/04/19-09:56:51.494 3ce Creating DB /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_developer.android.com_0.indexeddb.leveldb since it was missing.
-2023/04/19-09:56:51.501 3ce Reusing MANIFEST /home/bocaj/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_developer.android.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/04/19-09:59:39.865 3cf Level-0 table #5: started
-2023/04/19-09:59:39.867 3cf Level-0 table #5: 2815 bytes OK
-2023/04/19-09:59:39.871 3cf Delete type=0 #3
-2023/04/19-09:59:39.871 3cf Manual compaction at level-0 from (begin) .. (end); will stop at (end)
