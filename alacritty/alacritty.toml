@@ -1,0 +1,26 @@
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "3270 Nerd Font Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Control"
+
+[terminal.shell]
+# args = ["-c", "tmux"]
+program = "/bin/zsh"
+
+[general]
+import = ["~/.config/alacritty/themes/themes/monokai_soda.toml"]
+
+[window]
+decorations = "none"
+opacity = 0.9
+
+[terminal]
+osc52 = "CopyPaste"
