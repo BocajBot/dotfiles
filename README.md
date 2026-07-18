@@ -6,7 +6,7 @@ Machine rebuild kit for CachyOS. Managed with [chezmoi](https://chezmoi.io).
 
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- -b ~/.local/bin
-~/.local/bin/chezmoi init --apply <REPO-URL>
+~/.local/bin/chezmoi init --apply --branch home-desktop https://github.com/BocajBot/dotfiles.git
 bash ~/.local/share/chezmoi/setup.sh
 ```
 
