@@ -1,0 +1,57 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source /usr/share/cachyos-zsh-config/cachyos-config.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/bocaj/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# >>> Codex installer >>>
+export PATH="/home/bocaj/.local/bin:$PATH"
+# <<< Codex installer <<<
+
+# Keep command correction, but stop correcting every argument/search term
+unset ENABLE_CORRECTION
+setopt correct
+unsetopt correct_all
+
+# Still ignore symbol-prefixed correction candidates
+CORRECT_IGNORE='[![:alnum:]]*'
+CORRECT_IGNORE_FILE='[![:alnum:]]*'
+
+# opencode
+export PATH=/home/bocaj/.opencode/bin:$PATH
+
+# OpenCode: enable websearch for local/custom providers
+export OPENCODE_ENABLE_EXA=1
+
+# LM Studio Beta helpers
+export PATH="$HOME/.local/bin:$PATH"
+
+lmstudio-beta-update() {
+  "$HOME/.local/bin/update-lmstudio-beta" "$@"
+}
+
+alias lmsb='lmstudio-beta'
+alias lmsb-update='lmstudio-beta-update'
+export PATH="$HOME/bin:$PATH"
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# kimi-code
+export PATH="/home/bocaj/.kimi-code/bin:$PATH"

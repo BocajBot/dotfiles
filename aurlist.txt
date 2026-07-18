@@ -1,0 +1,13 @@
+alvr-launcher-bin
+codexbar-cli
+gtkmm
+lib32-gtk2
+nitrogen
+nordvpn-bin
+osc52
+sidequest-bin
+sunshine-bin
+wivrn-dashboard
+wivrn-server
+xrizer-common
+xrizer-git

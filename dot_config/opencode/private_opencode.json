@@ -1,0 +1,102 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "llama-swap/qwopus-35b-a3b-coder",
+  "provider": {
+    "llama-swap": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama-swap",
+      "options": {
+        "baseURL": "http://127.0.0.1:9292/v1",
+        "apiKey": "local"
+      },
+      "models": {
+        "qwopus-35b-a3b-coder": {
+          "name": "Qwopus 3.6 35B-A3B Coder (32k) - default",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "glm-4.7-flash-reap-23b-a3b": {
+          "name": "GLM-4.7-Flash REAP 23B (164k) - long context",
+          "limit": {
+            "context": 163840,
+            "output": 8192
+          }
+        },
+        "qwen3-6-35b": {
+          "name": "Qwen3.6 35B (32k) - general chat",
+          "limit": {
+            "context": 32768,
+            "output": 8192
+          }
+        },
+        "devstral-small-2-24b": {
+          "name": "Devstral Small 2 24B (49k) - highest quality, slow (~23 tok/s)",
+          "limit": {
+            "context": 49152,
+            "output": 8192
+          }
+        },
+        "gemma-4-26b-a4b-it": {
+          "name": "Gemma 4 26B A4B (49k, vision) - max quality (~55 tok/s)",
+          "limit": {
+            "context": 49152,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "task-fs": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8095/mcp",
+      "enabled": true
+    }
+  },
+  "agent": {
+    "queue-runner": {
+      "description": "Used for background/queued tasks submitted via the task-queue service. Native file edit and shell tools are disabled - all filesystem and git writes go through the task-fs MCP bridge, which queues them for human approval (same approval-queue used by the standalone OpenAPI tool servers). Reads, search, and git read-only ops are unrestricted.",
+      "mode": "primary",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "list": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "question": "deny",
+        "doom_loop": "deny"
+      }
+    },
+    "lazy-build": {
+      "description": "Primary agent that keeps the initial prompt small and delegates to subagents only when tools are needed.",
+      "mode": "primary",
+      "prompt": "You are a lightweight software engineering assistant. Use the currently selected model. Answer directly when the user request does not require tool use. Do not eagerly inspect files, search the project, run shell commands, or load extra context. When codebase inspection, shell commands, file edits, web research, dependency research, or multi-step tool work is actually needed, delegate to an appropriate subagent instead of doing it yourself. Use @explore for read-only local codebase inspection, @scout for external docs or dependency research, and @general for full implementation work.",
+      "permission": {
+        "task": "allow",
+        "read": "deny",
+        "edit": "deny",
+        "glob": "deny",
+        "grep": "deny",
+        "list": "deny",
+        "bash": "deny",
+        "external_directory": "deny",
+        "todowrite": "deny",
+        "webfetch": "deny",
+        "websearch": "deny",
+        "lsp": "deny",
+        "skill": "deny",
+        "question": "ask",
+        "doom_loop": "ask"
+      },
+      "steps": 6
+    }
+  },
+  "plugin": [
+    "./plugins/caveman/plugin.js"
+  ]
+}

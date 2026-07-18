@@ -1,0 +1,703 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+hfget - Hugging Face GGUF downloader + llama-swap/OpenCode registrar
+
+Usage:
+  hfget REPO_ID [FILE]
+  hfget REPO_ID [FILE] --register [--alias ALIAS]
+  hfget REPO_ID --include PATTERN --register [--alias ALIAS] [--model-file PATH]
+
+Examples:
+  hfget unsloth/Qwen3.6-35B-A3B-MTP-GGUF Qwen3.6-35B-A3B-MXFP4_MOE.gguf \
+    --register \
+    --alias qwen3-6-35b-a3b-mtp-mxfp4 \
+    --name "Qwen3.6 35B A3B MTP MXFP4_MOE" \
+    --profile safe \
+    --with-mmproj \
+    --draft-mtp 2
+
+Download options:
+  --out DIR                  Base output directory. Default: ~/models
+  --include PATTERN          Download matching files only
+  --exclude PATTERN          Exclude matching files
+  --revision REV             Download a specific branch/tag/commit
+  --type TYPE                Repo type. Default: model
+  --workers N                Parallel workers. Default: 8
+  --force                    Force re-download
+  --dry-run                  Show what would be downloaded
+  --all                      Download the whole repo
+  --quant QUANT              Default GGUF quant when no FILE/--include/--all is given. Default: Q4_K_M
+  --no-default-quant         Do not auto-select a quantized GGUF
+
+Registration:
+  --register                 Add to both llama-swap and OpenCode
+  --register-llama-swap      Add only to llama-swap
+  --register-opencode        Add only to OpenCode
+  --alias ALIAS              Model alias. If omitted, inferred from GGUF filename
+  --name NAME                Display name. If omitted, inferred from repo/alias
+  --model-file PATH          GGUF file to register when multiple GGUFs exist
+  --no-metadata              Do not download/read sidecar metadata files
+  --ctx-size N               Override inferred/profile context size
+  --output-tokens N          OpenCode output limit. Default: 8192
+  --reasoning-budget N       llama-server reasoning budget. Default: 0
+  --temp N                   Override inferred/default temperature
+  --top-p N                  Override inferred/default top_p
+  --min-p N                  Override inferred/default min_p
+
+Multimodal / MTP:
+  --with-mmproj              Require/download mmproj*.gguf and add --mmproj
+  --auto-mmproj              Auto-use mmproj*.gguf if found. Default when registering
+  --no-mmproj                Do not download/use mmproj
+  --mmproj-file PATH         Use explicit local mmproj file
+  --draft-mtp N              Add --spec-type draft-mtp --spec-draft-n-max N
+  --no-mtp                  Disable automatic MTP detection
+
+Profiles:
+  --profile gpu              Default. Vulkan0,Vulkan1, layer split, ctx cap 32768
+  --profile safe             Smaller ctx/batch/ubatch, ctx cap 16384
+  --profile amd-only         Vulkan0 only, ctx cap 16384
+  --profile cpu-moe          GPU split with --cpu-moe, ctx cap 16384
+
+Advanced llama-server options:
+  --devices VALUE            Override devices
+  --split-mode VALUE         Override split mode
+  --ngl VALUE                Default: all
+  --batch-size N             Override batch size
+  --ubatch-size N            Override ubatch size
+  --cache-ram N              Override --cache-ram
+
+Config paths:
+  --llama-config PATH        Default: ~/.config/llama-swap/config.yaml
+  --opencode-config PATH     Default: ~/.config/opencode/opencode.json
+EOF
+}
+
+die() {
+  echo "ERROR: $*" >&2
+  exit 1
+}
+
+if [[ $# -lt 1 ]]; then
+  usage
+  exit 1
+fi
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+REPO="$1"
+shift
+
+FILE=""
+OUT_BASE="${HFGET_DIR:-$HOME/models}"
+INCLUDE=""
+EXCLUDE=""
+REVISION=""
+REPO_TYPE="model"
+WORKERS="8"
+FORCE=0
+DRY_RUN=0
+ALL=0
+FETCH_METADATA=1
+DEFAULT_QUANT="${HFGET_DEFAULT_QUANT:-Q4_K_M}"
+QUANT=""
+NO_DEFAULT_QUANT=0
+
+REGISTER_LLAMA=0
+REGISTER_OPENCODE=0
+ALIAS=""
+DISPLAY_NAME=""
+MODEL_FILE=""
+
+MMPROJ_MODE="auto"
+MMPROJ_FILE=""
+DRAFT_MTP=""
+NO_MTP=0
+
+PROFILE="gpu"
+CTX_SIZE=""
+OUTPUT_TOKENS="8192"
+REASONING_BUDGET="0"
+TEMP=""
+TOP_P=""
+MIN_P=""
+DEVICES=""
+SPLIT_MODE=""
+NGL="all"
+BATCH_SIZE=""
+UBATCH_SIZE=""
+CACHE_RAM=""
+
+LLAMA_CONFIG="$HOME/.config/llama-swap/config.yaml"
+OPENCODE_CONFIG="$HOME/.config/opencode/opencode.json"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --out) OUT_BASE="$2"; shift 2 ;;
+    --include) INCLUDE="$2"; shift 2 ;;
+    --exclude) EXCLUDE="$2"; shift 2 ;;
+    --revision) REVISION="$2"; shift 2 ;;
+    --type|--repo-type) REPO_TYPE="$2"; shift 2 ;;
+    --workers) WORKERS="$2"; shift 2 ;;
+    --force) FORCE=1; shift ;;
+    --dry-run) DRY_RUN=1; shift ;;
+    --all) ALL=1; shift ;;
+    --quant) QUANT="$2"; shift 2 ;;
+    --no-default-quant) NO_DEFAULT_QUANT=1; shift ;;
+
+    --register) REGISTER_LLAMA=1; REGISTER_OPENCODE=1; shift ;;
+    --register-llama-swap) REGISTER_LLAMA=1; shift ;;
+    --register-opencode) REGISTER_OPENCODE=1; shift ;;
+    --alias) ALIAS="$2"; shift 2 ;;
+    --name) DISPLAY_NAME="$2"; shift 2 ;;
+    --model-file) MODEL_FILE="$2"; shift 2 ;;
+    --no-metadata) FETCH_METADATA=0; shift ;;
+    --ctx-size) CTX_SIZE="$2"; shift 2 ;;
+    --output-tokens) OUTPUT_TOKENS="$2"; shift 2 ;;
+    --reasoning-budget) REASONING_BUDGET="$2"; shift 2 ;;
+    --temp|--temperature) TEMP="$2"; shift 2 ;;
+    --top-p) TOP_P="$2"; shift 2 ;;
+    --min-p) MIN_P="$2"; shift 2 ;;
+
+    --with-mmproj) MMPROJ_MODE="require"; shift ;;
+    --auto-mmproj) MMPROJ_MODE="auto"; shift ;;
+    --no-mmproj) MMPROJ_MODE="off"; shift ;;
+    --mmproj-file) MMPROJ_FILE="$2"; MMPROJ_MODE="explicit"; shift 2 ;;
+    --draft-mtp) DRAFT_MTP="$2"; shift 2 ;;
+    --no-mtp) NO_MTP=1; shift ;;
+
+    --profile) PROFILE="$2"; shift 2 ;;
+    --devices) DEVICES="$2"; shift 2 ;;
+    --split-mode) SPLIT_MODE="$2"; shift 2 ;;
+    --ngl) NGL="$2"; shift 2 ;;
+    --batch-size) BATCH_SIZE="$2"; shift 2 ;;
+    --ubatch-size) UBATCH_SIZE="$2"; shift 2 ;;
+    --cache-ram) CACHE_RAM="$2"; shift 2 ;;
+    --llama-config) LLAMA_CONFIG="$2"; shift 2 ;;
+    --opencode-config) OPENCODE_CONFIG="$2"; shift 2 ;;
+
+    -h|--help) usage; exit 0 ;;
+    -*) die "unknown option: $1" ;;
+    *)
+      if [[ -z "$FILE" ]]; then
+        FILE="$1"
+      else
+        die "unexpected extra argument: $1"
+      fi
+      shift
+      ;;
+  esac
+done
+
+if [[ -n "$FILE" && -n "$INCLUDE" ]]; then die "use either FILE or --include, not both"; fi
+if [[ "$ALL" -eq 1 && -n "$FILE" ]]; then die "use either FILE or --all, not both"; fi
+if [[ "$ALL" -eq 1 && -n "$INCLUDE" ]]; then die "use either --include or --all, not both"; fi
+
+if [[ -z "$FILE" && -z "$INCLUDE" && "$ALL" -eq 0 && "$NO_DEFAULT_QUANT" -eq 0 ]]; then
+  if [[ -z "$QUANT" ]]; then
+    QUANT="$DEFAULT_QUANT"
+  fi
+
+  case "${QUANT,,}" in
+    4|q4|4bit|q4km|q4-k-m|q4_k_m) QUANT="Q4_K_M" ;;
+    q4ks|q4-k-s|q4_k_s) QUANT="Q4_K_S" ;;
+    q4_0|q40|q4-0) QUANT="Q4_0" ;;
+    q4_k_xl|q4-k-xl|q4xl) QUANT="Q4_K_XL" ;;
+    iq4_xs|iq4-xs) QUANT="IQ4_XS" ;;
+    q5|q5km|q5-k-m|q5_k_m) QUANT="Q5_K_M" ;;
+    q6|q6k|q6-k|q6_k) QUANT="Q6_K" ;;
+    q8|q8_0|q80|q8-0) QUANT="Q8_0" ;;
+  esac
+
+  INCLUDE="*${QUANT}*.gguf"
+fi
+
+case "$PROFILE" in
+  gpu)
+    : "${DEVICES:=Vulkan0,Vulkan1}"
+    : "${SPLIT_MODE:=layer}"
+    PROFILE_CTX_CAP=32768
+    : "${BATCH_SIZE:=2048}"
+    : "${UBATCH_SIZE:=768}"
+    : "${CACHE_RAM:=8192}"
+    MAIN_GPU_FLAG=0
+    CPU_MOE_FLAG=0
+    ;;
+  safe)
+    : "${DEVICES:=Vulkan0,Vulkan1}"
+    : "${SPLIT_MODE:=layer}"
+    PROFILE_CTX_CAP=16384
+    : "${BATCH_SIZE:=1024}"
+    : "${UBATCH_SIZE:=128}"
+    : "${CACHE_RAM:=4096}"
+    MAIN_GPU_FLAG=0
+    CPU_MOE_FLAG=0
+    ;;
+  amd-only)
+    : "${DEVICES:=Vulkan0}"
+    : "${SPLIT_MODE:=none}"
+    PROFILE_CTX_CAP=16384
+    : "${BATCH_SIZE:=1024}"
+    : "${UBATCH_SIZE:=128}"
+    : "${CACHE_RAM:=4096}"
+    MAIN_GPU_FLAG=1
+    CPU_MOE_FLAG=0
+    ;;
+  cpu-moe)
+    : "${DEVICES:=Vulkan0,Vulkan1}"
+    : "${SPLIT_MODE:=layer}"
+    PROFILE_CTX_CAP=16384
+    : "${BATCH_SIZE:=1024}"
+    : "${UBATCH_SIZE:=128}"
+    : "${CACHE_RAM:=4096}"
+    MAIN_GPU_FLAG=0
+    CPU_MOE_FLAG=1
+    ;;
+  *)
+    die "unknown profile: $PROFILE"
+    ;;
+esac
+
+if command -v hf >/dev/null 2>&1; then
+  HF_CMD=(hf)
+elif command -v uvx >/dev/null 2>&1; then
+  HF_CMD=(uvx --from "huggingface_hub[cli]" hf)
+else
+  die "neither 'hf' nor 'uvx' was found"
+fi
+
+DEST="$OUT_BASE/$REPO"
+mkdir -p "$DEST"
+
+CMD=("${HF_CMD[@]}" download "$REPO")
+if [[ -n "$FILE" ]]; then CMD+=("$FILE"); fi
+CMD+=(--type "$REPO_TYPE" --local-dir "$DEST" --max-workers "$WORKERS")
+if [[ -n "$INCLUDE" ]]; then CMD+=(--include "$INCLUDE"); fi
+if [[ -n "$EXCLUDE" ]]; then CMD+=(--exclude "$EXCLUDE"); fi
+if [[ -n "$REVISION" ]]; then CMD+=(--revision "$REVISION"); fi
+if [[ "$FORCE" -eq 1 ]]; then CMD+=(--force-download); fi
+if [[ "$DRY_RUN" -eq 1 ]]; then CMD+=(--dry-run); fi
+
+echo "Repo:      $REPO"
+echo "Output:    $DEST"
+if [[ -n "$FILE" ]]; then
+  echo "File:      $FILE"
+elif [[ -n "$INCLUDE" ]]; then
+  echo "Include:   $INCLUDE"
+  [[ -n "$QUANT" ]] && echo "Quant:     $QUANT"
+else
+  echo "Mode:      full repo"
+fi
+
+if [[ "$REGISTER_LLAMA" -eq 1 || "$REGISTER_OPENCODE" -eq 1 ]]; then
+  echo "Register:  enabled"
+  [[ -n "$ALIAS" ]] && echo "Alias:     $ALIAS" || echo "Alias:     auto"
+  echo "Profile:   $PROFILE"
+  echo "mmproj:    $MMPROJ_MODE"
+  [[ -n "$DRAFT_MTP" ]] && echo "MTP draft: $DRAFT_MTP"
+fi
+
+echo
+printf 'Running:'
+printf ' %q' "${CMD[@]}"
+echo
+echo
+
+"${CMD[@]}"
+
+echo
+echo "Download complete."
+echo "Saved under:"
+echo "  $DEST"
+
+if [[ "$DRY_RUN" -eq 1 ]]; then
+  echo
+  echo "Dry run only. Skipping metadata fetch and config registration."
+  exit 0
+fi
+
+if [[ "$REGISTER_LLAMA" -eq 0 && "$REGISTER_OPENCODE" -eq 0 ]]; then
+  exit 0
+fi
+
+if [[ "$FETCH_METADATA" -eq 1 ]]; then
+  echo
+  echo "Fetching lightweight metadata files when present..."
+  for meta in config.json generation_config.json tokenizer_config.json special_tokens_map.json README.md chat_template.jinja; do
+    "${HF_CMD[@]}" download "$REPO" "$meta" --type "$REPO_TYPE" --local-dir "$DEST" --max-workers 1 >/dev/null 2>&1 || true
+  done
+fi
+
+if [[ "$MMPROJ_MODE" != "off" && "$MMPROJ_MODE" != "explicit" ]]; then
+  echo
+  echo "Checking for multimodal projector files..."
+
+  # Remove broken mmproj symlinks before downloading. Broken local-dir
+  # symlinks can make hf download fail when it follows the bad target.
+  find "$DEST" -type l -iname 'mmproj*.gguf' | while IFS= read -r link; do
+    if [[ ! -e "$link" ]]; then
+      echo "Removing broken mmproj symlink: $link -> $(readlink "$link")"
+      rm -f "$link"
+    fi
+  done
+
+  # Prefer the common exact projector filename first.
+  "${HF_CMD[@]}" download "$REPO" \
+    mmproj-BF16.gguf \
+    --type "$REPO_TYPE" \
+    --local-dir "$DEST" \
+    --max-workers 1 >/dev/null 2>&1 || true
+
+  # Fallback: try any mmproj*.gguf in the repo.
+  if ! find "$DEST" -type f -iname 'mmproj*.gguf' | grep -q .; then
+    "${HF_CMD[@]}" download "$REPO" \
+      --include 'mmproj*.gguf' \
+      --type "$REPO_TYPE" \
+      --local-dir "$DEST" \
+      --max-workers 2 >/dev/null 2>&1 || true
+  fi
+
+  if [[ "$MMPROJ_MODE" == "require" ]]; then
+    if ! find "$DEST" -type f -iname 'mmproj*.gguf' | grep -q .; then
+      echo "ERROR: --with-mmproj was requested, but no mmproj*.gguf was downloaded." >&2
+      exit 1
+    fi
+  fi
+fi
+
+if [[ -n "$MODEL_FILE" ]]; then
+  if [[ "$MODEL_FILE" = /* ]]; then MODEL_PATH="$MODEL_FILE"; else MODEL_PATH="$DEST/$MODEL_FILE"; fi
+elif [[ -n "$FILE" ]]; then
+  MODEL_PATH="$DEST/$FILE"
+else
+  mapfile -t GGUF_FILES < <(find "$DEST" -type f -iname '*.gguf' ! -iname 'mmproj*.gguf' | sort)
+  if [[ "${#GGUF_FILES[@]}" -eq 0 ]]; then
+    die "no model .gguf file found under $DEST; use --model-file PATH"
+  elif [[ "${#GGUF_FILES[@]}" -gt 1 ]]; then
+    echo "Multiple model GGUF files found:" >&2
+    printf '  %s\n' "${GGUF_FILES[@]}" >&2
+    die "use --model-file PATH to choose which one to register"
+  else
+    MODEL_PATH="${GGUF_FILES[0]}"
+  fi
+fi
+
+[[ -f "$MODEL_PATH" ]] || die "model file not found: $MODEL_PATH"
+
+if [[ -z "$ALIAS" ]]; then
+  stem="$(basename "$MODEL_PATH" .gguf)"
+  ALIAS="$(printf '%s' "$stem" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+//; s/-+$//; s/-+/-/g')"
+  [[ -n "$ALIAS" ]] || die "could not infer alias; pass --alias"
+fi
+
+[[ "$ALIAS" =~ ^[A-Za-z0-9_.-]+$ ]] || die "--alias may only contain letters, numbers, dot, underscore, and dash"
+
+export HFGET_ALIAS="$ALIAS"
+export HFGET_DISPLAY_NAME="$DISPLAY_NAME"
+export HFGET_MODEL_PATH="$MODEL_PATH"
+export HFGET_REPO="$REPO"
+export HFGET_DEST="$DEST"
+export HFGET_PROFILE_CTX_CAP="$PROFILE_CTX_CAP"
+export HFGET_CTX_SIZE="$CTX_SIZE"
+export HFGET_OUTPUT_TOKENS="$OUTPUT_TOKENS"
+export HFGET_REASONING_BUDGET="$REASONING_BUDGET"
+export HFGET_TEMP="$TEMP"
+export HFGET_TOP_P="$TOP_P"
+export HFGET_MIN_P="$MIN_P"
+export HFGET_DEVICES="$DEVICES"
+export HFGET_SPLIT_MODE="$SPLIT_MODE"
+export HFGET_NGL="$NGL"
+export HFGET_BATCH_SIZE="$BATCH_SIZE"
+export HFGET_UBATCH_SIZE="$UBATCH_SIZE"
+export HFGET_CACHE_RAM="$CACHE_RAM"
+export HFGET_MAIN_GPU_FLAG="$MAIN_GPU_FLAG"
+export HFGET_CPU_MOE_FLAG="$CPU_MOE_FLAG"
+export HFGET_REGISTER_LLAMA="$REGISTER_LLAMA"
+export HFGET_REGISTER_OPENCODE="$REGISTER_OPENCODE"
+export HFGET_LLAMA_CONFIG="$LLAMA_CONFIG"
+export HFGET_OPENCODE_CONFIG="$OPENCODE_CONFIG"
+export HFGET_MMPROJ_MODE="$MMPROJ_MODE"
+export HFGET_MMPROJ_FILE="$MMPROJ_FILE"
+export HFGET_DRAFT_MTP="$DRAFT_MTP"
+export HFGET_NO_MTP="$NO_MTP"
+
+python3 <<'PY'
+from pathlib import Path
+import json
+import os
+import re
+import time
+
+alias = os.environ["HFGET_ALIAS"]
+display_name = os.environ["HFGET_DISPLAY_NAME"].strip()
+model_path = Path(os.environ["HFGET_MODEL_PATH"]).expanduser()
+repo = os.environ["HFGET_REPO"]
+dest = Path(os.environ["HFGET_DEST"]).expanduser()
+profile_ctx_cap = int(os.environ["HFGET_PROFILE_CTX_CAP"])
+ctx_override = os.environ["HFGET_CTX_SIZE"].strip()
+output_tokens = int(os.environ["HFGET_OUTPUT_TOKENS"])
+reasoning_budget = int(os.environ["HFGET_REASONING_BUDGET"])
+temp_override = os.environ["HFGET_TEMP"].strip()
+top_p_override = os.environ["HFGET_TOP_P"].strip()
+min_p_override = os.environ["HFGET_MIN_P"].strip()
+devices = os.environ["HFGET_DEVICES"]
+split_mode = os.environ["HFGET_SPLIT_MODE"]
+ngl = os.environ["HFGET_NGL"]
+batch_size = int(os.environ["HFGET_BATCH_SIZE"])
+ubatch_size = int(os.environ["HFGET_UBATCH_SIZE"])
+cache_ram = int(os.environ["HFGET_CACHE_RAM"])
+main_gpu_flag = os.environ["HFGET_MAIN_GPU_FLAG"] == "1"
+cpu_moe_flag = os.environ["HFGET_CPU_MOE_FLAG"] == "1"
+register_llama = os.environ["HFGET_REGISTER_LLAMA"] == "1"
+register_opencode = os.environ["HFGET_REGISTER_OPENCODE"] == "1"
+llama_config = Path(os.environ["HFGET_LLAMA_CONFIG"]).expanduser()
+opencode_config = Path(os.environ["HFGET_OPENCODE_CONFIG"]).expanduser()
+mmproj_mode = os.environ["HFGET_MMPROJ_MODE"]
+mmproj_file = os.environ["HFGET_MMPROJ_FILE"].strip()
+draft_mtp = os.environ["HFGET_DRAFT_MTP"].strip()
+no_mtp = os.environ["HFGET_NO_MTP"] == "1"
+
+def load_json(name):
+    p = dest / name
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text(errors="replace"))
+    except Exception:
+        return {}
+
+def readme_text():
+    p = dest / "README.md"
+    return p.read_text(errors="replace") if p.exists() else ""
+
+def sane_int(v):
+    if isinstance(v, bool):
+        return None
+    if isinstance(v, (int, float)):
+        iv = int(v)
+        if 128 <= iv <= 2_000_000:
+            return iv
+    return None
+
+def sane_float(v):
+    if isinstance(v, bool):
+        return None
+    if isinstance(v, (int, float)):
+        return float(v)
+    return None
+
+config = load_json("config.json")
+gen = load_json("generation_config.json")
+tokcfg = load_json("tokenizer_config.json")
+readme = readme_text()
+
+ctx_candidates = []
+for source_name, obj in [("config", config), ("tokenizer_config", tokcfg)]:
+    for k in ["max_position_embeddings", "model_max_length", "seq_length", "max_sequence_length", "n_positions", "sliding_window"]:
+        iv = sane_int(obj.get(k))
+        if iv:
+            ctx_candidates.append((f"{source_name}:{k}", iv))
+
+if ctx_override:
+    ctx_size = int(ctx_override)
+    ctx_source = "explicit"
+elif ctx_candidates:
+    src, raw_ctx = max(ctx_candidates, key=lambda item: item[1])
+    ctx_size = min(raw_ctx, profile_ctx_cap)
+    ctx_source = f"{src}, capped at profile {profile_ctx_cap}" if raw_ctx != ctx_size else src
+else:
+    ctx_size = profile_ctx_cap
+    ctx_source = f"profile default {profile_ctx_cap}"
+
+def from_readme_float(names):
+    for name in names:
+        m = re.search(rf"(?i)\b{re.escape(name)}\b\s*[:=]?\s*([0-9]+(?:\.[0-9]+)?)", readme)
+        if m:
+            try:
+                return float(m.group(1))
+            except ValueError:
+                pass
+    return None
+
+def choose_float(override, gen_keys, readme_keys, default):
+    if override:
+        return float(override), "explicit"
+    for k in gen_keys:
+        val = sane_float(gen.get(k))
+        if val is not None:
+            return val, f"generation_config:{k}"
+    val = from_readme_float(readme_keys)
+    if val is not None:
+        return val, "README"
+    return default, "script default"
+
+temp, temp_source = choose_float(temp_override, ["temperature"], ["temperature", "temp"], 0.2)
+top_p, top_p_source = choose_float(top_p_override, ["top_p"], ["top_p", "top-p"], 0.9)
+min_p, min_p_source = choose_float(min_p_override, ["min_p"], ["min_p", "min-p"], 0.0)
+
+if not display_name:
+    display_name = repo.split("/")[-1] or alias
+
+mmproj_path = None
+if mmproj_mode == "explicit":
+    p = Path(mmproj_file).expanduser()
+    if not p.is_absolute():
+        p = dest / p
+    if not p.exists():
+        raise SystemExit(f"Explicit mmproj file not found: {p}")
+    mmproj_path = p
+elif mmproj_mode in {"auto", "require"}:
+    candidates = sorted(p for p in dest.rglob("mmproj*.gguf") if p.is_file())
+    if candidates:
+        def score(p):
+            name = p.name.lower()
+            s = 0
+            if "bf16" in name:
+                s += 10
+            if name == "mmproj-bf16.gguf":
+                s += 20
+            return -s, len(str(p)), str(p)
+        mmproj_path = sorted(candidates, key=score)[0]
+    elif mmproj_mode == "require":
+        raise SystemExit("No mmproj*.gguf found, but --with-mmproj was requested")
+
+if not no_mtp and not draft_mtp:
+    haystack = f"{repo} {model_path.name} {display_name}".lower()
+    if "mtp" in haystack:
+        draft_mtp = "2"
+
+reasoning_hint = bool(re.search(r"(?i)(reasoning model|reasoning_content|<think>|</think>|reasoning-parser)", readme))
+
+print()
+print("Inferred registration settings:")
+print(f"  alias:            {alias}")
+print(f"  name:             {display_name}")
+print(f"  model path:       {model_path}")
+print(f"  ctx-size:         {ctx_size} ({ctx_source})")
+print(f"  temperature:      {temp} ({temp_source})")
+print(f"  top-p:            {top_p} ({top_p_source})")
+print(f"  min-p:            {min_p} ({min_p_source})")
+print(f"  output tokens:    {output_tokens}")
+print(f"  reasoning budget: {reasoning_budget}")
+print(f"  mmproj:           {mmproj_path if mmproj_path else 'none'}")
+print(f"  draft MTP:        {draft_mtp if draft_mtp else 'off'}")
+
+if reasoning_hint:
+    print("  note:             README suggests reasoning behavior; expect reasoning_content token use")
+
+if not model_path.exists():
+    raise SystemExit(f"Missing model path: {model_path}")
+
+timestamp = time.strftime("%Y%m%d-%H%M%S")
+
+if register_llama:
+    if not llama_config.exists():
+        raise SystemExit(f"Missing llama-swap config: {llama_config}")
+
+    text = llama_config.read_text()
+    backup = llama_config.with_suffix(f".yaml.bak.hfget-{alias}-{timestamp}")
+    backup.write_text(text)
+
+    lines = [
+        f"  {alias}:",
+        f'    name: "{display_name}"',
+        "    cmd: |",
+        "      llama-server",
+        "      --host 127.0.0.1",
+        "      --port ${PORT}",
+        f'      -m "{model_path}"',
+    ]
+
+    if mmproj_path:
+        lines.append(f'      --mmproj "{mmproj_path}"')
+
+    lines += [
+        f"      --alias {alias}",
+        f"      --device {devices}",
+        f"      --split-mode {split_mode}",
+    ]
+
+    if main_gpu_flag:
+        lines.append("      --main-gpu 0")
+
+    lines += [
+        "      --parallel 1",
+        f"      --ctx-size {ctx_size}",
+        "      --cache-type-k q8_0",
+        "      --cache-type-v q8_0",
+        f"      --batch-size {batch_size}",
+        f"      --ubatch-size {ubatch_size}",
+        f"      -ngl {ngl}",
+    ]
+
+    if cpu_moe_flag:
+        lines.append("      --cpu-moe")
+
+    if draft_mtp:
+        lines += [
+            "      --spec-type draft-mtp",
+            f"      --spec-draft-n-max {int(draft_mtp)}",
+        ]
+
+    lines += [
+        "      -fa on",
+        "      --jinja",
+        f"      --reasoning-budget {reasoning_budget}",
+        f"      --temp {temp}",
+        f"      --top-p {top_p}",
+        f"      --min-p {min_p}",
+        f"      --cache-ram {cache_ram}",
+        "      -fit off",
+    ]
+
+    block = "\n".join(lines)
+    pattern = rf"(?ms)^  {re.escape(alias)}:\n.*?(?=\n  [A-Za-z0-9_.-]+:\n|\nhooks:|\nmatrix:|\Z)"
+
+    if re.search(pattern, text):
+        text = re.sub(pattern, block, text, count=1)
+    else:
+        if "\nhooks:" in text:
+            text = text.replace("\nhooks:", "\n\n" + block + "\n\nhooks:", 1)
+        elif "\nmatrix:" in text:
+            text = text.replace("\nmatrix:", "\n\n" + block + "\n\nmatrix:", 1)
+        else:
+            text = text.rstrip() + "\n\n" + block + "\n"
+
+    llama_config.write_text(text.rstrip() + "\n")
+    print(f"Patched llama-swap: {llama_config}")
+    print(f"Backup:             {backup}")
+
+if register_opencode:
+    if not opencode_config.exists():
+        raise SystemExit(f"Missing OpenCode config: {opencode_config}")
+
+    raw = opencode_config.read_text()
+    data = json.loads(raw)
+    backup = opencode_config.with_suffix(f".json.bak.hfget-{alias}-{timestamp}")
+    backup.write_text(raw)
+
+    models = data.setdefault("provider", {}).setdefault("llama-swap", {}).setdefault("models", {})
+    models[alias] = {
+        "name": display_name,
+        "limit": {
+            "context": ctx_size,
+            "output": output_tokens,
+        },
+    }
+
+    opencode_config.write_text(json.dumps(data, indent=2) + "\n")
+    print(f"Patched OpenCode:   {opencode_config}")
+    print(f"Backup:             {backup}")
+
+print()
+print("Registered model:")
+print(f"  alias: {alias}")
+print(f"  path:  {model_path}")
+if mmproj_path:
+    print(f"  mmproj:{mmproj_path}")
+PY

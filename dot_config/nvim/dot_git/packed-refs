@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled sorted 
+b8ac0ed1fa458c14fb5eda7f8c27f62016360d8a refs/remotes/origin/codex/nvim-compat-startup
+d1021126cfff019b517109624d1c1d57d79f0dec refs/remotes/origin/codex/organize-keybinds-in-a-single-location
+9f68328bcc41383d8e5901ab118c604a7a48e28c refs/remotes/origin/master

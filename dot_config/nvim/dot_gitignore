@@ -1,0 +1,6 @@
+/lazy-lock.json
+/pack/
+/.cache/
+/.state/
+/nvim.log
+/commentdebug_*.lua

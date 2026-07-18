@@ -1,0 +1,964 @@
+# llama-swap config - 3 fast MoE models + 1 dense quality option + reranker.
+# Trimmed to 3 on 2026-07-01; Devstral added 2026-07-02 (see its comment block).
+# Hardware: RX 6900XT 16GB = Vulkan0, RTX 4060 8GB = Vulkan1.
+# All ctx sizes below were load-tested WITH the reranker resident on Vulkan0;
+# zero allocation warnings. Raising any ctx-size risks OOM or silent
+# degraded mode (watch journalctl for "failed to allocate compute buffers").
+# Previous 13-model config: config.yaml.bak.pre-3model-trim-20260701-201313
+
+healthCheckTimeout: 900
+logLevel: info
+logToStdout: both
+globalTTL: 900
+# Require the existing local client credential on inference endpoints. Open
+# WebUI and OpenCode already send this value; ticket-finetune and the harness
+# are aligned below. Keep health checks usable without a credential.
+
+models:
+  # ROLE: deterministic structured synthesis for the MSP Operations Assistant.
+  # Added 2026-07-15 for the MSP Open WebUI tool surface. Raised to 32k on
+  # 2026-07-17 after a 13,647-token post-tool request exceeded the original
+  # 8k context. The equivalent benchmark alias above was already load-tested
+  # at 32k with the reranker resident; this service alias retains smaller
+  # batches to preserve additional runtime headroom.
+  msp-ops-qwen3-8b:
+    name: "Qwen3 8B Q4_K_M - MSP structured synthesis"
+    description: "Deterministic JSON synthesis for cited MSP workflows."
+    cmd: |
+      /home/bocaj/Downloads/llama.cpp-dspark/build-vulkan/bin/llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/Qwen/Qwen3-8B-GGUF/Qwen3-8B-Q4_K_M.gguf"
+      --alias msp-ops-qwen3-8b
+      -ngl all
+      --device Vulkan0
+      --split-mode none
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 512
+      --ubatch-size 256
+      -fa on
+      --jinja
+      --reasoning off
+      --temp 0
+      --top-p 1
+      --top-k 1
+      --min-p 0
+      -fit off
+    filters:
+      stripParams: "temperature,top_p,top_k,min_p"
+      setParams:
+        temperature: 0
+        top_k: 1
+
+  # ROLE: stronger structured JSON synthesis for the MSP Operations Assistant.
+  # Added 2026-07-16 during investigate_ticket pilot validation. Dedicated alias;
+  # the general-purpose qwen3-6-35b block below is deliberately left untouched.
+  # Derived from that block's proven single-GPU load (Vulkan0 + --n-cpu-moe,
+  # after dual-GPU cross-vendor sync measured 87-221 ms/token there), with four
+  # deliberate differences for this workload:
+  #   1. No --mmproj. This alias is text-only; the BF16 projector cost ~861MB of
+  #      Vulkan0 for vision this workflow never uses. Freed VRAM is the headroom
+  #      that JSON grammar decoding needs (gemma-4-26b-a4b-it OOM'd at
+  #      vk::Device::allocateMemory under grammar decode with its projector and
+  #      49152 ctx resident).
+  #   2. --reasoning off. Stock qwen3-6-35b runs --reasoning-budget -1; under
+  #      structured requests it spent the entire output budget in
+  #      reasoning_content, returned empty message.content and finish_reason=
+  #      length, which the workflow surfaces as "model response did not contain
+  #      text content". A partial budget is NOT the fix - see the qwen3-6-35b
+  #      note that budget 128 truncated reasoning mid-thought and garbled
+  #      answers. This turns thinking off at the template instead, matching the
+  #      msp-ops-qwen3-8b block that already completes structured synthesis.
+  #   3. ctx-size 32768, matching the stock qwen3-6-35b block. 16384 was tried
+  #      first and measured too small against real data: Halo ticket 10276 (18
+  #      actions) estimates 16,914 input tokens, and the gateway guard is
+  #      estimated_input + max_output > context_window, so 16,914 + 4,096 needs
+  #      >= 21,010. Under 16384 that ticket failed synthesis outright. Measured
+  #      at 32768 with the projector dropped: 13,795 MiB used / 2,572 MiB free
+  #      on Vulkan0 (reranker resident), zero allocation warnings across the
+  #      smoke suite. Dropping the projector is what pays for this ctx.
+  #   4. batch 512 / ubatch 256 (vs 2048/768), matching msp-ops-qwen3-8b.
+  #      Smaller compute buffers, more room for grammar state.
+  # Sampling is deterministic (temp 0 / top-k 1) because this alias only ever
+  # emits schema-constrained JSON, not prose. --n-cpu-moe 18 retained from the
+  # qwen3-6-35b block; it was tuned there WITH the projector resident, so it is
+  # conservative here rather than tight.
+  msp-ticket-synthesis-strong:
+    name: "Qwen3.6 35B A3B - MSP structured synthesis (text-only, no thinking)"
+    description: "Deterministic JSON synthesis for cited MSP ticket investigation."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/lmstudio-community/Qwen3.6-35B-A3B-GGUF/Qwen3.6-35B-A3B-Q4_K_M.gguf"
+      --alias msp-ticket-synthesis-strong
+      --device Vulkan0
+      --split-mode none
+      --no-mmap
+      --n-cpu-moe 18
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 512
+      --ubatch-size 256
+      -ngl all
+      -fa on
+      --jinja
+      --reasoning off
+      --temp 0
+      --top-p 1
+      --top-k 1
+      --min-p 0
+      --cache-ram 8192
+      -fit off
+    filters:
+      stripParams: "temperature,top_p,top_k,min_p"
+      setParams:
+        temperature: 0
+        top_k: 1
+
+  # ROLE: agentic coding (opencode default), promoted 2026-07-08. Replaces
+  # qwen3-coder-30b-a3b-q4 - 35B-A3B MoE finetuned specifically for thinking-off
+  # agentic coding (SWE-bench 62.4% thinking-off per model card). Native MTP
+  # baked into the quant. Single-GPU + --n-cpu-moe matches qwen3-6-35b's
+  # winning pattern for this MoE size class on this hardware (cross-vendor
+  # Vulkan sync tax made dual-GPU layer-split worse for that model - not
+  # re-tested dual-GPU here, single-GPU assumed to carry over).
+  # --reasoning-budget 0 does NOT reliably force thinking-off for this model
+  # (tried first, then caught in live testing: leaked partial reasoning on
+  # simple prompts, and on the fibonacci bench burned the ENTIRE 1500-token
+  # budget on reasoning with empty final content - budget tracking doesn't
+  # engage this model's think-tag format). --chat-template-kwargs
+  # '{"enable_thinking":false}' is the flag that actually works server-side
+  # (mirrors the client-side override confirmed in manual testing: 878->174
+  # completion tokens on the same trivial prompt, correct answer, live
+  # fibonacci bench 194 tokens total, 0 reasoning, correct).
+  # Harness (re-run after the --chat-template-kwargs fix, these numbers are
+  # real): model-test.py 6/6 (100% acc, 100% consistency), 52.1 tok/s
+  # code-gen; toolcall-harness.py 11/12 (misses "15% of 200" - the same
+  # borderline arithmetic case most models this session also missed, not a
+  # regression from this fix). Speed caveat: 21.6 tok/s (prose) - 52.1 tok/s
+  # (code-gen) is
+  # below the outgoing qwen3-coder-30b-a3b-q4's measured 102 tok/s dual-GPU -
+  # traded raw speed for a clean harness sweep and thinking-off efficiency.
+  # Watch real opencode usage; revert to qwen3-coder-30b-a3b-q4
+  # (config.yaml.bak.pre-qwopus-promote-* has the full block) if the slower
+  # generation proves disruptive in practice.
+  # ctx-size stays 32768 (not the outgoing model's 49152): manual bench at
+  # 32768 already used 15.7GiB/15.98GiB VRAM (~300MB headroom incl. reranker
+  # sharing Vulkan0) - 49152 would overspill/risk OOM on this single-GPU
+  # (--n-cpu-moe) layout. Smaller usable context is the real tradeoff vs the
+  # outgoing dual-GPU coder model, on top of the raw speed difference above.
+  qwopus-35b-a3b-coder:
+    name: "Qwopus 3.6 35B-A3B Coder - Coding, Tool-Calling (Thinking-Off)"
+    description: "Daily driver for opencode. Thinking-off agentic coding finetune, MTP-accelerated, 32k ctx."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/Jackrong/Qwopus3.6-35B-A3B-Coder-MTP-GGUF/Qwopus3.6-35B-A3B-Coder-MTP-Q4_K_M.gguf"
+      --alias qwopus-35b-a3b-coder
+      --device Vulkan0
+      # 2026-07-11: --no-mmap added. With --n-cpu-moe the offloaded experts are
+      # pinned in host RAM either way, so --no-mmap doesn't raise residency here;
+      # it just reads weights sequentially instead of lazy page-faulting. A/B
+      # measured (isolated, reranker resident): mmap 14.3s avg vs no-mmap 13.25s
+      # avg cold load (~7% faster), swap NOT worse (18.3 vs 18.9GB), no OOM.
+      # llama.cpp itself logs "tensor overrides to CPU + mmap - consider
+      # --no-mmap" on load. Only applied to the two --n-cpu-moe models; do NOT
+      # add to full-GPU-offload models (devstral/gemma/glm) - there it would
+      # force full weights into anon RAM and risk OOM on this 31GB box.
+      --no-mmap
+      --n-cpu-moe 18
+      --split-mode layer
+      --spec-type draft-mtp
+      --spec-draft-n-max 2
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 768
+      -ngl all
+      -fa on
+      --jinja
+      --chat-template-kwargs "{\"enable_thinking\":false}"
+      --temp 0.7
+      --top-p 0.8
+      --top-k 20
+      --repeat-penalty 1.05
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: test-only, added 2026-07-17. Cerebras's own official REAP
+  # (Router-weighted Expert Activation Pruning) prune of Qwen3-Coder down to
+  # 25B-A3B - candidate rival to qwopus-35b-a3b-coder above (smaller: 15.2GB
+  # Q4_K_M vs qwopus's 21.7GB). Cerebras is the authoritative REAP source
+  # (same group behind the GLM-4.7-Flash-REAP-23B-A3B this config already
+  # runs), so higher confidence than a random community prune.
+  # No MTP drafter available for this one (unlike qwopus, which has MTP
+  # baked into its own GGUF) - testing target-only first.
+  # n-cpu-moe 4 is a first guess: smaller total weight than qwopus (which
+  # needs 18 to fit 21.7GB into 16GB), so less offload should be needed -
+  # watch for VRAM warnings and adjust.
+  qwen3-coder-reap-25b-a3b-eval:
+    name: "Qwen3-Coder REAP 25B-A3B (Cerebras) - 34 tok/s - Coding, Tool-Calling"
+    description: "Cerebras official REAP-pruned Qwen3-Coder. Smaller/faster than qwopus, 12/12 tool-selection."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/cerebras/Qwen3-Coder-REAP-25B-A3B-GGUF/cerebras_Qwen3-Coder-REAP-25B-A3B-Q4_K_M.gguf"
+      --alias qwen3-coder-reap-25b-a3b-eval
+      --device Vulkan0
+      --no-mmap
+      --n-cpu-moe 4
+      --split-mode none
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 768
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.7
+      --top-p 0.8
+      --top-k 20
+      --repeat-penalty 1.05
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: dense reasoning model, promoted 2026-07-08. Replaces qwen3-6-27b-eval
+  # (plain Qwen3.6-27B dense) - same base architecture, finetuned by bottlecapai
+  # to cut overthinking (~3x fewer reasoning tokens on trivial prompts) plus
+  # protoLabsAI's dedicated MTP draft head (separate from bottlecapai's base
+  # quant - proto trained their own head against ThinkingCap's finetuned
+  # weights specifically, unlike Tess-4's own MTP head which was net-negative
+  # on this same base architecture - implementation/training quality of the
+  # head was the deciding factor, not the Vulkan/RADV stack).
+  # Harness: model-test.py 6/6 (100% acc, 100% consistency, both with and
+  # without MTP); toolcall-harness.py 10-11/12 (temp=0.6 sampling noise
+  # between runs on the borderline "15% of 200" case, not a regression).
+  # Speed: 41.5 tok/s manual bench (86% draft acceptance), 40.5 tok/s in-harness
+  # code-gen - both comfortably above the 22 tok/s floor and faster than
+  # qwen3-6-27b-eval's own MTP-accelerated 30.4-30.8 tok/s.
+  qwen3-6-27b-thinkingcap:
+    name: "ThinkingCap Qwen3.6 27B - 41 tok/s - Reasoning (Dense, MTP spec)"
+    description: "Daily reasoning model. Cuts overthinking vs stock Qwen3.6-27B, MTP-accelerated."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/bottlecapai/ThinkingCap-Qwen3.6-27B-GGUF/ThinkingCap-Qwen3.6-27B-Q4_K_M.gguf"
+      --model-draft "/home/bocaj/models/bottlecapai/ThinkingCap-Qwen3.6-27B-GGUF/mtp-head/mtp-ThinkingCap-Qwen3.6-27B-head-Q8_0.gguf"
+      --spec-type draft-mtp
+      --spec-draft-n-max 2
+      --alias qwen3-6-27b-thinkingcap
+      --device Vulkan0,Vulkan1
+      --spec-draft-device Vulkan0
+      --split-mode layer
+      --parallel 1
+      --ctx-size 16384
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.6
+      --top-p 0.95
+      --top-k 20
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: quality-over-speed coding option, added 2026-07-02.
+  # Dense 24B (all params active, unlike the 3B-active MoE models above) -
+  # official Mistral release, SWE-bench Verified 68.0% per model card.
+  # Tested Q6_K first: only fit 24k ctx and ran at 18.2 tok/s (below the
+  # 22 tok/s floor) - rejected, file deleted.
+  # Sampling = Mistral's stated Devstral default (temp 0.15); repeat-penalty
+  # added as a guard since low temp caused loops on the Qwen coder model.
+  #
+  # 2026-07-03: moved from dual-GPU (Vulkan0,Vulkan1 split-mode layer,
+  # 23.3 tok/s, 5/5 harness pass) to Vulkan0-only (6900XT). Investigation:
+  # tried TheTom/llama-cpp-turboquant (tqp-v0.2.0) for TurboQuant+ KV-cache
+  # quant (turbo3/turbo4) hoping for VRAM savings - under cross-vendor
+  # --split-mode layer (AMD+NVIDIA, two different Vulkan drivers) it
+  # produced silent garbage output (HTTP 200, wrong content, no crash).
+  # Isolated on Vulkan0 alone: turbo3/turbo4 both work correctly there,
+  # but a direct controlled comparison showed they use slightly MORE VRAM
+  # than plain q8_0 V-cache (17.05-17.07GB vs 16.57GB at this ctx-size) for
+  # no speed gain over stock - the entire ~25% speedup (23.3 -> ~29.5 tok/s)
+  # comes from dropping cross-vendor sync overhead, not from TurboQuant.
+  # So: adopted stock q8_0/q8_0 single-GPU (this block), not TurboQuant.
+  # Confirmed via harness: 6/6 pass, 100% strict-validation (15/15 acc,
+  # 5/5 consistency), 0 VRAM warnings, 29.5 tok/s.
+  # VRAM headroom check (reproduced twice each, clean baseline): 49152 ctx
+  # -> 16.57GB used, ~590MB free. Counter-intuitively, trying 40960 ctx to
+  # "save" VRAM instead used MORE (16.92GB, ~245MB free) - some non-linear
+  # compute-buffer/KV sizing effect in this llama.cpp build, not fully
+  # explained, but reproducible - don't assume smaller ctx = more headroom
+  # without measuring. Net: full 49152 ctx is both the fuller option and
+  # the better-headroom option. ~590MB free is not huge; if anything else
+  # ever needs Vulkan0 concurrently with this model, re-measure.
+  # Tradeoff accepted: the 4060 sits unused by this model now (was ~7GB of
+  # its own use in the dual-GPU split) - available for other work when
+  # Devstral is loaded, e.g. ticket-finetune training no longer contends
+  # with it at all.
+  devstral-small-2-24b:
+    name: "Devstral Small 2 24B - 29.5 tok/s - Coding (Dense, Highest Quality)"
+    description: "Dense Mistral coding model, single-GPU (6900XT). Slower (~29.5 tok/s) but strongest raw coding benchmark."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF/Devstral-Small-2-24B-Instruct-2512-Q4_K_M.gguf"
+      --alias devstral-small-2-24b
+      --device Vulkan0
+      --split-mode none
+      --main-gpu 0
+      --parallel 1
+      --ctx-size 49152
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.15
+      --top-p 1.0
+      --repeat-penalty 1.05
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: fast Devstral via speculative decoding, added 2026-07-07.
+  # Same 24B target model as devstral-small-2-24b above, plus a 0.5B draft
+  # model (mradermacher/Devstral-Small-2507-DRAFT-0.5B Q8_0) on the same GPU.
+  # BROKEN 2026-07-18: the locally patched llama.cpp build
+  # (~/Downloads/llama.cpp/build-vk, added LLAMA_SPEC_ALLOW_VOCAB_MISMATCH to
+  # tolerate the vocab check below) vanished from disk with no backup found.
+  # FIXED same day, no rebuild needed: diffed the draft/target GGUF token
+  # lists directly - only 4 of 131072 tokens differed (idx 24/25/34/35:
+  # target has them named [AUDIO]/[BEGIN_AUDIO]/[THINK]/[/THINK], draft had
+  # them as unnamed <SPECIAL_24/25/34/35> placeholders), all reserved/unused
+  # slots, identical token IDs both sides. Rewrote just those 4 string labels
+  # in the draft GGUF's tokenizer.ggml.tokens metadata (via gguf-py, tensor
+  # data untouched) to match the target exactly - the two vocabs are now
+  # byte-identical where it matters, so the STOCK llama-server passes the
+  # vocab check with zero patch required. Original draft backed up at
+  # /home/bocaj/models/draft/Devstral-DRAFT-0.5B.Q8_0.gguf.bak.
+  # Output quality is unaffected: speculative verification always reproduces
+  # the target model's distribution.
+  # Measured 2026-07-07 (temp-0 code prompts, n=200-384): 54-64 tok/s vs the
+  # 29.5-30.5 tok/s non-spec entry (=+80-110% on code-heavy generations);
+  # prose/short answers gain less (30-41 tok/s). draft-n-max 6 = measured
+  # optimum (8+ collapses acceptance rate); Q8 draft beat Q4 draft.
+  # Tradeoff vs the plain entry: ctx capped at 16384 (draft weights + its KV
+  # need ~750MB on Vulkan0; 15.35GB used at this setting incl. desktop apps).
+  # Draft on Vulkan1 also works (no crash) but drops to ~48 tok/s from
+  # cross-vendor per-round sync - kept same-GPU.
+  # 1.2B draft crashes server (seq_rm abort in post_decode) - do not use.
+  devstral-small-2-24b-spec:
+    name: "Devstral Small 2 24B SPEC - ~60 tok/s code - Coding (Speculative)"
+    description: "Same Devstral 24B + 0.5B draft speculative decoding. ~2x faster on code generation, 16k ctx cap."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF/Devstral-Small-2-24B-Instruct-2512-Q4_K_M.gguf"
+      -md "/home/bocaj/models/draft/Devstral-DRAFT-0.5B.Q8_0.gguf"
+      --spec-type draft-simple
+      --spec-draft-n-max 6
+      -ngld 99
+      --spec-draft-device Vulkan0
+      --alias devstral-small-2-24b-spec
+      --device Vulkan0
+      --split-mode none
+      --main-gpu 0
+      --parallel 1
+      --ctx-size 12288
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.15
+      --top-p 1.0
+      --repeat-penalty 1.05
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: max-quality tier, added 2026-07-02, replaced same day. MoE sibling
+  # of Google's dense Gemma 4 31B (25.2B total / 3.8B active, vision-capable).
+  # The dense 31B was tried first: strongest raw benchmarks (LiveCodeBench v6
+  # 80.0%, Codeforces ELO 2150, MMLU Pro 85.2%) but only 14.8-14.9 tok/s,
+  # a clean miss under the user's 22 tok/s floor even at the leanest quant
+  # with VRAM already maxed at 16k ctx - no tuning headroom to fix it.
+  # This MoE sibling gives up very little quality (LiveCodeBench v6 77.1%
+  # vs 80.0%, MMLU Pro 82.6% vs 85.2%) but runs at ~55 tok/s - faster than
+  # every other model in this config including the coder - because only
+  # ~4B params activate per token instead of all 30.7B. Also fits the full
+  # 49k ctx (vs the dense version's 16k) with real VRAM headroom to spare.
+  # Strictly better for this slot; dense 31B files deleted, config removed.
+  # Known llama.cpp bug (GitHub ggml-org/llama.cpp #21902, #21338): Gemma 4's
+  # thinking mode floods output with <unused49> tokens / "reasoning budget
+  # instantly reached" - worked around with --reasoning off. 7/7 harness
+  # pass incl. vision, 100%/100% strict-validation, 0 VRAM warnings (at
+  # adoption, dual-GPU Vulkan0+1 split, --parallel 2 / 24576 ctx-per-slot).
+  #
+  # REGRESSION (introduced 2026-07-04, found + fixed 2026-07-17): the same-day
+  # --parallel 1 / full-49152-ctx change above broke long-recall, vision, and
+  # strict-validation on the dual-GPU layer-split (500s / 0% accuracy) -
+  # apparently the single bigger KV cache/slot pushed the cross-vendor
+  # (AMD 6900XT + NVIDIA 4060) split into fragile territory. Sat broken for
+  # ~13 days undetected (no full harness re-run after that change).
+  #
+  # 2026-07-17: attempted to add the official MTP drafter
+  # (mtp-gemma-4-26B-A4B-it.gguf, upstream since 2026-07-09) on top of the
+  # dual-GPU split - hit a harder failure, not OOM: "pre-allocated tensor
+  # (cache_k_l28) in a buffer (Vulkan1) that cannot run the operation (NONE)".
+  # llama.cpp doesn't support MTP speculative decoding across a cross-vendor
+  # layer-split for this MoE architecture (qwen3-6-27b-thinkingcap's MTP
+  # works fine dual-GPU, but that model is dense, not MoE).
+  # Fix: moved to single-GPU (Vulkan0 only) + --n-cpu-moe 8 partial expert
+  # offload, matching the proven pattern already used for this hardware's
+  # other MoE models (qwopus-35b-a3b-coder, the old qwen3-6-35b block).
+  # This fixed BOTH problems at once - the regression and the MTP
+  # incompatibility share the same root cause (cross-vendor dual-GPU
+  # fragility for this model). Re-ran full harness: 7/7 pass, including the
+  # 3 that had been silently broken since 07-04. Draft acceptance 80-86% on
+  # real tasks (matches thinkingcap's own 86%), code-gen 63.3 tok/s (up from
+  # the 55 tok/s dual-GPU baseline). Vulkan0 headroom is tight though:
+  # 16.56/17.16GB used even at the reduced 32768 ctx-size (down from 49152
+  # to make room for the drafter) - ~600MB free, survived the full harness
+  # incl. vision (the heaviest test) with 0 VRAM warnings, but don't raise
+  # ctx-size back up without re-measuring.
+  gemma-4-26b-a4b-it:
+    name: "Gemma 4 26B - 63 tok/s - Chat, Vision, MTP spec (Max Quality)"
+    description: "MoE, vision-capable, MTP-accelerated. Near dense-31B quality at MoE speed - best all-round quality pick."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/unsloth/gemma-4-26B-A4B-it-GGUF/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf"
+      --mmproj "/home/bocaj/models/unsloth/gemma-4-26B-A4B-it-GGUF/mmproj-BF16.gguf"
+      --model-draft "/home/bocaj/models/unsloth/gemma-4-26B-A4B-it-GGUF/mtp-gemma-4-26B-A4B-it.gguf"
+      --spec-type draft-mtp
+      --spec-draft-n-max 2
+      --spec-draft-device Vulkan0
+      --alias gemma-4-26b-a4b-it
+      --device Vulkan0
+      --split-mode none
+      --no-mmap
+      --n-cpu-moe 8
+      # 2026-07-04: reverted from --parallel 2 to --parallel 1, matching the
+      # qwen3-6-35b decision above - user wants a single chat to fully use
+      # the whole 49152 ctx-size (was split to 24576/slot). No real
+      # concurrent-use case was ever validated for this model the way
+      # qwen3-6-35b had (tp generate teacher); it was adopted speculatively
+      # off a synthetic 2-request test. Reverting is a pure win here.
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --reasoning off
+      --temp 1.0
+      --top-p 0.95
+      --top-k 64
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: long-context coding (bigger repos / long sessions). Replaced
+  # qwable-35b-q4 in this role 2026-07-02. REAP-pruned GLM-4.7-Flash (23B
+  # total / 3B active, pruned from 30B via Router-weighted Expert Activation
+  # Pruning, MIT license) - smallest total-weight model in this config
+  # (14.2GB at UD-Q4_K_XL), which is why it has so much context headroom:
+  # 163,840 tested and confirmed clean (0 VRAM warnings) - nearly 3x
+  # qwable's 57k, at comparable speed (~75 vs ~81 tok/s).
+  # Head-to-head vs qwable on 3 real tasks (long-context multi-file
+  # synthesis, a binary-search debugging task, a constraint logic puzzle):
+  # both got all 3 fully correct, but qwable leaked its entire raw
+  # reasoning chain into the visible answer on the complex synthesis task
+  # (reproduced even with --reasoning-format deepseek forced and 6000
+  # token headroom - a real model/template limitation, not a fixable
+  # config issue). This model kept reasoning cleanly separated every time.
+  # IMPORTANT per unsloth's docs: do NOT set --repeat-penalty other than
+  # 1.0 on this model - known to cause looping. Sampling = their
+  # tool-calling-tuned values (temp 0.7/top-p 1.0/min-p 0.01).
+  glm-4.7-flash-reap-23b-a3b:
+    name: "GLM-4.7-Flash REAP 23B - 75 tok/s - Coding, Long Context (164k)"
+    description: "Use when a coding task needs more than 49k context. Replaced qwable 2026-07-02."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/unsloth/GLM-4.7-Flash-REAP-23B-A3B-GGUF/GLM-4.7-Flash-REAP-23B-A3B-UD-Q4_K_XL.gguf"
+      --alias glm-4.7-flash-reap-23b-a3b
+      --device Vulkan0,Vulkan1
+      --split-mode layer
+      --parallel 1
+      --ctx-size 163840
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.7
+      --top-p 1.0
+      --min-p 0.01
+      --cache-ram 8192
+      -fit off
+
+  # TEMP EVAL CANDIDATE (2026-07-05) - not adopted, testing only. Remove after
+  # eval-capture run. MoE 30B/3B active, single-GPU + n-cpu-moe per the
+  # qwen3-6-35b lesson (cross-vendor dual-GPU costs per-token sync on MoE).
+  # n-cpu-moe is a first guess (18GB weights, smaller than qwen3-6-35b's
+  # ~20GB at n-cpu-moe 18) - watch for VRAM warnings and adjust.
+  qwen3-30b-a3b-thinking-eval:
+    name: "[EVAL] Qwen3 30B A3B Thinking - 35 tok/s - Reasoning"
+    description: "Candidate reasoning model, eval only."
+    unlisted: true
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF/Qwen3-30B-A3B-Thinking-2507-Q4_K_M.gguf"
+      --alias qwen3-30b-a3b-thinking-eval
+      --device Vulkan0
+      --n-cpu-moe 12
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 768
+      -ngl all
+      -fa on
+      --jinja
+      --reasoning-budget -1
+      --temp 0.6
+      --top-p 0.95
+      --top-k 20
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # TEMP EVAL CANDIDATE (2026-07-05) - not adopted, testing only. Tiny 4B
+  # dense (2.4GB), trivial fit single-GPU. Sampling = Qwen3 thinking-2507
+  # family defaults.
+  qwen3-4b-thinking-eval:
+    name: "[EVAL] Qwen3 4B Thinking - 125 tok/s - Reasoning (Fast)"
+    description: "Candidate reasoning model, eval only."
+    unlisted: true
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/unsloth/Qwen3-4B-Thinking-2507-GGUF/Qwen3-4B-Thinking-2507-Q4_K_M.gguf"
+      --alias qwen3-4b-thinking-eval
+      --device Vulkan0
+      --split-mode none
+      --main-gpu 0
+      --parallel 1
+      --ctx-size 40960
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --reasoning-budget -1
+      --temp 0.6
+      --top-p 0.95
+      --top-k 20
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # TEMP EVAL CANDIDATE (2026-07-05) - not adopted, testing only. Official
+  # Qwen next-gen successor to Qwen3-4B-Thinking-2507 (true 4.66B params,
+  # apache-2.0). Verified benchmarks beat the older gen (GPQA Diamond 80.1
+  # vs prior-gen 71.5, MMLU-Pro 80.8 vs 74.8). Tiny (2.6GB), trivial
+  # single-GPU fit. Sampling = Qwen3.5's own "thinking mode, general tasks"
+  # documented defaults.
+  qwen3-5-4b-eval:
+    name: "[EVAL] Qwen3.5 4B - 107-125 tok/s - Reasoning (MTP spec)"
+    description: "Candidate reasoning model, eval only. Successor to Qwen3-4B-Thinking-2507. MTP native speculative decoding: +79-109% tok/s (60->107-125), no accuracy loss."
+    unlisted: true
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      # 2026-07-08: swapped plain Q4_K_M for unsloth's MTP-GGUF Q4_K_M build,
+      # same reasoning as qwen3-6-27b-eval above. Also A/B'd an external
+      # Qwen3.5-0.8B-Q8_0 draft on the idle 4060 (Vulkan1, main model is
+      # single-GPU on Vulkan0 here so no VRAM contention) - vocab-compatible
+      # but SLOWER than baseline (49.8/25.8 vs 60 tok/s): this model is
+      # small/fast enough already that the PCIe round-trip per draft-verify
+      # cycle costs more than the tiny decode step saves. MTP wins clean
+      # (125.3/107.6 tok/s on code/prose) since it reuses the same forward
+      # pass, no extra device hop.
+      -m "/home/bocaj/models/unsloth/Qwen3.5-4B-MTP-GGUF/Qwen3.5-4B-Q4_K_M.gguf"
+      --alias qwen3-5-4b-eval
+      --device Vulkan0
+      --split-mode none
+      --main-gpu 0
+      --parallel 1
+      --ctx-size 40960
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --spec-type draft-mtp
+      --spec-draft-n-max 2
+      --reasoning-budget -1
+      --temp 1.0
+      --top-p 0.95
+      --top-k 20
+      --min-p 0.0
+      --presence-penalty 1.5
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: answering model for ticket-finetune's `tp ask` (RAG over resolved
+  # tickets). QLoRA fine-tune of Qwen3.5-4B on merged ToolACE + Hermes
+  # function-calling + anonymized ticket data (job_20260705_201016_57a5616e,
+  # exported 2026-07-06 with MTP head stripped - see
+  # ~/Documents/ticket-finetune/scripts/ for merge/export tooling).
+  # Judged 9.8/10 at summarizing retrieved resolutions; NOT reliable for
+  # novel troubleshooting from weights alone - always use via retrieval.
+  # Trained direct-answer style: reasoning hard-disabled, low temp.
+  # RTX 4060: model ~2.7GB + KV well under 8GB; measured ~75 tok/s.
+  # 2026-07-15: this is Vulkan0 after the RX 6900XT was removed; keeping the
+  # old Vulkan1 pin made the model fail before load.
+  qwen3-5-4b-ticket-agentic:
+    name: "Qwen3.5 4B Ticket Agentic - 75 tok/s - tp ask RAG"
+    description: "Fine-tuned MSP ticket model. Answers tp ask from retrieved tickets."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/finetuned/Qwen3.5-4B-ticket-agentic.Q4_K_M.gguf"
+      --alias qwen3-5-4b-ticket-agentic
+      --device Vulkan0
+      --split-mode none
+      --main-gpu 0
+      --parallel 1
+      --ctx-size 16384
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 512
+      -ngl all
+      -fa on
+      --jinja
+      --reasoning off
+      --temp 0
+      --top-p 1
+      --top-k 1
+      --min-p 0.0
+      -fit off
+    filters:
+      stripParams: "temperature,top_p,top_k,min_p"
+      setParams:
+        temperature: 0
+        top_k: 1
+
+  # ROLE: search/retrieval agent eval, added 2026-07-09. Harness-1 is a
+  # 20B model merged into openai/gpt-oss-20b and trained for search-agent
+  # behavior. The quant card exposes one Q4_K_M GGUF (15.8GB) with metadata
+  # context_length=131072, but this host already runs a persistent reranker
+  # and the full 131k KV would be risky without a load test. Start at 64k
+  # dual-GPU layer split; raise only after checking llama-swap logs for
+  # allocation warnings.
+  # 2026-07-09: batch-size 32768/ubatch-size 2048 (initial starter values)
+  # caused a live OOM (vk::Device::allocateMemory ErrorOutOfDeviceMemory)
+  # decoding a normal 1845-token prompt - compute buffers scale with
+  # batch-size regardless of actual prompt length, so the oversized batch
+  # reserved VRAM as if every request were 32768 tokens. The first reduction
+  # to 2048/512 still OOM'd during a later decode, so the live config now uses
+  # 1024/256 to match available headroom (6900XT ~3GB free, 4060 ~1.5GB free
+  # with reranker resident).
+  harness-1-q4-k-m:
+    name: "Harness-1 20B Q4_K_M - Search, Retrieval"
+    description: "GPT-OSS-20B search/retrieval agent finetune. 64k ctx starter config."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/ijohn07/harness-1-Q4_K_M-GGUF/harness-1-q4_k_m.gguf"
+      --alias harness-1-q4-k-m
+      --device Vulkan0,Vulkan1
+      --split-mode layer
+      --parallel 1
+      --ctx-size 65536
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      # 2026-07-09: 2048/512 still OOM'd during a normal 1845-token decode
+      # (Vulkan tried to allocate 1.36GB after the model was already loaded).
+      # 1024/256 preserves the 64k context while cutting compute-buffer
+      # pressure on the 6900XT/4060 split; prompt throughput is preferable to
+      # an intermittent failed request.
+      --batch-size 1024
+      --ubatch-size 256
+      -ngl all
+      -fa on
+      --jinja
+      --chat-template-file /home/bocaj/.config/llama-swap/templates/openai-gpt-oss-120b.jinja
+      # Harness-1 emits GPT-OSS channel markers but omits the parser-visible
+      # terminator after llama.cpp strips the stop token; PEG parsing otherwise
+      # turns valid JSON responses into HTTP 500s. This alias is used for
+      # retrieval JSON, not native tool-call dispatch, so return raw content.
+      --skip-chat-parsing
+      --temp 1.0
+      --top-p 1.0
+      --top-k 0
+      --min-p 0.01
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: reranker for open-webui hybrid search + ticket-finetune's `tp ask`
+  # (ticket-history retrieval). Stays resident.
+  # REVERTED 4B -> 0.6B 2026-07-06: the mradermacher 4B Q4_K_M is a plain
+  # causal-LM conversion without the rerank classification path; /v1/rerank
+  # returned near-zero garbage scores (relevant doc ranked LAST, all scores
+  # e-19..e-29 - verified against an obvious Outlook query). The ggml-org
+  # 0.6B conversion is llama.cpp-official with the rerank template baked in
+  # and ranks correctly. If 4B quality is wanted later, it needs a proper
+  # seq-cls GGUF conversion, not the mradermacher one.
+  # Alias kept as qwen3-reranker-4b so open-webui + tp ask configs keep
+  # working unchanged; rename both callers before changing it here.
+  # ubatch-size 512 (fixes "input too large" at 256 seen with real docs).
+  qwen3-reranker-4b:
+    name: "Qwen3 Reranker 0.6B Q8_0 (alias qwen3-reranker-4b)"
+    description: "Dedicated reranker for /v1/rerank. Always loaded."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/ggml-org/Qwen3-Reranker-0.6B-Q8_0-GGUF/qwen3-reranker-0.6b-q8_0.gguf"
+      --alias qwen3-reranker-4b
+      --device Vulkan0
+      --split-mode none
+      --main-gpu 0
+      --parallel 1
+      --ctx-size 2048
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 512
+      --ubatch-size 512
+      -ngl all
+      --embedding
+      --pooling rank
+      --rerank
+      -fa on
+      # llama-swap startup preload warms models with GET /. Keep the upstream
+      # UI enabled so that preload succeeds; this server remains loopback-only
+      # on its allocated port and is not exposed through the public proxy.
+      --ui
+      -fit off
+    # never idle-unload; persistent group protects it from swaps too
+    ttl: 0
+
+  # ROLE: test-only, added 2026-07-17. InternScience Agents-A1, Qwen3.5-MoE-
+  # based, vision+agentic finetune. Topped the ifstruct (structured-output)
+  # leaderboard at 93.25%. Candidate rival to BOTH gemma-4-26b-a4b-it
+  # (vision) and qwopus-35b-a3b-coder (agentic/tool-use) simultaneously.
+  # n-cpu-moe 16 is a first guess (22.1GB total incl. mmproj, similar order
+  # to qwopus's 21.7GB needing 18) - watch for VRAM warnings and adjust.
+  agents-a1-eval:
+    name: "InternScience Agents-A1 35B - 44 tok/s - Vision, Agentic, Structured-Output"
+    description: "Vision+agentic MoE finetune. 7/7 harness incl. vision, rivals gemma and qwopus."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/InternScience/Agents-A1-GGUF/Agents-A1-Q4_K_M.gguf"
+      --mmproj "/home/bocaj/models/InternScience/Agents-A1-GGUF/Agents-A1-mmproj.gguf"
+      --alias agents-a1-eval
+      --device Vulkan0
+      --no-mmap
+      --n-cpu-moe 16
+      --split-mode none
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 768
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.7
+      --top-p 0.8
+      --top-k 20
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: test-only, added 2026-07-17. Mistral's newest compact reasoning
+  # model (Dec 2025 gen), dense 14B, Apache-2.0. Candidate lighter/faster
+  # rival to msp-ops-qwen3-8b's role or ThinkingCap's reasoning slot at
+  # half the footprint. Dense, no MoE - fits fully on Vulkan0, no offload
+  # needed (8.2GB).
+  ministral-3-14b-reasoning-eval:
+    name: "Ministral-3 14B Reasoning - 47 tok/s - Compact Reasoning (Dense)"
+    description: "Mistral's newest compact dense reasoning model. 6/6 harness, 100% strict-validation."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/mistralai/Ministral-3-14B-Reasoning-2512-GGUF/mistralai_Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf"
+      --alias ministral-3-14b-reasoning-eval
+      --device Vulkan0
+      --split-mode none
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 768
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.15
+      --top-p 1.0
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: test-only, added 2026-07-17. inclusionAI Ling-mini-2.0, bailing_moe
+  # architecture, 16.2B total but ultra-sparse (256 experts, 8 active/tok,
+  # ~1.4B active params). Candidate rival to the small eval-tier models
+  # (qwen3-4b-thinking-eval / qwen3-5-4b-eval) - much bigger total capacity
+  # at comparable active-param speed. Small enough (9.9GB) to fit without
+  # offload.
+  ling-mini-2-eval:
+    name: "Ling-mini-2.0 16B (1.4B active) - 218 tok/s - Fast Chat (Ultra-Sparse MoE)"
+    description: "Ultra-sparse MoE, fastest model in this config by far. 6/6 harness, 100% strict-validation."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/inclusionAI/Ling-mini-2.0-GGUF/inclusionAI_Ling-mini-2.0-Q4_K_M.gguf"
+      --alias ling-mini-2-eval
+      --device Vulkan0
+      --split-mode none
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 768
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.7
+      --top-p 0.9
+      --min-p 0.0
+      --cache-ram 8192
+      -fit off
+
+  # ROLE: test-only, added 2026-07-17. GLM-4.6V-Flash, small (10.3B) vision
+  # model, Dec 2025 gen. Not a heavyweight rival to gemma on quality - a
+  # fast/cheap alternative for quick vision tasks instead of loading the
+  # full 26B gemma. Sampling from the model's own generation_config.json
+  # (temp 0.8, top_p 0.6, top_k 2).
+  glm-4-6v-flash-eval:
+    name: "GLM-4.6V-Flash 10B - 60 tok/s - Fast/Cheap Vision"
+    description: "Small fast vision model. 7/7 harness incl. vision, alternative to loading full gemma for quick tasks."
+    cmd: |
+      llama-server
+      --host 127.0.0.1
+      --port ${PORT}
+      -m "/home/bocaj/models/zai-org/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-Q4_K_M.gguf"
+      --mmproj "/home/bocaj/models/zai-org/GLM-4.6V-Flash-GGUF/mmproj-BF16.gguf"
+      --alias glm-4-6v-flash-eval
+      --device Vulkan0
+      --split-mode none
+      --parallel 1
+      --ctx-size 32768
+      --cache-type-k q8_0
+      --cache-type-v q8_0
+      --batch-size 2048
+      --ubatch-size 768
+      -ngl all
+      -fa on
+      --jinja
+      --temp 0.8
+      --top-p 0.6
+      --top-k 2
+      --cache-ram 8192
+      -fit off
+
+# Chat models swap among themselves; the reranker is never evicted by them.
+# Add any NEW chat model to the "chat" members list.
+groups:
+  chat:
+    swap: true
+    exclusive: true
+    members:
+      - qwopus-35b-a3b-coder
+      - qwen3-coder-reap-25b-a3b-eval
+      - agents-a1-eval
+      - ministral-3-14b-reasoning-eval
+      - ling-mini-2-eval
+      - glm-4-6v-flash-eval
+      - msp-ops-qwen3-8b
+      - devstral-small-2-24b
+      - devstral-small-2-24b-spec
+      - gemma-4-26b-a4b-it
+      - glm-4.7-flash-reap-23b-a3b
+      - qwen3-30b-a3b-thinking-eval
+      - qwen3-6-27b-thinkingcap
+      - qwen3-4b-thinking-eval
+      - qwen3-5-4b-eval
+      - qwen3-5-4b-ticket-agentic
+      - harness-1-q4-k-m
+  utility:
+    persistent: true
+    swap: false
+    exclusive: false
+    members:
+      - qwen3-reranker-4b
+
+hooks:
+  on_startup:
+    preload:
+      - qwen3-reranker-4b
+      # 2026-07-04: dropped qwen3-coder-30b-a3b-q4 from startup preload. It's
+      # a "chat" group member (swap:true, exclusive:true) that already loads
+      # on-demand when actually requested - force-preloading a 30B model on
+      # EVERY reload/restart made it fight the reranker (and whatever chat
+      # model a reload happens to interrupt) for the same two GPUs' VRAM at
+      # the worst possible moment. Traced today's repeated Vulkan OOM errors
+      # on reload to this, and it escalated once to a full systemd
+      # oom-kill of the whole llama-swap service (host RAM, 27.5G peak,
+      # 14.9G swap peak) during a config reload. Removing it here doesn't
+      # stop it being used - opencode still loads it fine on first request.

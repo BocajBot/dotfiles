@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits"
+  },
+  "model": "claude-fable-5[1m]",
+  "worktree": {
+    "baseRef": "fresh"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); dir=$(echo \"$input\" | jq -r '.workspace.current_dir'); printf '[%s@%s %s]' \"$(whoami)\" \"$(hostname -s)\" \"$(basename \"$dir\")\""
+  },
+  "enabledPlugins": {
+    "caveman@caveman": true,
+    "huggingface-skills@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "reverse-engineering@claude-code-workflows": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    },
+    "claude-code-workflows": {
+      "source": {
+        "source": "github",
+        "repo": "wshobson/agents"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "advisorModel": "fable",
+  "tui": "fullscreen",
+  "theme": "auto",
+  "editorMode": "normal",
+  "remoteControlAtStartup": true,
+  "inputNeededNotifEnabled": true
+}
