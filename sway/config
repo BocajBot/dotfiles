@@ -1,0 +1,226 @@
+################################################################
+# Variables & fonts
+################################################################
+set $mod Mod4
+input type:keyboard xkb_numlock enabled
+input type:pointer {
+        accel_profile flat
+        pointer_accel 0
+}
+default_border none
+
+################################################################
+# SwayFX effects (require swayfx; takes effect on next login)
+################################################################
+blur enable
+blur_passes 3
+blur_radius 5
+layer_effects "waybar" "blur enable; blur_ignore_transparent enable"
+
+################################################################
+# Wayland / D-Bus environment
+################################################################
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK DISPLAY
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK DISPLAY
+
+################################################################
+# Autostart: XDG .desktop files and desktop components
+################################################################
+exec_always dex --autostart --environment sway          # XDG autostart
+exec_always pkill nm-applet
+exec_always nm-applet --indicator
+exec mako                                               # Notification daemon
+# exec lan-mouse -c ~/.config/lan-mouse/config.toml
+exec deskflow
+exec /usr/bin/kdeconnectd                               # KDE Connect daemon
+exec kdeconnect-indicator                               # KDE Connect tray icon
+exec wl-paste -t text --watch clipman store --no-persist
+
+# Lock + DPMS + suspend handling
+# exec_always swayidle -w \
+#         timeout 600  'swaylock -f -c 000000' \
+#         timeout 900  'swaymsg "output * dpms off"' \
+#         resume        'swaymsg "output * dpms on"' \
+#         before-sleep  'swaylock -f -c 000000'
+
+################################################################
+# Audio‑volume bindings
+################################################################
+# Waybar's PulseAudio module updates from audio events.
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+################################################################
+# Window‑management bindings (mostly unchanged)
+################################################################
+# Keep all Wayland and XWayland windows tiled.
+for_window [all] floating disable
+
+# Floating calendar opened from the center Waybar island.
+for_window [title="Waybar Calendar"] floating enable, border none, sticky enable, move position 779 5, focus
+
+# Applications
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+q kill
+bindsym $mod+L exec swaymsg exit
+bindsym $mod+space exec ~/.config/rofi/launchers/type-2/launcher.sh
+
+# Focus
+bindsym $mod+k focus down
+bindsym $mod+semicolon focus right
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# Move windows
+bindsym $mod+Shift+j  move left
+bindsym $mod+Shift+k  move down
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# Split / layout / fullscreen
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+Shift+e layout toggle split
+bindsym $mod+a focus parent
+
+################################################################
+# Workspaces
+################################################################
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Next / previous workspace
+bindsym $mod+Shift+period workspace next
+bindsym $mod+Shift+comma  workspace prev
+
+################################################################
+# Config hot‑reload / restart
+################################################################
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+################################################################
+# Resize mode
+################################################################
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow  height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym Left  resize shrink width 10 px or 10 ppt
+        bindsym Down  resize grow  height 10 px or 10 ppt
+        bindsym Up    resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow  width 10 px or 10 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+# Enter resize mode
+bindsym $mod+r mode "resize"
+
+################################################################
+# File manager
+################################################################
+bindsym $mod+e exec thunar
+
+################################################################
+# Screenshot & OCR
+################################################################
+bindsym $mod+Shift+s exec grimshot copy area            # Copy region to clipboard
+bindsym $mod+Shift+t exec normcap                       # OCR helper
+
+################################################################
+# Idle‑inhibition toggle (replaces caffeine)
+################################################################
+bindsym $mod+Shift+i exec swaymsg "inhibit_idle toggle"
+
+################################################################
+# Bar / statusline
+################################################################
+# Native floating bar. Run ~/.config/waybar/rollback-to-i3status-rs.sh
+# to restore the original swaybar + i3status-rs configuration.
+exec_always /home/bocaj/.config/waybar/launch.sh
+
+################################################################
+# Display outputs
+################################################################
+set $main HDMI-A-1
+
+output $main mode 1920x1080@60Hz position 0 0 scale 1 bg ~/Pictures/Rocket.jpg fill
+
+workspace 1 output $main
+workspace 2 output $main
+workspace 3 output $main
+workspace 4 output $main
+workspace 4 output $main
+workspace 5 output $main
+workspace 6 output $main
+workspace 7 output $main
+workspace 8 output $main
+workspace 9 output $main
+workspace 10 output $main
+
+exec_always swaymsg focus output $main
+
+################################################################
+# Auto‑tiling helper
+################################################################
+exec_always autotiling
+
+################################################################
+# Gaps
+################################################################
+gaps inner 10
+gaps outer 5
+
+################################################################
+# Display outputs (Wayland `output` directive)
+################################################################
+output DP-1    resolution 1920x1080@144Hz pos 0 0   bg ~/Pictures/NeverForget.jpg fill
+
+################################################################
+# PulseAudio (optional—PipeWire works without this)
+################################################################
+exec --no-startup-id pulseaudio --start
