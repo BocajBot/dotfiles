@@ -1,0 +1,89 @@
+# Migrated from ~/.config/alacritty/alacritty.toml
+
+#: Env
+env TERM=xterm-256color
+env WINIT_X11_SCALE_FACTOR=1
+
+#: Window
+window_padding_width       4
+placement_strategy         center
+hide_window_decorations    no
+wayland_titlebar_color     background
+background_opacity         0.97
+remember_window_size       no
+initial_window_width       100c
+initial_window_height      30c
+# Alacritty [window.class] instance/general -> kitty --class/--name at launch
+# kitty has no config key for WM class; launch with: kitty --class Alacritty --name Alacritty
+
+#: Scrollback
+scrollback_lines           10000
+wheel_scroll_multiplier    3.0
+
+#: Colors (Nord)
+background   #2E3440
+foreground   #D8DEE9
+# bold_is_bright not supported in kitty 0.48; bright colors above cover bold rendering
+
+color0   #3B4252
+color1   #BF616A
+color2   #A3BE8C
+color3   #EBCB8B
+color4   #81A1C1
+color5   #B48EAD
+color6   #88C0D0
+color7   #E5E9F0
+
+color8   #4C566A
+color9   #BF616A
+color10  #A3BE8C
+color11  #EBCB8B
+color12  #81A1C1
+color13  #B48EAD
+color14  #8FBCBB
+color15  #ECEFF4
+
+#: Font
+font_family      monospace
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        12.0
+
+#: Selection
+select_by_word_characters_forward ,│`|:"' ()[]{}<>
+copy_on_select                    clipboard
+strip_trailing_spaces             never
+
+#: Cursor
+cursor_shape                  underline
+cursor_underline_thickness    1.5
+focus_follows_mouse           no
+
+#: Mouse
+mouse_hide_wait  -1.0
+clear_all_mouse_actions yes
+mouse_map middle release ungrabbed paste_from_selection
+mouse_map left click ungrabbed mouse_handle_click selection link prompt
+mouse_map left press ungrabbed mouse_selection normal
+mouse_map left doublepress ungrabbed mouse_selection word
+mouse_map left triplepress ungrabbed mouse_selection line
+mouse_map right press ungrabbed mouse_selection extend
+
+#: Misc
+shell_integration    enabled
+allow_remote_control no
+confirm_os_window_close 0
+
+#: Keybindings
+map ctrl+shift+v         paste_from_clipboard
+map ctrl+shift+c         copy_to_clipboard
+map ctrl+l               clear_terminal scroll active
+map shift+page_up        scroll_page_up
+map shift+page_down      scroll_page_down
+map shift+home           scroll_home
+map shift+end            scroll_end
+# Alacritty SearchForward/SearchBackward have no kitty builtin; use scrollback pager search
+map ctrl+shift+f         show_scrollback
+map ctrl+0               change_font_size current 0
+map shift+enter          send_text all \x1b\r

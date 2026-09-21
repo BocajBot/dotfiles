@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Move the focused pane to window N, i3 "move container to workspace" style.
+#
+#   window N exists   -> join the pane into it, direction picked from THAT
+#                        window's shape (same rule as smart-split.sh)
+#   window N missing  -> break the pane out into a new window at index N
+#   pane was the last -> its window goes away, so the window effectively moved
+#
+# Focus stays put (-d), like i3: you send something away, you don't follow it.
+set -uo pipefail
+
+n=${1:-}
+[[ $n =~ ^[0-9]+$ ]] || { tmux display-message "send-pane: need a window number"; exit 1; }
+
+# run-shell from a key binding does not export TMUX_PANE, so the binding
+# passes #{pane_id} as $2; TMUX_PANE is the fallback for manual invocation.
+pane=${2:-${TMUX_PANE:-}}
+[[ -n $pane ]] || { tmux display-message "send-pane: no source pane"; exit 1; }
+
+read -r sess cur <<<"$(tmux display-message -t "$pane" -p '#{session_name} #{window_index}')"
+[[ $cur == "$n" ]] && exit 0
+
+if tmux list-windows -t "$sess" -F '#{window_index}' | grep -qx -- "$n"; then
+  # Direction from the target window's active pane. Kept in sync by hand with
+  # smart-split.sh -- same two knobs, same meaning.
+  read -r w h <<<"$(tmux display-message -t "$sess:$n" -p '#{pane_width} #{pane_height}')"
+  MIN_H_WIDTH=${SMART_SPLIT_MIN_H_WIDTH:-160}
+  CELL_RATIO=${SMART_SPLIT_CELL_RATIO:-23}
+  if (( w >= MIN_H_WIDTH && w * 10 > h * CELL_RATIO )); then
+    dir=-h
+  else
+    dir=-v
+  fi
+  tmux join-pane -d "$dir" -s "$pane" -t "$sess:$n"
+else
+  tmux break-pane -d -s "$pane" -t "$sess:$n"
+fi

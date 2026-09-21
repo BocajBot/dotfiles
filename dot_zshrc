@@ -1,3 +1,13 @@
+# ── tmux autostart (kitty only) ───────────────────────────────────────────
+# MUST stay above the Powerlevel10k instant-prompt block below: instant prompt
+# redirects the console, and tmux then fails with "open terminal failed: not a
+# terminal". Anything needing the real tty goes here, per p10k's own note.
+# The script boots the server, waits for continuum to restore saved sessions,
+# then attaches to a free one (or starts fresh). See ~/.config/tmux/kitty-attach.sh
+if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ -n "$KITTY_WINDOW_ID" ]]; then
+  ~/.config/tmux/kitty-attach.sh
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -55,3 +65,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # kimi-code
 export PATH="/home/bocaj/.kimi-code/bin:$PATH"
+
+
+# API keys / tokens live in ~/.config/secrets/env (chmod 600, not in this file)
+[ -r "$HOME/.config/secrets/env" ] && source "$HOME/.config/secrets/env"

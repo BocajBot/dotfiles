@@ -44,6 +44,13 @@
             "context": 49152,
             "output": 8192
           }
+        },
+        "Qwen3.8-Flash-Next-IMX-288": {
+          "name": "Qwen3.8 Flash Next IMX-288 (64K) - pruned MoE, ~19 tok/s",
+          "limit": {
+            "context": 65536,
+            "output": 8192
+          }
         }
       }
     }

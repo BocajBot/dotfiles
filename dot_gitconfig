@@ -7,3 +7,10 @@
 [user]
 	email = bocajgnuoy@gmail.com
 	name = Bocaj Gnuoy
+[core]
+	editor = vim
+[sendemail]
+	smtpServer = smtp.gmail.com
+	smtpServerPort = 587
+	smtpEncryption = tls
+	smtpUser = bocajgnuoy@gmail.com
