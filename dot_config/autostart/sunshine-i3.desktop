@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Sunshine (i3)
+Comment=i3 never activates graphical-session.target, so start the Sunshine user unit via XDG autostart (dex)
+Exec=systemctl --user start app-dev.lizardbyte.app.Sunshine.service
+OnlyShowIn=i3;
+X-GNOME-Autostart-enabled=true
