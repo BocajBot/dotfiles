@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Toggle headless streaming mode (i3 $mod+Shift+m).
 #   on : fake 1080p60 monitor HDMI-A-0 up and primary, physical monitors off.
-#        Sunshine's configured DP-1 disappears, so a new stream falls back to
-#        the only active display (the fake one).
+#        Sunshine is restarted; the next stream falls back to the only active
+#        display (the fake one) because DP-1 is gone.
 #   off: physical monitors back (layout as in i3 config), fake monitor off.
 # Keyboard input still reaches X while the stream is black, so pressing the
 # key again always restores the monitors.
+# Needs: headless-display.service (root helper) + its polkit rule.
 set -euo pipefail
 
 VIRT=HDMI-A-0
@@ -15,18 +16,39 @@ virt_connected() { xrandr --query | grep -q "^$VIRT connected"; }
 
 restore_physical() {
   xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 --pos 0x0 --primary \
-         --output DisplayPort-1 --auto --right-of DisplayPort-0
+         --output DisplayPort-1 --auto --right-of DisplayPort-0 "$@"
+}
+
+# picom (egl) stops repainting after output changes, which freezes both the
+# screen and the KMS stream; a fresh picom fixes it. On the fake HDMI display
+# the egl backend draws only the wallpaper (no windows), xrender works.
+# (Both verified 2026-09-27.) Args are passed to picom.
+restart_picom() {
+  local pid
+  for pid in $(pgrep -x picom); do kill "$pid" || true; done
+  for _ in $(seq 20); do pgrep -x picom >/dev/null || break; sleep 0.1; done
+  picom -b "$@" || say "picom failed to restart"
+}
+
+# Sunshine (KMS capture) never follows a running stream to another display:
+# when its display goes away it retries that plane forever ("Couldn't get drm
+# fb", kmsgrab.cpp refresh() returns timeout). A new session re-picks: DP-1
+# (sunshine.conf output_name) if present, else the first display = the fake
+# one. So restart it after every switch; Moonlight drops, reconnect.
+restart_sunshine() {
+  systemctl --user try-restart app-dev.lizardbyte.app.Sunshine.service || say "Sunshine restart failed"
 }
 
 if virt_active; then
-  # Physical monitors first; drop the fake one only once they are back.
-  if ! restore_physical; then
+  if ! restore_physical --output "$VIRT" --off; then
+    xrandr --output "$VIRT" --auto --primary || true
     say "Headless off FAILED: xrandr could not restore monitors; $VIRT left on"
     exit 1
   fi
-  xrandr --output "$VIRT" --off || true
   systemctl stop headless-display.service || true
-  say "Headless off: monitors restored"
+  restart_picom
+  restart_sunshine
+  say "Headless off: monitors restored (reconnect Moonlight)"
   exit 0
 fi
 
@@ -38,20 +60,14 @@ if ! virt_connected; then
   exit 1
 fi
 
-# Bring the fake monitor up next to the real ones first; only turn the real
-# ones off once it is actually active.
-if ! xrandr --output "$VIRT" --mode 1920x1080 --rate 60 --right-of DisplayPort-1 || ! virt_active; then
-  xrandr --output "$VIRT" --off || true
+if ! xrandr --output "$VIRT" --mode 1920x1080 --rate 60 --pos 0x0 --primary \
+            --output DisplayPort-0 --off --output DisplayPort-1 --off || ! virt_active; then
+  restore_physical --output "$VIRT" --off || true
   systemctl stop headless-display.service || true
-  say "Headless FAILED: could not enable $VIRT; monitors left on"
+  restart_picom
+  say "Headless FAILED: could not switch to $VIRT; monitors restored"
   exit 1
 fi
-if ! xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off \
-            --output "$VIRT" --pos 0x0 --primary; then
-  restore_physical || true
-  xrandr --output "$VIRT" --off || true
-  systemctl stop headless-display.service || true
-  say "Headless FAILED: could not switch outputs; monitors restored"
-  exit 1
-fi
-say "Headless on: streaming display $VIRT"
+restart_picom --backend xrender
+restart_sunshine
+say "Headless on: streaming display $VIRT (reconnect Moonlight)"
