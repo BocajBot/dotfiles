@@ -53,7 +53,11 @@ No prefix. Everything is reachable with the left hand, left Alt as modifier.
   `tmux.conf` at open time, so the list never goes stale. Labels come from a
   trailing `#= some label` comment on the bind line.
 - `smart-split.sh` — autotiling. Splits along the pane's longer side; terminal
-  cells are ~2x taller than wide, so the test is `width > height * 2`.
+  cells are ~2.3x taller than wide, so the test is `width*10 > height*23`, and
+  panes under 160 columns always stack. Both knobs overridable via
+  `SMART_SPLIT_CELL_RATIO` / `SMART_SPLIT_MIN_H_WIDTH`.
+- `send-pane.sh` — i3-style "move container to workspace": `alt+shift+N` sends
+  the focused pane to window N (joins it, or breaks out a new window N).
 - `session-picker.sh` — fzf session switcher. Filters on session *and* window
   names, creates a session if the query matches nothing, `ctrl-x` kills.
 - `kitty-attach.sh` — attaches a new kitty window to tmux, waiting for

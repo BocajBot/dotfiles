@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # Autotiling split, i3 style: split the focused pane along its LONGER side.
 #
-# Terminal cells are roughly twice as tall as they are wide, so a pane that
-# "looks" square has width ~= 2 * height. Compare against that, not against
-# raw equality, or every split comes out horizontal.
+# Terminal cells here are ~2.3x taller than wide, so a pane that "looks" square
+# has width ~= 2.3 * height. Compare against that, not against raw equality or
+# a 2.0 guess, or near-square panes split the wrong way.
+#
+# Independently: below MIN_H_WIDTH columns a side-by-side split leaves both
+# halves too narrow to read, so stack regardless of shape.
 #
 #   mode "split"  -> new shell in this pane (default)
 #   mode "join"   -> pull window $2 in as a pane instead
@@ -20,8 +23,11 @@ target=()
 
 read -r w h <<<"$(tmux display-message "${target[@]}" -p '#{pane_width} #{pane_height}')"
 
-# wide pane -> side-by-side (-h); tall pane -> stacked (-v)
-if (( w > h * 2 )); then
+# wide pane -> side-by-side (-h); tall or narrow pane -> stacked (-v)
+MIN_H_WIDTH=${SMART_SPLIT_MIN_H_WIDTH:-160}   # both halves stay >= 80 cols
+CELL_RATIO=${SMART_SPLIT_CELL_RATIO:-23}      # cell height / width, tenths
+
+if (( w >= MIN_H_WIDTH && w * 10 > h * CELL_RATIO )); then
   dir=-h
 else
   dir=-v
