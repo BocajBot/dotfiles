@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Toggle headless streaming mode (i3 $mod+Shift+m).
+#   on : fake 1080p60 monitor HDMI-A-0 up and primary, physical monitors off.
+#        Sunshine's configured DP-1 disappears, so a new stream falls back to
+#        the only active display (the fake one).
+#   off: physical monitors back (layout as in i3 config), fake monitor off.
+# Keyboard input still reaches X while the stream is black, so pressing the
+# key again always restores the monitors.
+set -euo pipefail
+
+VIRT=HDMI-A-0
+say() { echo "$1"; notify-send -a headless-toggle "$1" 2>/dev/null || true; }
+virt_active() { xrandr --listactivemonitors | awk 'NR>1 {print $NF}' | grep -qx "$VIRT"; }
+virt_connected() { xrandr --query | grep -q "^$VIRT connected"; }
+
+restore_physical() {
+  xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 --pos 0x0 --primary \
+         --output DisplayPort-1 --auto --right-of DisplayPort-0
+}
+
+if virt_active; then
+  # Physical monitors first; drop the fake one only once they are back.
+  if ! restore_physical; then
+    say "Headless off FAILED: xrandr could not restore monitors; $VIRT left on"
+    exit 1
+  fi
+  xrandr --output "$VIRT" --off || true
+  systemctl stop headless-display.service || true
+  say "Headless off: monitors restored"
+  exit 0
+fi
+
+systemctl start headless-display.service
+for _ in $(seq 20); do virt_connected && break; sleep 0.25; done
+if ! virt_connected; then
+  systemctl stop headless-display.service || true
+  say "Headless FAILED: $VIRT never connected; monitors left on"
+  exit 1
+fi
+
+# Bring the fake monitor up next to the real ones first; only turn the real
+# ones off once it is actually active.
+if ! xrandr --output "$VIRT" --mode 1920x1080 --rate 60 --right-of DisplayPort-1 || ! virt_active; then
+  xrandr --output "$VIRT" --off || true
+  systemctl stop headless-display.service || true
+  say "Headless FAILED: could not enable $VIRT; monitors left on"
+  exit 1
+fi
+if ! xrandr --output DisplayPort-0 --off --output DisplayPort-1 --off \
+            --output "$VIRT" --pos 0x0 --primary; then
+  restore_physical || true
+  xrandr --output "$VIRT" --off || true
+  systemctl stop headless-display.service || true
+  say "Headless FAILED: could not switch outputs; monitors restored"
+  exit 1
+fi
+say "Headless on: streaming display $VIRT"

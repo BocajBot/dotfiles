@@ -113,6 +113,9 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym $mod+Shift+t exec --no-startup-id normcap
 
+### Headless streaming (fake 1080p60 HDMI-A-0, physical monitors off; toggle)
+bindsym $mod+Shift+m exec --no-startup-id ~/.local/bin/headless-toggle
+
 ### Resize mode
 mode "resize" {
     bindsym j resize shrink width  10 px or 10 ppt

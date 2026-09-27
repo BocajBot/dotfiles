@@ -1,0 +1,40 @@
+#!/bin/bash
+# Root helper: fake a connected 1080p60 monitor on the 6900 XT's spare HDMI port
+# (HDMI-A-1 in DRM, HDMI-A-0 in X) so X/Sunshine have a display with the
+# physical monitors off. Installed as /usr/local/libexec/headless-display and
+# driven by headless-display.service.
+#   on  : load EDID via debugfs edid_override, force connector status "on"
+#   off : drop the EDID override, force connector status "off"
+set -euo pipefail
+
+PCI=0000:06:00.0
+CONN=HDMI-A-1
+EDID=/usr/local/share/headless-display/edid-1080p60.bin
+
+status=$(compgen -G "/sys/bus/pci/devices/$PCI/drm/card*/card*-$CONN/status" | head -n1 || true)
+[[ -n $status ]] || { echo "no sysfs connector $CONN on $PCI" >&2; exit 1; }
+
+dbg=
+for d in /sys/kernel/debug/dri/*/; do
+  [[ -r $d/name && -d $d/$CONN ]] || continue
+  if grep -qF "dev=$PCI" "$d/name"; then dbg=${d%/}/$CONN; break; fi
+done
+[[ -n $dbg && -w $dbg/edid_override ]] || { echo "no debugfs edid_override for $CONN on $PCI" >&2; exit 1; }
+
+case ${1:-} in
+  on)
+    cat "$EDID" > "$dbg/edid_override"
+    echo on > "$status"
+    echo "$CONN forced on ($(cat "$status")) with $EDID"
+    ;;
+  off)
+    printf reset > "$dbg/edid_override"  # exact 5 bytes; "reset\n" is parsed as a bad EDID (EINVAL)
+    # Force "off", not "detect": amdgpu keeps the emulated sink after the
+    # override is reset, so "detect" keeps reporting connected until a real
+    # hotplug. Nothing is plugged into this port; a reboot restores detect.
+    echo off > "$status"
+    echo "$CONN forced off ($(cat "$status"))"
+    ;;
+  *)
+    echo "usage: $0 on|off" >&2; exit 2 ;;
+esac

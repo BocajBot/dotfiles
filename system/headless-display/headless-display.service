@@ -1,0 +1,10 @@
+[Unit]
+Description=Fake 1080p60 monitor on 6900 XT HDMI-A-1 for headless Sunshine streaming
+Requires=sys-kernel-debug.mount
+After=sys-kernel-debug.mount
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/libexec/headless-display on
+ExecStop=/usr/local/libexec/headless-display off
