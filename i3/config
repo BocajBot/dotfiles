@@ -6,7 +6,7 @@ set $mod Mod4
 set $alt Mod1
 
 ### Apps / scripts
-set $term alacritty
+set $term kitty
 set $fm thunar
 set $launcher ~/.config/rofi/launchers/type-2/launcher.sh
 
@@ -17,8 +17,9 @@ gaps inner 10px
 gaps outer 5px
 
 ### Autostart (run once)
+exec --no-startup-id systemctl --user restart xdg-desktop-portal.service
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id synergy
+exec --no-startup-id deskflow
 exec --no-startup-id numlockx on
 exec --no-startup-id /usr/bin/solaar -w hide
 exec --no-startup-id dunst
@@ -31,7 +32,7 @@ exec --no-startup-id xset s off -dpms
 
 ### Autostart (re-run on reload)
 exec_always --no-startup-id autotiling
-exec_always --no-startup-id xrandr --dpi 84 --output HDMI-A-0 --mode 1920x1080 --rate 144 --pos 0x0 --primary
+exec_always --no-startup-id xrandr --dpi 84 --output DisplayPort-0 --mode 1920x1080 --rate 144 --pos 0x0 --primary
 
 ### Mouse
 floating_modifier $mod
@@ -112,6 +113,17 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 ### Screenshots / OCR
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym $mod+Shift+t exec --no-startup-id normcap
+
+# --- CoolerControl fan modes -------------------------------------------------
+# Switches CoolerControl modes via ~/.local/bin/fanmode (REST API + bearer token)
+bindsym $mod+Ctrl+1 exec --no-startup-id ~/.local/bin/fanmode quiet
+bindsym $mod+Ctrl+2 exec --no-startup-id ~/.local/bin/fanmode normal
+bindsym $mod+Ctrl+3 exec --no-startup-id ~/.local/bin/fanmode performance
+bindsym $mod+Ctrl+4 exec --no-startup-id ~/.local/bin/fanmode full
+# -----------------------------------------------------------------------------
+
+### Headless streaming (fake 1080p60 HDMI-A-0, physical monitors off; toggle)
+bindsym $mod+Shift+m exec --no-startup-id ~/.local/bin/headless-toggle
 
 ### Resize mode
 mode "resize" {
