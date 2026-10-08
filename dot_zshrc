@@ -69,3 +69,7 @@ export PATH="/home/bocaj/.kimi-code/bin:$PATH"
 
 # API keys / tokens live in ~/.config/secrets/env (chmod 600, not in this file)
 [ -r "$HOME/.config/secrets/env" ] && source "$HOME/.config/secrets/env"
+
+# Unsloth Studio: pin to RX 7900 XTX (HIP id 1); HIP id 0 is the 6900 XT driving the displays.
+# Terminal launches skip ~/.local/share/unsloth/studio.conf, so set it here. Override: HIP_VISIBLE_DEVICES=0,1 unsloth ...
+unsloth() { HIP_VISIBLE_DEVICES="${HIP_VISIBLE_DEVICES-1}" command unsloth "$@"; }

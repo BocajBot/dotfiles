@@ -2,9 +2,11 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5-1[1m]",
+  "model": "claude-opus-4-8",
   "skillOverrides": {
-    "notify": "off"
+    "notify": "off",
+    "fastcu": "off",
+    "caveman": "off"
   },
   "hooks": {
     "UserPromptSubmit": [
@@ -109,6 +111,7 @@
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh",
+    "padding": 0,
     "refreshInterval": 30
   },
   "enabledPlugins": {
@@ -117,7 +120,34 @@
     "typescript-lsp@claude-plugins-official": false,
     "reverse-engineering@claude-code-workflows": false,
     "clangd-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": false
+    "rust-analyzer-lsp@claude-plugins-official": false,
+    "productivity@synced": false,
+    "operations@synced": false,
+    "design@synced": false,
+    "pdf-viewer@synced": false,
+    "human-resources@synced": false,
+    "small-business@synced": false,
+    "finance@synced": false,
+    "customer-support@synced": false,
+    "data@synced": false,
+    "cowork-plugin-management@synced": false,
+    "superpowers@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": false,
+    "ralph-loop@claude-plugins-official": true,
+    "playground@claude-plugins-official": false,
+    "remember@claude-plugins-official": true,
+    "microsoft-docs@claude-plugins-official": false,
+    "atomic-agents@claude-plugins-official": false,
+    "agent-orchestration@claude-code-workflows": false,
+    "code-documentation@claude-code-workflows": false,
+    "code-refactoring@claude-code-workflows": false,
+    "codebase-cleanup@claude-code-workflows": false,
+    "comprehensive-review@claude-code-workflows": false,
+    "context-management@claude-code-workflows": false,
+    "dotnet-contribution@claude-code-workflows": false,
+    "systems-programming@claude-code-workflows": false,
+    "ponytail@ponytail": true,
+    "universal-modder@universal-modder": true
   },
   "extraKnownMarketplaces": {
     "caveman": {
@@ -137,6 +167,18 @@
         "source": "github",
         "repo": "wshobson/agents"
       }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "universal-modder": {
+      "source": {
+        "source": "github",
+        "repo": "rehan-remade/universal-modder"
+      }
     }
   },
   "effortLevel": "low",
@@ -148,17 +190,33 @@
       "effortLevel": "medium"
     },
     "claude-fable-5-1": {
-      "effortLevel": "medium"
+      "effortLevel": "high"
     },
     "claude-opus-4-8": {
       "effortLevel": "xhigh"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
     }
   },
   "autoCompactWindow": 500000,
+  "askUserQuestionTimeout": "never",
+  "pluginConfigs": {
+    "agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-and-agents-md"
+      }
+    }
+  },
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
+  "claudeMdExcludes": [
+    "/home/bocaj/.claude/AGENTS.md",
+    "/home/bocaj/AGENTS.md"
+  ],
   "theme": "auto",
   "editorMode": "normal",
+  "switchModelsOnFlag": false,
   "remoteControlAtStartup": true,
   "inputNeededNotifEnabled": true,
   "autoMode": {

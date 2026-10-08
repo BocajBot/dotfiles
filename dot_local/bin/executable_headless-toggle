@@ -39,6 +39,18 @@ restart_sunshine() {
   systemctl --user try-restart app-dev.lizardbyte.app.Sunshine.service || say "Sunshine restart failed"
 }
 
+# kitty with sync_to_monitor=yes can hang forever in glXSwapBuffers when
+# switching into $VIRT (Present flip fails, completion event lost); unsynced
+# kittys never hung (tested 2026-10-05, ~/kitty-freeze-work/toggletest/).
+# kitty.conf globincludes this file; SIGUSR1 makes running kittys reload it.
+# New kitty windows pick it up at creation; already-open windows only apply a
+# new swap interval on their next resize (kitty glfw.c change_live_resize_state).
+KITTY_NOSYNC=~/.config/kitty/headless-nosync.conf
+kitty_nosync() {  # on|off
+  if [ "$1" = on ]; then echo 'sync_to_monitor no' > "$KITTY_NOSYNC"; else rm -f "$KITTY_NOSYNC"; fi
+  pkill -USR1 -x -u "$USER" kitty || true
+}
+
 if virt_active; then
   if ! restore_physical --output "$VIRT" --off; then
     xrandr --output "$VIRT" --auto --primary || true
@@ -46,6 +58,7 @@ if virt_active; then
     exit 1
   fi
   systemctl stop headless-display.service || true
+  kitty_nosync off
   restart_picom
   restart_sunshine
   say "Headless off: monitors restored (reconnect Moonlight)"
@@ -60,10 +73,13 @@ if ! virt_connected; then
   exit 1
 fi
 
+kitty_nosync on
+sleep 0.5  # let kittys reload before outputs change
 if ! xrandr --output "$VIRT" --mode 1920x1080 --rate 60 --pos 0x0 --primary \
             --output DisplayPort-0 --off --output DisplayPort-1 --off || ! virt_active; then
   restore_physical --output "$VIRT" --off || true
   systemctl stop headless-display.service || true
+  kitty_nosync off
   restart_picom
   say "Headless FAILED: could not switch to $VIRT; monitors restored"
   exit 1

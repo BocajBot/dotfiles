@@ -17,13 +17,6 @@
             "output": 8192
           }
         },
-        "glm-4.7-flash-reap-23b-a3b": {
-          "name": "GLM-4.7-Flash REAP 23B (164k) - long context",
-          "limit": {
-            "context": 163840,
-            "output": 8192
-          }
-        },
         "qwen3-6-35b": {
           "name": "Qwen3.6 35B (32k) - general chat",
           "limit": {
@@ -31,24 +24,10 @@
             "output": 8192
           }
         },
-        "devstral-small-2-24b": {
-          "name": "Devstral Small 2 24B (49k) - highest quality, slow (~23 tok/s)",
-          "limit": {
-            "context": 49152,
-            "output": 8192
-          }
-        },
         "gemma-4-26b-a4b-it": {
           "name": "Gemma 4 26B A4B (49k, vision) - max quality (~55 tok/s)",
           "limit": {
             "context": 49152,
-            "output": 8192
-          }
-        },
-        "Qwen3.8-Flash-Next-IMX-288": {
-          "name": "Qwen3.8 Flash Next IMX-288 (64K) - pruned MoE, ~19 tok/s",
-          "limit": {
-            "context": 65536,
             "output": 8192
           }
         }
