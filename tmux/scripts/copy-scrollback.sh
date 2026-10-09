@@ -8,7 +8,7 @@ set -uo pipefail
 pane=${1:-}
 [[ -n $pane ]] || pane=$(tmux display-message -p '#{pane_id}')
 
-if command -v wl-copy >/dev/null 2>&1; then
+if [[ -n ${WAYLAND_DISPLAY:-} ]] && command -v wl-copy >/dev/null 2>&1; then
   copy=(wl-copy)
 elif command -v xclip >/dev/null 2>&1; then
   copy=(xclip -selection clipboard)
