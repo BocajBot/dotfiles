@@ -15,7 +15,8 @@ git clone --depth 1 https://github.com/tmux-plugins/tmux-resurrect.git
 git clone --depth 1 https://github.com/tmux-plugins/tmux-continuum.git
 ```
 
-Requires `fzf` for the two pickers. `@resurrect-dir` in `tmux.conf` is an
+Requires `fzf` for the two pickers, and `xclip` (X11) or `wl-clipboard`
+(Wayland) for the clipboard scripts. `@resurrect-dir` in `tmux.conf` is an
 absolute path — change it if your home directory differs.
 
 To auto-start tmux from kitty, add to `~/.zshrc` **above** the Powerlevel10k
@@ -44,7 +45,8 @@ No prefix. Everything is reachable with the left hand, left Alt as modifier.
 | `alt+t` / `alt+q` / `alt+r` / `alt+1..9` | new window / prev / next / jump |
 | `alt+c` / ``alt+` `` | session picker / last session |
 | `alt+g` / `alt+shift+f` | scrollback / search scrollback |
-| `alt+shift+c` / `alt+shift+v` | save snapshot / restore snapshot |
+| `alt+shift+c` | save snapshot (restore: resurrect's prefix `ctrl+r`) |
+| `alt+shift+v` | paste clipboard image into an ssh pane, as a remote file path |
 | `alt+shift+r` / `alt+shift+e` | reload config / edit this config |
 
 ## Scripts
@@ -60,6 +62,12 @@ No prefix. Everything is reachable with the left hand, left Alt as modifier.
   the focused pane to window N (joins it, or breaks out a new window N).
 - `session-picker.sh` — fzf session switcher. Filters on session *and* window
   names, creates a session if the query matches nothing, `ctrl-x` kills.
+- `paste-image.sh` — `alt+shift+v`: uploads the clipboard *image* to the host
+  the pane is ssh'd into, reusing that pane's own ssh options, and pastes the
+  remote path, so Claude Code / pi on the far side attaches it. Text needs no
+  help (normal paste already goes through ssh). Needs key-based ssh to the
+  host. Reads the clipboard with AppleScript on macOS, `wl-paste` on Wayland,
+  `xclip` on X11. Files land in `/tmp/paste-image-<uid>/` on the remote.
 - `kitty-attach.sh` — attaches a new kitty window to tmux, waiting for
   continuum's async restore first so it doesn't race it and land in an empty
   session.
