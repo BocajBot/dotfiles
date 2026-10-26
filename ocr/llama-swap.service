@@ -1,0 +1,13 @@
+[Unit]
+Description=llama-swap model router (OpenAI-compatible API on :8080)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/llama-swap --config %h/.config/llama-swap/config.yaml --listen 127.0.0.1:8080
+Restart=on-failure
+RestartSec=3
+# Let the iGPU be used via Vulkan
+Environment=GGML_VK_VISIBLE_DEVICES=0
+
+[Install]
+WantedBy=default.target

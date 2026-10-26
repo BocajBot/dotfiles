@@ -112,7 +112,7 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 
 ### Screenshots / OCR
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
-bindsym $mod+Shift+t exec --no-startup-id normcap
+bindsym $mod+Shift+t exec --no-startup-id ~/.local/bin/ocr-snip   # OCR region -> clipboard (GLM-OCR via llama-swap)
 
 # --- CoolerControl fan modes -------------------------------------------------
 # Switches CoolerControl modes via ~/.local/bin/fanmode (REST API + bearer token)

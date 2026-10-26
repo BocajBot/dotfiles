@@ -169,7 +169,7 @@ bindsym $mod+e exec thunar
 # Screenshot & OCR
 ################################################################
 bindsym $mod+Shift+s exec grimshot copy area            # Copy region to clipboard
-bindsym $mod+Shift+t exec normcap                       # OCR helper
+bindsym $mod+Shift+t exec ~/.local/bin/ocr-snip           # OCR region -> clipboard (GLM-OCR via llama-swap)
 
 ################################################################
 # Idle‑inhibition toggle (replaces caffeine)

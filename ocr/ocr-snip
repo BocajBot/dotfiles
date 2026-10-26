@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# ocr-snip — select a screen region, OCR it with GLM-OCR (llama-swap), copy the text.
+# Replaces normcap. QR/barcodes are decoded with zbarimg first.
+# Wayland (sway, Hyprland): slurp + grim + wl-copy.  X11 (i3): scrot -s + xclip.
+# Usage: ocr-snip            # interactive region select
+#        ocr-snip IMAGE      # OCR an existing image file
+set -euo pipefail
+
+API=${OCR_API:-http://127.0.0.1:8080/v1/chat/completions}
+MODEL=${OCR_MODEL:-glm-ocr}
+
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+
+notify() { notify-send -a ocr-snip -i edit-paste "$@" || true; }
+fail() { echo "ocr-snip: $1" >&2; notify -u critical "OCR failed" "$1"; exit 1; }
+
+if [[ $# -ge 1 ]]; then
+    cp -- "$1" "$tmp/raw.png"
+elif [[ -n ${WAYLAND_DISPLAY:-} ]]; then
+    geom=$(slurp) || exit 0 # Esc cancels
+    grim -g "$geom" "$tmp/raw.png"
+elif [[ -n ${DISPLAY:-} ]]; then
+    scrot -s -z -o "$tmp/raw.png" 2>/dev/null || exit 0 # any key cancels
+else
+    fail "no Wayland or X11 display"
+fi
+
+# The clipboard tools fork a daemon to serve the selection; detach it from our stdout/stderr
+# so callers capturing ocr-snip's output don't block until the selection is replaced.
+clip() {
+    if [[ -n ${WAYLAND_DISPLAY:-} ]]; then
+        wl-copy >/dev/null 2>&1
+    elif [[ -n ${DISPLAY:-} ]]; then
+        xclip -selection clipboard -i >/dev/null 2>&1
+    else
+        cat >/dev/null # no display: stdout only
+    fi
+}
+
+copy() {
+    printf '%s' "$1" | clip || fail "could not set the clipboard"
+    # notify-send unescapes backslashes and mako renders Pango markup, so escape the preview.
+    local preview
+    preview=$(printf '%s' "$1" | head -c 200 |
+        sed -e 's/\\/\\\\/g' -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')
+    notify "Copied ${#1} chars" "$preview"
+    printf '%s\n' "$1"
+}
+
+if code=$(zbarimg -q --raw "$tmp/raw.png" 2>/dev/null) && [[ -n $code ]]; then
+    copy "$code"
+    exit 0
+fi
+
+# Upscaling (up to 2x) took GLM-OCR from ~1% to 0% CER on small crops of small UI text,
+# but image tokens scale with area and dominate latency (~10 s/Mpx on the iGPU), so
+# upscale only within a ~400k px budget; large selections go through at 1x.
+read -r w h <<<"$(magick identify -format '%w %h' "$tmp/raw.png")"
+scale=$(awk -v a=$((w * h)) 'BEGIN { s = sqrt(400000 / a); s = s > 2 ? 2 : (s < 1 ? 1 : s); printf "%d", s * 100 }')
+magick "$tmp/raw.png" -filter Lanczos -resize "${scale}%" "$tmp/in.png"
+base64 -w0 "$tmp/in.png" >"$tmp/in.b64"
+
+jq -n --rawfile img "$tmp/in.b64" --arg model "$MODEL" '{
+    model: $model, temperature: 0, max_tokens: 4096,
+    messages: [{role: "user", content: [
+        {type: "image_url", image_url: {url: ("data:image/png;base64," + $img)}},
+        {type: "text", text: "Text Recognition:"}]}]}' >"$tmp/req.json"
+
+curl -sS --fail-with-body --max-time 180 -H 'Content-Type: application/json' \
+    -d @"$tmp/req.json" "$API" >"$tmp/resp.json" 2>"$tmp/err" ||
+    fail "$(head -c 300 "$tmp/err" "$tmp/resp.json")"
+
+# GLM-OCR fences code blocks with ```lang lines (anywhere, not just around the whole
+# output) and pads with blank lines; drop both.
+text=$(jq -r '.choices[0].message.content' "$tmp/resp.json" |
+    sed -E -e '/^[[:space:]]*```[[:alnum:]_+-]*[[:space:]]*$/d' -e '/[^[:space:]]/,$!d')
+
+[[ -n $text ]] || fail "no text found"
+copy "$text"

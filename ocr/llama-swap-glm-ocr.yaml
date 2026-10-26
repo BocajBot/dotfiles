@@ -1,0 +1,24 @@
+# glm-ocr entry for ~/.config/llama-swap/config.yaml (merge under `models:`; fix the paths).
+healthCheckTimeout: 300
+startPort: 9100
+
+models:
+  # GLM-OCR 0.9B Q8_0 (~1.4 GB w/ mmproj) — screen OCR for ~/.local/bin/ocr-snip.
+  # Won a 2026-10-13 bake-off vs LightOnOCR-2, HunyuanOCR and Tesseract (0% CER at 2x upscale).
+  "glm-ocr":
+    ttl: 1800
+    metadata:
+      name: "GLM-OCR 0.9B (local OCR)"
+      context_window: 16384
+      max_tokens: 4096
+      reasoning: false
+      vision: true
+    cmd: |
+      llama-server
+      --host 127.0.0.1 --port ${PORT}
+      --threads 8 --jinja --no-webui
+      -m /home/bocaj/models/ocr/glm-ocr/GLM-OCR-Q8_0.gguf
+      --mmproj /home/bocaj/models/ocr/glm-ocr/mmproj-GLM-OCR-Q8_0.gguf
+      -c 16384
+      -ngl 99
+      --temp 0
